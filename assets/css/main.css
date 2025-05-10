@@ -2563,12 +2563,19 @@ textarea {
 		}
 
 			.image.fill img {
-			max-width: 400px;
-                        width: 100%;
-                        height: auto;
-                        display: block;
-                        margin: 0 auto;
-			}
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* En pantallas más grandes, podés escalar más el logo si querés */
+@media (min-width: 1024px) {
+  .image.fill img {
+    max-width: 400px;
+  }
+}
 
 /* List */
 

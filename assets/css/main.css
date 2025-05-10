@@ -2563,7 +2563,7 @@ textarea {
 		}
 
 			.image.fill img {
-			max-width: 200px;
+			max-width: 400px;
                         width: 100%;
                         height: auto;
                         display: block;

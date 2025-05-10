@@ -2139,7 +2139,7 @@ input, select, textarea {
 		}
 
 	label {
-		color: #ffffff;
+		color: #000;
 		display: block;
 		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 0.75rem;

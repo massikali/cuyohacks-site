@@ -165,13 +165,6 @@ input, select, textarea {
   margin: 0 auto; /* Centrado */
 }
 
-@media (max-width: 768px) {
-  .logo {
-    max-width: 120px;
-  }
-}
-
-
 /* Typography */
 
 	html {

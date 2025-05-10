@@ -2203,7 +2203,7 @@ input, select, textarea {
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #ffffff;
+			color: #000;
 			cursor: pointer;
 			display: inline-block;
 			font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -2251,7 +2251,7 @@ input, select, textarea {
 			content: '\f00c';
 			background-color: #d10000
 			border-color: #49fcd4;
-			color: #ffffff;
+			color: #000;
 		}
 
 		input[type="checkbox"]:focus + label:before,

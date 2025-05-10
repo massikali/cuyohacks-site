@@ -150,22 +150,30 @@ Ofrecemos asistencia para interpretar los hallazgos, soporte en la corrección d
 </header>
 <div class="content">
 <p><strong>Freelancers con ética profesional:</strong> Comprometidos con seguridad real somos parte del ecosistema cuyano y queremos que más empresas estén protegidas.</p>
-<form>
-<div class="fields">
-<div class="field half">
-<input id="name" name="name" placeholder="Name" type="text"/>
-</div>
-<div class="field half">
-<input id="email" name="email" placeholder="Email" type="email"/>
-</div>
-<div class="field">
-<textarea id="message" name="message" placeholder="Message" rows="7"></textarea>
-</div>
-</div>
-<ul class="actions">
-<li><input class="button primary" type="submit" value="Send Message"/></li>
-</ul>
-</form>
+<form onsubmit="return redirectToWhatsApp();">
+  <div class="fields">
+    <div class="field">
+      <input id="name" name="name" placeholder="Nombre" type="text" required />
+    </div>
+    <div class="field">
+      <textarea id="message" name="message" placeholder="Escribí tu mensaje..." rows="7" required></textarea>
+    </div>
+  </div>
+  <ul class="actions">
+    <li><input class="button primary" type="submit" value="Enviar por WhatsApp" /></li>
+  </ul>
+<script>
+  function redirectToWhatsApp() {
+    const name = document.getElementById("name").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const phone = "5492611234567"; // Reemplazá con tu número de WhatsApp
+
+    const text = `Hola, soy ${name}. ${message}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+    return false;
+  }
+</script>
 </div>
 <footer>
 <ul class="items">

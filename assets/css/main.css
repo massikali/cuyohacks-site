@@ -156,6 +156,22 @@ input, select, textarea {
   }
 }
 
+/* Estilo general del logo */
+.logo {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Centrado */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 120px;
+  }
+}
+
+
 /* Typography */
 
 	html {

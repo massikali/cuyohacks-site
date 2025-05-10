@@ -199,14 +199,23 @@ input, select, textarea {
 		color: #ffffff;
 	}
 
-	body, input, select, textarea {
-		color: #fffff;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
-		font-size: 1rem;
-		font-weight: 300;
-		letter-spacing: 0.0375em;
-		line-height: 2;
-	}
+/* Estilo general del cuerpo */
+body {
+  color: #ffffff;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.0375em;
+  line-height: 2;
+}
+
+/* Estilo específico para inputs y formularios */
+input,
+select,
+textarea {
+  color: #000000; /* negro */
+  background-color: #ffffff; /* fondo blanco */
+}
 
 	a {
 		-moz-transition: border-bottom-color 0.25s ease-in-out;

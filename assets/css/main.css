@@ -213,8 +213,8 @@ body {
 input,
 select,
 textarea {
-  color: #ffffff; /* negro */
-  background-color: #000000; /* fondo blanco */
+  color: #ffffff;
+  background-color: #000000; 
 }
 
 	a {

@@ -4201,6 +4201,138 @@ body, #wrapper {
     border-left: 2px solid #ff2e2e;
     margin-top: 0.5rem;
   }
+/* ============================= */
+/* FIX NAVBAR CUYO HACKS         */
+/* ============================= */
+
+/* Nav general */
+#header {
+  background: #000 !important;
+  padding: 0.8rem 2rem !important;
+  position: fixed !important;
+  width: 100% !important;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+#nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav ul {
+  list-style: none !important; /* quita bullets */
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  gap: 2rem;
+}
+
+#nav ul li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#nav a {
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+#nav a:hover {
+  color: #ff2e2e !important;
+}
+
+/* Dropdown */
+#nav .submenu {
+  position: relative;
+}
+
+#nav .submenu > ul {
+  display: none;
+  position: absolute;
+  top: 2.8rem;
+  left: 0;
+  background: #111;
+  padding: 0.6rem;
+  border-radius: 8px;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+  flex-direction: column;
+}
+
+#nav .submenu:hover > ul,
+#nav .submenu.open > ul {
+  display: flex;
+}
+
+#nav .submenu ul li {
+  margin: 0.35rem 0;
+}
+
+#nav .submenu ul a {
+  color: #fff !important;
+  font-weight: 400;
+  display: block;
+  padding: 0.35rem 0.6rem;
+}
+
+#nav .submenu ul a:hover {
+  color: #ff2e2e !important;
+  background: rgba(255,46,46,0.04);
+  border-radius: 4px;
+}
+
+/* Mobile */
+#nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  #nav ul {
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    display: none;
+    background: #000 !important;
+    padding: 1rem !important;
+    border-radius: 8px;
+    width: 100%;
+    position: absolute;
+    top: 3.6rem;
+    left: 0;
+  }
+
+  #nav.active ul {
+    display: flex !important;
+  }
+
+  #nav-toggle {
+    display: inline-block !important;
+  }
+
+  #nav .submenu > ul {
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  #nav .submenu.open > ul {
+    display: flex !important;
+    flex-direction: column !important;
+    padding-left: 1rem !important;
+    border-left: 2px solid #ff2e2e;
+    margin-top: 0.5rem;
+  }
+}
 
   #nav .submenu > a {
     font-weight: 600;

@@ -4025,3 +4025,140 @@ textarea {
     cursor: pointer;
   }
 }
+/* ============================= */
+/* NAVBAR CUYO HACKS (custom)    */
+/* ============================= */
+
+#header {
+  background: #000;
+  padding: 0.8rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-sizing: border-box;
+}
+
+/* Dejar espacio para que la barra fija no tape el contenido */
+body, #wrapper {
+  padding-top: 72px; /* si la barra cambia de alto, ajustá este valor */
+}
+
+#nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+#nav a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+#nav a:hover {
+  color: #ff2e2e;
+}
+
+/* Submenu (dropdown) */
+#nav .submenu {
+  position: relative;
+}
+
+#nav .submenu > ul {
+  display: none;
+  position: absolute;
+  top: 2.8rem;
+  left: 0;
+  background: #111;
+  padding: 0.6rem;
+  border-radius: 8px;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#nav .submenu:hover > ul,
+#nav .submenu:focus-within > ul {
+  display: flex;
+}
+
+#nav .submenu ul li {
+  margin: 0.35rem 0;
+}
+
+#nav .submenu ul a {
+  color: #fff;
+  font-weight: 400;
+  display: block;
+  padding: 0.35rem 0.6rem;
+}
+
+#nav .submenu ul a:hover {
+  color: #ff2e2e;
+  background: rgba(255,46,46,0.04);
+  border-radius: 4px;
+}
+
+/* Nav toggle (hamburguesa) */
+#nav-toggle {
+  display: none; /* solo visible en mobile */
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  #nav ul {
+    flex-direction: column;
+    gap: 0.6rem;
+    display: none;
+    background: #000;
+    padding: 1rem;
+    border-radius: 8px;
+    width: calc(100% - 4rem);
+    margin: 0;
+    position: absolute;
+    top: 3.6rem;
+    left: 2rem;
+  }
+
+  #nav.active ul {
+    display: flex;
+  }
+
+  #nav-toggle {
+    display: inline-block;
+  }
+
+  /* hide dropdown absolute behaviour on mobile (show inline) */
+  #nav .submenu > ul {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    min-width: unset;
+    display: none;
+  }
+  #nav .submenu.open > ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+  }
+}

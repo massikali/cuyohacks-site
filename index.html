@@ -223,5 +223,32 @@ Ofrecemos asistencia para interpretar los hallazgos, soporte en la corrección d
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+  // Toggle menú principal en mobile
+  (function(){
+    const nav = document.getElementById('nav');
+    const toggle = document.getElementById('nav-toggle');
+    const navList = document.getElementById('nav-list');
+
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', function(){
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('active');
+    });
+
+    // Hacer que los submenus sean expandibles en mobile
+    document.querySelectorAll('#nav .submenu > a').forEach(function(link){
+      link.addEventListener('click', function(e){
+        const parent = this.parentElement;
+        if (window.innerWidth <= 900) {
+          e.preventDefault(); // evitar navegación inmediata
+          parent.classList.toggle('open');
+        }
+      });
+    });
+  })();
+</script>
 </body>
 </html>

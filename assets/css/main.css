@@ -4338,3 +4338,57 @@ body, #wrapper {
     font-weight: 600;
   }
 }
+/* Links principales */
+#nav a {
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  position: relative;
+  padding: 0.3rem 0;
+  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+#nav a:hover,
+#nav a:focus {
+  color: #ff2e2e !important;
+}
+
+/* Subrayado animado en hover */
+#nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background-color: #ff2e2e;
+  transition: all 0.3s ease;
+}
+
+#nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Dropdown */
+#nav .submenu > ul {
+  background: #111;
+  border: 1px solid rgba(255,46,46,0.4);
+  border-radius: 10px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+  padding: 0.8rem;
+}
+
+#nav .submenu ul a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#nav .submenu ul a:hover {
+  background: rgba(255,46,46,0.1);
+  color: #ff2e2e !important;
+}

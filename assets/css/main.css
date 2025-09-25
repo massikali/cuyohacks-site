@@ -4162,3 +4162,54 @@ textarea {
     font-weight: 600;
   }
 }
+/* ============================= */
+/* ARREGLOS LAYOUT CUYO HACKS   */
+/* ============================= */
+
+/* 1) Breadcrumbs sin numeración y con separador "/" */
+.breadcrumbs ol { margin: 0; padding-left: 0; list-style: none; }
+.breadcrumbs li { display: inline; opacity: .85; }
+.breadcrumbs li + li::before { content: " / "; margin: 0 .35rem; opacity: .6; }
+
+/* 2) Intercalar secciones wrapper (centra y alterna lado) */
+.wrapper .inner {
+  max-width: 48rem;
+  margin-left: auto;   /* por defecto, columna derecha (negro) */
+  margin-right: 0;
+}
+.wrapper.alt .inner {
+  margin-left: 0;      /* las .alt se van a la columna izquierda (rojo) */
+  margin-right: auto;
+}
+
+/* 3) Grids usados en tu contenido */
+.grid-2 { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 2rem; 
+}
+@media (max-width: 980px){
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* 4) Cards de beneficios en 2 columnas (se adapta a 1 en mobile) */
+.items.style1.medium {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1.25rem;
+}
+@media (max-width: 980px){
+  .items.style1.medium { grid-template-columns: 1fr; }
+}
+
+/* 5) Botón primario más visible sobre negro */
+.button.primary {
+  background: #e21212; /* rojo marca */
+  color: #fff !important;
+  border: none;
+}
+.button.primary:hover { filter: brightness(1.05); }
+
+/* 6) Ajustes finos de títulos dentro de spotlight */
+.spotlight .content h1,
+.spotlight .content h2 { margin-bottom: .75rem; }

@@ -31,12 +31,9 @@
 
     /* ===== Header con logo ===== */
     #header { position:sticky; top:0; z-index:100; background:rgba(0,0,0,.85); backdrop-filter: blur(4px); }
-    #brand {
-      display:flex; align-items:center; gap:10px; text-decoration:none;
-      padding: 10px 0;
-    }
+    #brand { display:flex; align-items:center; gap:10px; text-decoration:none; padding:10px 0; }
     #brand img { height:32px; width:auto; display:block; }
-    #brand .brand-text { color:#fff; font-weight:700; letter-spacing:.04em; }
+    .sr-only{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 
     /* NAV base + submenu estable */
     #nav { position:relative; display:flex; align-items:center; gap:26px; }
@@ -55,19 +52,14 @@
     #nav .submenu::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
 
     /* ===== HERO ===== */
-    .home .hero {
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:40px; align-items:center;
-      padding: 4rem 0 2rem;
-    }
+    .home .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap:40px; align-items:center; padding: 4rem 0 2rem; }
     .home .lead { color:#cfcfcf; }
     .home .actions { display:flex; gap:12px; margin-top:22px; flex-wrap:wrap; }
     .home .button.primary { background:#e21212; color:#fff !important; border:none; }
     .home .button.primary:hover { filter:brightness(1.07); }
 
     /* ===== Vulnerability Counters ===== */
-    .home .kpi {
-      display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; margin-top:22px;
-    }
+    .home .kpi { display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; margin-top:22px; }
     .home .kpi .tile{
       background:#0f0f0f; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:14px 16px;
       display:flex; align-items:center; gap:10px;
@@ -77,7 +69,7 @@
     .home .tile .label{ color:#dcdcdc; }
     .home .tile .num{ margin-left:auto; font-weight:800; color:#fff; }
 
-    /* ===== Secciones “del sitio viejo” ===== */
+    /* ===== Secciones del sitio viejo ===== */
     .home .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
     .home .card { background:#111; border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:18px 16px; }
     .home .logo-grid { display:grid; grid-template-columns: repeat(6, 1fr); gap:18px; align-items:center; }
@@ -86,6 +78,11 @@
     .home .blog-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:22px; }
     .home .post { background:#111; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:16px; }
     .home .post h4{ margin:.25rem 0 .5rem; color:#fff; }
+
+    /* Galería */
+    .home .gallery { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+    .home .gallery a{ display:block; background:#0f0f0f; border:1px solid rgba(255,255,255,.07); border-radius:10px; overflow:hidden; }
+    .home .gallery img{ width:100%; height:100%; display:block; object-fit:cover; }
 
     /* Formulario contacto */
     .home form .row { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
@@ -105,12 +102,14 @@
       .home .hero { grid-template-columns: 1fr; }
       .home .kpi { grid-template-columns: 1fr 1fr; }
       .home .logo-grid { grid-template-columns: repeat(4, 1fr); }
+      .home .gallery { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 820px){
       .home .grid-3, .home .blog-grid { grid-template-columns: 1fr; }
       .home .wrapper { padding: 3rem 0; }
       .home form .row { grid-template-columns: 1fr; }
       .home .kpi { grid-template-columns: 1fr; }
+      .home .gallery { grid-template-columns: 1fr; }
     }
   </style>
 
@@ -125,8 +124,9 @@
       <div class="wrapper">
         <div class="inner" style="display:flex; align-items:center; justify-content:space-between; gap:18px;">
           <a id="brand" href="/" aria-label="Cuyo Hacks - Inicio">
-            <img src="/images/logo-cuyohacks.svg" alt="Cuyo Hacks"/>
-            <span class="brand-text">Cuyo Hacks</span>
+            <!-- usa el logo del repo: /images/logo.png -->
+            <img src="/images/logo.png" alt="Cuyo Hacks"/>
+            <span class="sr-only">Cuyo Hacks</span>
           </a>
           <nav id="nav" aria-label="Main navigation">
             <button id="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Abrir menú">☰</button>
@@ -161,7 +161,7 @@
             <a class="button" href="/servicios/pentesting-web/">Aprendé más</a>
           </div>
 
-          <!-- KPIs / Counters (del sitio viejo) -->
+          <!-- KPIs / Counters -->
           <div class="kpi" aria-label="Métricas de hallazgos por criticidad">
             <div class="tile"><span class="dot crit"></span><span class="label">Críticas</span><span class="num" data-count="5">0</span></div>
             <div class="tile"><span class="dot high"></span><span class="label">Altas</span><span class="num" data-count="16">0</span></div>
@@ -170,7 +170,7 @@
           </div>
         </div>
 
-        <!-- Imagen/Ilustración opcional -->
+        <!-- Lateral -->
         <aside class="card">
           <h3>Qué entregamos</h3>
           <p>Informe técnico + ejecutivo, priorización CVSS, PoC, y un retest incluido para validar correcciones.</p>
@@ -203,7 +203,7 @@
       </div>
     </section>
 
-    <!-- POR QUÉ ELEGIRNOS (del sitio viejo) -->
+    <!-- POR QUÉ ELEGIRNOS -->
     <section class="wrapper">
       <div class="inner">
         <h2>¿Por qué elegirnos?</h2>
@@ -229,7 +229,7 @@
       <div class="inner">
         <h2>Confían en nosotros</h2>
         <div class="logo-grid">
-          <!-- reemplazá las rutas por tus logos reales -->
+          <!-- cambia por tus rutas -->
           <img src="/images/logos/cliente1.svg" alt="Cliente 1"/>
           <img src="/images/logos/cliente2.svg" alt="Cliente 2"/>
           <img src="/images/logos/cliente3.svg" alt="Cliente 3"/>
@@ -237,6 +237,14 @@
           <img src="/images/logos/cliente5.svg" alt="Cliente 5"/>
           <img src="/images/logos/cliente6.svg" alt="Cliente 6"/>
         </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA (opcional; usa /images/gallery/{thumbs,fulls}) -->
+    <section class="wrapper">
+      <div class="inner">
+        <h2>Galería</h2>
+        <div class="gallery" id="gallery"></div>
       </div>
     </section>
 
@@ -252,12 +260,11 @@
       </div>
     </section>
 
-    <!-- ÚLTIMOS POSTS DEL BLOG -->
+    <!-- ÚLTIMOS POSTS -->
     <section class="wrapper">
       <div class="inner">
         <h2>Últimos artículos</h2>
         <div class="blog-grid">
-          <!-- Si ya tenés cards del blog, pegá tus includes aquí -->
           <article class="post">
             <h4>Cómo preparar tu app para un pentest</h4>
             <p>Checklist básico para que el proceso sea eficiente y con mejores resultados.</p>
@@ -277,7 +284,7 @@
       </div>
     </section>
 
-    <!-- CTA + FORM CONTACTO (como en el viejo sitio) -->
+    <!-- CTA + FORM CONTACTO -->
     <section class="wrapper">
       <div class="inner">
         <div class="card" style="margin-bottom:24px;">
@@ -334,7 +341,7 @@
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
 
-  <!-- Interacciones: submenu estable + counters -->
+  <!-- Interacciones: submenu estable + counters + galería -->
   <script>
     (function(){
       /* Mobile toggle */
@@ -361,21 +368,46 @@
         submenu.querySelector('> a').addEventListener('click', function(e){ if(!submenu.classList.contains('open')){ e.preventDefault(); open(); } });
       }
 
-      /* Counters (animados) */
+      /* ===== KPI counters ===== */
       const nums = document.querySelectorAll('.num');
       const animate = el => {
         const target = parseInt(el.dataset.count || '0',10);
-        const duration = 900; const start = performance.now(); const from = 0;
+        const duration = 900, start = performance.now(), from = 0;
         const step = now => { const p = Math.min(1, (now-start)/duration); el.textContent = Math.floor(from + (target-from)*p); if(p<1) requestAnimationFrame(step); };
         requestAnimationFrame(step);
       };
+      const runCounters = () => nums.forEach(animate);
+
+      // dispara al cargar y también cuando entra a viewport (por si el hero queda fuera)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', runCounters, { once:true });
+      } else { runCounters(); }
+
       const kpi = document.querySelector('.kpi');
       if (kpi && 'IntersectionObserver' in window){
         const io = new IntersectionObserver(entries=>{
-          entries.forEach(e=>{ if(e.isIntersecting){ nums.forEach(animate); io.disconnect(); } });
-        },{threshold:.3});
+          entries.forEach(e=>{ if(e.isIntersecting){ runCounters(); io.disconnect(); } });
+        },{threshold:.15});
         io.observe(kpi);
-      } else { nums.forEach(animate); }
+      }
+
+      /* ===== Galería (thumbs -> fulls) =====
+         Cambiá los nombres en este array si tus archivos difieren.
+         Deben existir en:
+         /images/gallery/thumbs/<name>
+         /images/gallery/fulls/<name>
+      */
+      const galleryFiles = [
+        '01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg'
+      ];
+      const g = document.getElementById('gallery');
+      if (g){
+        g.innerHTML = galleryFiles.map(fn => `
+          <a href="/images/gallery/fulls/${fn}">
+            <img src="/images/gallery/thumbs/${fn}" alt="Galería ${fn.replace(/\..+$/,'')}">
+          </a>
+        `).join('');
+      }
     })();
   </script>
 </body>

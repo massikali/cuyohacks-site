@@ -14,31 +14,25 @@
     .home #wrapper:before { display:none !important; }
     .home #wrapper { background:#000; color:#ddd; }
 
-    /* Contenedores & centrado global */
-    .home .wrapper { padding: 4rem 0; }
+    /* Contenedor global centrado */
+    .home .wrapper { padding: 3.25rem 0; }
     .home .wrapper .inner { max-width: 1180px; margin: 0 auto !important; padding: 0 24px; box-sizing: border-box; }
 
     /* Tipografía */
     .home h1, .home h2, .home h3 { color:#fff !important; letter-spacing:.02em; }
-    .home h1 { font-size: clamp(2.25rem, 3vw + 1rem, 3.5rem); margin: 0 0 .75rem; }
-    .home h2 { font-size: clamp(1.6rem, 2vw + .75rem, 2.2rem); margin: 0 0 .75rem; }
-    .home h3 { font-size: 1.1rem; letter-spacing:.06em; text-transform:uppercase; margin:0 0 .5rem; }
+    .home h1 { font-size: clamp(2.35rem, 3.2vw + 1rem, 3.75rem); line-height:1.1; margin: 0 0 1rem; }
+    .home h2 { font-size: clamp(1.65rem, 2vw + .75rem, 2.25rem); margin: 0 0 1rem; }
+    .home h3 { font-size: 1.1rem; letter-spacing:.06em; text-transform:uppercase; margin:0 0 .6rem; }
     .home p  { line-height: 1.75; }
 
-    /* Alternancia por sección */
-    .home #wrapper > section:nth-of-type(odd)  { background:#000; }
-    .home #wrapper > section:nth-of-type(even) { background:#0b0b0b; }
-
-    /* ===== Header con logo ===== */
-    #header { position:sticky; top:0; z-index:100; background:rgba(0,0,0,.85); backdrop-filter: blur(4px); }
-    #header .inner{ min-height:72px; padding:6px 0; }
-    #brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
-    /* LOGO: grande y responsivo aunque el PNG sea 3000x3000 */
-    #brand img{ height: clamp(56px, 6vw, 96px); width:auto; display:block; }
+    /* Header + logo */
+    #header { position:sticky; top:0; z-index:100; background:rgba(0,0,0,.88); backdrop-filter: blur(4px); }
+    #header .inner{ min-height:84px; padding:8px 0; }
+    #brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    #brand img{ height: clamp(72px, 7.5vw, 120px); width:auto; display:block; }
     .sr-only{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-    @media (max-width:640px){ #brand img{ height: clamp(44px, 8vw, 72px); } }
 
-    /* NAV base + submenu estable */
+    /* NAV + submenu estable */
     #nav { position:relative; display:flex; align-items:center; gap:26px; }
     #nav > ul { display:flex; gap:24px; align-items:center; }
     #nav .submenu { position:relative; }
@@ -51,17 +45,19 @@
     }
     #nav .submenu ul a{ display:block; padding:12px 18px; white-space:nowrap; }
     #nav .submenu.open ul, #nav .submenu:hover ul{ display:block; }
-    /* puente invisible para evitar que se cierre al mover el mouse */
-    #nav .submenu::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+    #nav .submenu::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; } /* evita cierre brusco */
 
-    /* ===== HERO ===== */
-    .home .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap:40px; align-items:center; padding: 4rem 0 2rem; }
+    /* HERO en 2 columnas, sin “salto” arriba */
+    .home .hero {
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:44px; align-items:center;
+      padding: 1.5rem 0 1rem;   /* más arriba para que no se corte el h1 */
+    }
     .home .lead { color:#cfcfcf; }
     .home .actions { display:flex; gap:12px; margin-top:22px; flex-wrap:wrap; }
     .home .button.primary { background:#e21212; color:#fff !important; border:none; }
     .home .button.primary:hover { filter:brightness(1.07); }
 
-    /* ===== Vulnerability Counters ===== */
+    /* KPI counters */
     .home .kpi { display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; margin-top:22px; }
     .home .kpi .tile{
       background:#0f0f0f; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:14px 16px;
@@ -72,9 +68,17 @@
     .home .tile .label{ color:#dcdcdc; }
     .home .tile .num{ margin-left:auto; font-weight:800; color:#fff; }
 
-    /* ===== Secciones del sitio viejo ===== */
-    .home .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    /* Cards de servicios: igual altura + botón alineado abajo */
+    .home .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items:stretch; }
     .home .card { background:#111; border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:18px 16px; }
+    .home .card.service{
+      display:flex; flex-direction:column; min-height: 380px;   /* fuerza igualdad */
+    }
+    .home .card.service p{ margin:0 0 .85rem; }
+    .home .card.service .cta { margin-top:auto; }       /* lleva el botón al fondo */
+    .home .card.service .button{ align-self:flex-start; }
+
+    /* Otras secciones */
     .home .logo-grid { display:grid; grid-template-columns: repeat(6, 1fr); gap:18px; align-items:center; }
     .home .logo-grid img{ width:100%; max-height:42px; object-fit:contain; filter:grayscale(100%); opacity:.85; }
     .home .testimonial { background:#0f0f0f; border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:18px; font-style:italic; }
@@ -87,7 +91,7 @@
     .home .gallery a{ display:block; background:#0f0f0f; border:1px solid rgba(255,255,255,.07); border-radius:10px; overflow:hidden; }
     .home .gallery img{ width:100%; height:100%; display:block; object-fit:cover; }
 
-    /* Formulario contacto */
+    /* Form contacto */
     .home form .row { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
     .home form input, .home form textarea{
       width:100%; background:#111; border:1px solid rgba(255,255,255,.12); color:#eee;
@@ -100,19 +104,23 @@
     .home .copyright { text-align:center; margin-top:1rem; color:#bbb; }
 
     /* Responsive */
-    @media (max-width: 1100px){ .home .wrapper .inner{ max-width: 980px; } }
+    @media (max-width: 1100px){
+      .home .wrapper .inner{ max-width: 980px; }
+      .home .card.service{ min-height: 360px; }
+    }
     @media (max-width: 1024px){
-      .home .hero { grid-template-columns: 1fr; }
+      .home .hero { grid-template-columns: 1fr; gap:28px; }
       .home .kpi { grid-template-columns: 1fr 1fr; }
       .home .logo-grid { grid-template-columns: repeat(4, 1fr); }
       .home .gallery { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 820px){
       .home .grid-3, .home .blog-grid { grid-template-columns: 1fr; }
-      .home .wrapper { padding: 3rem 0; }
+      .home .wrapper { padding: 2.75rem 0; }
       .home form .row { grid-template-columns: 1fr; }
       .home .kpi { grid-template-columns: 1fr; }
       .home .gallery { grid-template-columns: 1fr; }
+      .home .card.service{ min-height: auto; }
     }
   </style>
 
@@ -127,7 +135,6 @@
       <div class="wrapper">
         <div class="inner" style="display:flex; align-items:center; justify-content:space-between; gap:18px;">
           <a id="brand" href="/" aria-label="Cuyo Hacks - Inicio">
-            <!-- usa el logo del repo: /images/logo.png -->
             <img src="/images/logo.png" alt="Cuyo Hacks"/>
             <span class="sr-only">Cuyo Hacks</span>
           </a>
@@ -164,21 +171,19 @@
             <a class="button" href="/servicios/pentesting-web/">Aprendé más</a>
           </div>
 
-          <!-- KPIs / Counters -->
+          <!-- KPI counters -->
           <div class="kpi" aria-label="Métricas de hallazgos por criticidad">
-            <!-- Pongo los números también como texto para que NUNCA se vean 0 -->
-            <div class="tile"><span class="dot crit"></span><span class="label">Críticas</span><span class="num" data-count="5">5</span></div>
-            <div class="tile"><span class="dot high"></span><span class="label">Altas</span><span class="num" data-count="16">16</span></div>
-            <div class="tile"><span class="dot med"></span><span class="label">Medias</span><span class="num" data-count="63">63</span></div>
-            <div class="tile"><span class="dot low"></span><span class="label">Bajas</span><span class="num" data-count="70">70</span></div>
+            <div class="tile"><span class="dot crit"></span><span class="label">Críticas</span><span class="num" data-count="5">0</span></div>
+            <div class="tile"><span class="dot high"></span><span class="label">Altas</span><span class="num" data-count="16">0</span></div>
+            <div class="tile"><span class="dot med"></span><span class="label">Medias</span><span class="num" data-count="63">0</span></div>
+            <div class="tile"><span class="dot low"></span><span class="label">Bajas</span><span class="num" data-count="70">0</span></div>
           </div>
         </div>
 
-        <!-- Lateral -->
         <aside class="card">
           <h3>Qué entregamos</h3>
           <p>Informe técnico + ejecutivo, priorización CVSS, PoC, y un retest incluido para validar correcciones.</p>
-          <p><a class="button" href="/servicios/pentesting-web/">Ver detalle del servicio</a></p>
+          <p class="cta"><a class="button" href="/servicios/pentesting-web/">Ver detalle del servicio</a></p>
         </aside>
       </div>
     </section>
@@ -188,20 +193,20 @@
       <div class="inner">
         <h2>Nuestros servicios</h2>
         <div class="grid-3">
-          <article class="card">
+          <article class="card service">
             <h3>Pentesting Web</h3>
             <p>Detección y explotación controlada de vulnerabilidades (OWASP), evidencia y roadmap de mitigación.</p>
-            <p><a class="button" href="/servicios/pentesting-web/">Ver más</a></p>
+            <p class="cta"><a class="button" href="/servicios/pentesting-web/">Ver más</a></p>
           </article>
-          <article class="card">
+          <article class="card service">
             <h3>Infraestructura</h3>
             <p>Evaluación interna/externa de redes y servicios, hardening y simulación de atacantes.</p>
-            <p><a class="button" href="/servicios/pentesting-infraestructura/">Ver más</a></p>
+            <p class="cta"><a class="button" href="/servicios/pentesting-infraestructura/">Ver más</a></p>
           </article>
-          <article class="card">
+          <article class="card service">
             <h3>Mobile</h3>
             <p>Pruebas en iOS/Android, permisos, almacenamiento, APIs y seguridad de transporte.</p>
-            <p><a class="button" href="/servicios/pentesting-mobile/">Ver más</a></p>
+            <p class="cta"><a class="button" href="/servicios/pentesting-mobile/">Ver más</a></p>
           </article>
         </div>
       </div>
@@ -233,7 +238,6 @@
       <div class="inner">
         <h2>Confían en nosotros</h2>
         <div class="logo-grid">
-          <!-- cambia por tus rutas reales -->
           <img src="/images/logos/cliente1.svg" alt="Cliente 1"/>
           <img src="/images/logos/cliente2.svg" alt="Cliente 2"/>
           <img src="/images/logos/cliente3.svg" alt="Cliente 3"/>
@@ -244,7 +248,7 @@
       </div>
     </section>
 
-    <!-- GALERÍA (opcional; usa /images/gallery/{thumbs,fulls}) -->
+    <!-- GALERÍA (opcional) -->
     <section class="wrapper">
       <div class="inner">
         <h2>Galería</h2>
@@ -347,72 +351,63 @@
 
   <!-- Interacciones: submenu estable + counters + galería -->
   <script>
-    (function(){
-      /* Mobile toggle */
-      const nav = document.getElementById('nav');
-      const toggle = document.getElementById('nav-toggle');
-      if (toggle && nav){
-        toggle.addEventListener('click', function(){
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', String(!expanded));
-          nav.classList.toggle('active');
-        });
-      }
-
-      /* Submenu hover con tolerancia */
-      const submenu = document.getElementById('nav-services');
-      if (submenu){
-        let closeTimer = null;
-        const open = () => { clearTimeout(closeTimer); submenu.classList.add('open'); submenu.querySelector('> a').setAttribute('aria-expanded','true'); };
-        const scheduleClose = () => { clearTimeout(closeTimer); closeTimer = setTimeout(()=>{ submenu.classList.remove('open'); submenu.querySelector('> a').setAttribute('aria-expanded','false'); }, 200); };
-        submenu.addEventListener('mouseenter', open);
-        submenu.addEventListener('mouseleave', scheduleClose);
-        submenu.querySelector('> a').addEventListener('focus', open);
-        submenu.querySelectorAll('ul a').forEach(a=>{ a.addEventListener('focus', open); a.addEventListener('blur', scheduleClose); });
-        submenu.querySelector('> a').addEventListener('click', function(e){ if(!submenu.classList.contains('open')){ e.preventDefault(); open(); } });
-      }
-
-      /* ===== KPI counters: pinta valores y luego anima (no se quedan en 0) ===== */
-      const nums = document.querySelectorAll('.num');
-      const paint = () => nums.forEach(el => {
-        const v = parseInt(el.dataset.count || el.textContent || '0', 10);
-        el.textContent = isNaN(v) ? 0 : v;
+  (function(){
+    /* Mobile toggle */
+    const nav = document.getElementById('nav');
+    const toggle = document.getElementById('nav-toggle');
+    if (toggle && nav){
+      toggle.addEventListener('click', function(){
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('active');
       });
-      const animate = el => {
-        const target = parseInt(el.dataset.count || el.textContent || '0', 10);
-        const duration = 900, start = performance.now();
-        const step = now => {
-          const p = Math.min(1, (now-start)/duration);
-          el.textContent = Math.floor(target * p);
+    }
+
+    /* Submenu hover con tolerancia */
+    const submenu = document.getElementById('nav-services');
+    if (submenu){
+      let closeTimer = null;
+      const open = () => { clearTimeout(closeTimer); submenu.classList.add('open'); submenu.querySelector('> a').setAttribute('aria-expanded','true'); };
+      const scheduleClose = () => { clearTimeout(closeTimer); closeTimer = setTimeout(()=>{ submenu.classList.remove('open'); submenu.querySelector('> a').setAttribute('aria-expanded','false'); }, 200); };
+      submenu.addEventListener('mouseenter', open);
+      submenu.addEventListener('mouseleave', scheduleClose);
+      submenu.querySelector('> a').addEventListener('focus', open);
+      submenu.querySelectorAll('ul a').forEach(a=>{ a.addEventListener('focus', open); a.addEventListener('blur', scheduleClose); });
+      submenu.querySelector('> a').addEventListener('click', function(e){ if(!submenu.classList.contains('open')){ e.preventDefault(); open(); } });
+    }
+
+    /* Counters: pinta primero, luego anima (nunca queda en 0) */
+    const nums = document.querySelectorAll('.num');
+    function paint(){ nums.forEach(el => { const v = parseInt(el.dataset.count||'0',10); el.textContent = isNaN(v)?0:v; }); }
+    function animate(){
+      nums.forEach(el=>{
+        const target = parseInt(el.dataset.count||'0',10);
+        const start = Number(el.textContent)||0;
+        const duration = 900;
+        const t0 = performance.now();
+        function step(t){
+          const p = Math.min(1, (t - t0) / duration);
+          el.textContent = Math.floor(start + (target - start) * p);
           if (p < 1) requestAnimationFrame(step);
-        };
+        }
         requestAnimationFrame(step);
-      };
-      const run = () => { paint(); nums.forEach(animate); };
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', ()=>{ paint(); animate(); }, { once:true });
+    } else { paint(); animate(); }
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', run, { once:true });
-      } else { run(); }
-
-      const kpi = document.querySelector('.kpi');
-      if (kpi && 'IntersectionObserver' in window){
-        const io = new IntersectionObserver(entries=>{
-          entries.forEach(e=>{ if(e.isIntersecting){ run(); io.disconnect(); } });
-        },{threshold:.1});
-        io.observe(kpi);
-      }
-
-      /* ===== Galería (thumbs -> fulls) ===== */
-      const galleryFiles = ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg'];
-      const g = document.getElementById('gallery');
-      if (g){
-        g.innerHTML = galleryFiles.map(fn => `
-          <a href="/images/gallery/fulls/${fn}">
-            <img src="/images/gallery/thumbs/${fn}" alt="Galería ${fn.replace(/\..+$/,'')}">
-          </a>
-        `).join('');
-      }
-    })();
+    /* Galería (thumbs -> fulls) */
+    const galleryFiles = ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg'];
+    const g = document.getElementById('gallery');
+    if (g){
+      g.innerHTML = galleryFiles.map(fn => `
+        <a href="/images/gallery/fulls/${fn}">
+          <img src="/images/gallery/thumbs/${fn}" alt="Galería ${fn.replace(/\..+$/,'')}">
+        </a>
+      `).join('');
+    }
+  })();
   </script>
 </body>
 </html>

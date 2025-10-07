@@ -33,12 +33,10 @@
     #header { position:sticky; top:0; z-index:100; background:rgba(0,0,0,.85); backdrop-filter: blur(4px); }
     #header .inner{ min-height:72px; padding:6px 0; }
     #brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
-    #brand img{
-      height: clamp(56px, 6vw, 96px);
-      width: auto;
-      display:block;
-    }
+    /* LOGO: grande y responsivo aunque el PNG sea 3000x3000 */
+    #brand img{ height: clamp(56px, 6vw, 96px); width:auto; display:block; }
     .sr-only{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    @media (max-width:640px){ #brand img{ height: clamp(44px, 8vw, 72px); } }
 
     /* NAV base + submenu estable */
     #nav { position:relative; display:flex; align-items:center; gap:26px; }
@@ -108,7 +106,6 @@
       .home .kpi { grid-template-columns: 1fr 1fr; }
       .home .logo-grid { grid-template-columns: repeat(4, 1fr); }
       .home .gallery { grid-template-columns: repeat(2, 1fr); }
-      #brand img{ height: clamp(48px, 7vw, 80px); }
     }
     @media (max-width: 820px){
       .home .grid-3, .home .blog-grid { grid-template-columns: 1fr; }
@@ -116,7 +113,6 @@
       .home form .row { grid-template-columns: 1fr; }
       .home .kpi { grid-template-columns: 1fr; }
       .home .gallery { grid-template-columns: 1fr; }
-      #brand img{ height: clamp(40px, 9vw, 72px); }
     }
   </style>
 
@@ -170,10 +166,11 @@
 
           <!-- KPIs / Counters -->
           <div class="kpi" aria-label="Métricas de hallazgos por criticidad">
-            <div class="tile"><span class="dot crit"></span><span class="label">Críticas</span><span class="num" data-count="5">0</span></div>
-            <div class="tile"><span class="dot high"></span><span class="label">Altas</span><span class="num" data-count="16">0</span></div>
-            <div class="tile"><span class="dot med"></span><span class="label">Medias</span><span class="num" data-count="63">0</span></div>
-            <div class="tile"><span class="dot low"></span><span class="label">Bajas</span><span class="num" data-count="70">0</span></div>
+            <!-- Pongo los números también como texto para que NUNCA se vean 0 -->
+            <div class="tile"><span class="dot crit"></span><span class="label">Críticas</span><span class="num" data-count="5">5</span></div>
+            <div class="tile"><span class="dot high"></span><span class="label">Altas</span><span class="num" data-count="16">16</span></div>
+            <div class="tile"><span class="dot med"></span><span class="label">Medias</span><span class="num" data-count="63">63</span></div>
+            <div class="tile"><span class="dot low"></span><span class="label">Bajas</span><span class="num" data-count="70">70</span></div>
           </div>
         </div>
 
@@ -236,7 +233,7 @@
       <div class="inner">
         <h2>Confían en nosotros</h2>
         <div class="logo-grid">
-          <!-- cambia por tus rutas -->
+          <!-- cambia por tus rutas reales -->
           <img src="/images/logos/cliente1.svg" alt="Cliente 1"/>
           <img src="/images/logos/cliente2.svg" alt="Cliente 2"/>
           <img src="/images/logos/cliente3.svg" alt="Cliente 3"/>
@@ -350,64 +347,72 @@
 
   <!-- Interacciones: submenu estable + counters + galería -->
   <script>
-  (function(){
-    /* Mobile toggle */
-    const nav = document.getElementById('nav');
-    const toggle = document.getElementById('nav-toggle');
-    if (toggle && nav){
-      toggle.addEventListener('click', function(){
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('active');
+    (function(){
+      /* Mobile toggle */
+      const nav = document.getElementById('nav');
+      const toggle = document.getElementById('nav-toggle');
+      if (toggle && nav){
+        toggle.addEventListener('click', function(){
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('active');
+        });
+      }
+
+      /* Submenu hover con tolerancia */
+      const submenu = document.getElementById('nav-services');
+      if (submenu){
+        let closeTimer = null;
+        const open = () => { clearTimeout(closeTimer); submenu.classList.add('open'); submenu.querySelector('> a').setAttribute('aria-expanded','true'); };
+        const scheduleClose = () => { clearTimeout(closeTimer); closeTimer = setTimeout(()=>{ submenu.classList.remove('open'); submenu.querySelector('> a').setAttribute('aria-expanded','false'); }, 200); };
+        submenu.addEventListener('mouseenter', open);
+        submenu.addEventListener('mouseleave', scheduleClose);
+        submenu.querySelector('> a').addEventListener('focus', open);
+        submenu.querySelectorAll('ul a').forEach(a=>{ a.addEventListener('focus', open); a.addEventListener('blur', scheduleClose); });
+        submenu.querySelector('> a').addEventListener('click', function(e){ if(!submenu.classList.contains('open')){ e.preventDefault(); open(); } });
+      }
+
+      /* ===== KPI counters: pinta valores y luego anima (no se quedan en 0) ===== */
+      const nums = document.querySelectorAll('.num');
+      const paint = () => nums.forEach(el => {
+        const v = parseInt(el.dataset.count || el.textContent || '0', 10);
+        el.textContent = isNaN(v) ? 0 : v;
       });
-    }
-
-    /* Submenu hover con tolerancia */
-    const submenu = document.getElementById('nav-services');
-    if (submenu){
-      let closeTimer = null;
-      const open = () => { clearTimeout(closeTimer); submenu.classList.add('open'); submenu.querySelector('> a').setAttribute('aria-expanded','true'); };
-      const scheduleClose = () => { clearTimeout(closeTimer); closeTimer = setTimeout(()=>{ submenu.classList.remove('open'); submenu.querySelector('> a').setAttribute('aria-expanded','false'); }, 200); };
-      submenu.addEventListener('mouseenter', open);
-      submenu.addEventListener('mouseleave', scheduleClose);
-      submenu.querySelector('> a').addEventListener('focus', open);
-      submenu.querySelectorAll('ul a').forEach(a=>{ a.addEventListener('focus', open); a.addEventListener('blur', scheduleClose); });
-      submenu.querySelector('> a').addEventListener('click', function(e){ if(!submenu.classList.contains('open')){ e.preventDefault(); open(); } });
-    }
-
-    /* ===== KPI counters (pinta primero, luego anima) ===== */
-    const nums = document.querySelectorAll('.num');
-    function paint(){ nums.forEach(el => { const v = parseInt(el.dataset.count||'0',10); el.textContent = isNaN(v)?0:v; }); }
-    function animate(){
-      nums.forEach(el=>{
-        const target = parseInt(el.dataset.count||'0',10);
-        const start = Number(el.textContent)||0;
-        const duration = 900;
-        const t0 = performance.now();
-        function step(t){
-          const p = Math.min(1, (t - t0) / duration);
-          el.textContent = Math.floor(start + (target - start) * p);
+      const animate = el => {
+        const target = parseInt(el.dataset.count || el.textContent || '0', 10);
+        const duration = 900, start = performance.now();
+        const step = now => {
+          const p = Math.min(1, (now-start)/duration);
+          el.textContent = Math.floor(target * p);
           if (p < 1) requestAnimationFrame(step);
-        }
+        };
         requestAnimationFrame(step);
-      });
-    }
-    // garantizado: siempre muestra números
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', ()=>{ paint(); animate(); }, { once:true });
-    } else { paint(); animate(); }
+      };
+      const run = () => { paint(); nums.forEach(animate); };
 
-    /* ===== Galería (thumbs -> fulls) ===== */
-    const galleryFiles = ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg'];
-    const g = document.getElementById('gallery');
-    if (g){
-      g.innerHTML = galleryFiles.map(fn => `
-        <a href="/images/gallery/fulls/${fn}">
-          <img src="/images/gallery/thumbs/${fn}" alt="Galería ${fn.replace(/\..+$/,'')}">
-        </a>
-      `).join('');
-    }
-  })();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run, { once:true });
+      } else { run(); }
+
+      const kpi = document.querySelector('.kpi');
+      if (kpi && 'IntersectionObserver' in window){
+        const io = new IntersectionObserver(entries=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ run(); io.disconnect(); } });
+        },{threshold:.1});
+        io.observe(kpi);
+      }
+
+      /* ===== Galería (thumbs -> fulls) ===== */
+      const galleryFiles = ['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg'];
+      const g = document.getElementById('gallery');
+      if (g){
+        g.innerHTML = galleryFiles.map(fn => `
+          <a href="/images/gallery/fulls/${fn}">
+            <img src="/images/gallery/thumbs/${fn}" alt="Galería ${fn.replace(/\..+$/,'')}">
+          </a>
+        `).join('');
+      }
+    })();
   </script>
 </body>
 </html>

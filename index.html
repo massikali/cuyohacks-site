@@ -833,30 +833,64 @@
       </div>
     </section>
 
-    <!-- CTA + FORM CONTACTO -->
-    <section id="contacto" class="wrapper">
-      <div class="inner">
-        <div class="card" style="margin-bottom:24px; border-left: 4px solid #d32f2f;">
-          <h2>Hablemos de seguridad</h2>
-          <p>Contanos sobre tu app o infraestructura y preparamos un alcance a medida. Todas las pruebas requieren autorización escrita.</p>
-        </div>
-        <form action="/contacto/" method="post" novalidate>
-          <div class="row">
-            <div><label>Nombre<br><input type="text" name="name" placeholder="Tu nombre"/></label></div>
-            <div><label>Email<br><input type="email" name="email" placeholder="tu@empresa.com"/></label></div>
-          </div>
-          <div class="row">
-            <div><label>Empresa<br><input type="text" name="company" placeholder="Empresa / Proyecto"/></label></div>
-            <div><label>Teléfono<br><input type="tel" name="phone" placeholder="+54 ..."/></label></div>
-          </div>
-          <label>Mensaje<br><textarea name="message" placeholder="Contanos brevemente el alcance (web, infra, mobile, APIs)"></textarea></label>
-          <div class="actions" style="margin-top:16px;">
-            <button class="button primary" type="submit">Enviar</button>
-            <a class="button" href="https://wa.me/542612748038">Enviar por WhatsApp</a>
-          </div>
-        </form>
-      </div>
-    </section>
+   <!-- Tu formulario igual, solo cambia el botón -->
+<form id="contact-form" action="#" onsubmit="return false" novalidate>
+  <div class="row">
+    <div><label>Nombre<br><input type="text" name="name" placeholder="Tu nombre" required></label></div>
+    <div><label>Email<br><input type="email" name="email" placeholder="tu@empresa.com" required></label></div>
+  </div>
+  <div class="row">
+    <div><label>Empresa<br><input type="text" name="company" placeholder="Empresa / Proyecto"></label></div>
+    <div><label>Teléfono<br><input type="tel" name="phone" placeholder="+54 ..."></label></div>
+  </div>
+  <label>Mensaje<br><textarea name="message" placeholder="Contanos brevemente el alcance (web, infra, mobile, APIs)" required></textarea></label>
+
+  <div class="actions" style="margin-top:16px;">
+    <button class="button primary" id="mailto-send" type="button">Enviar</button>
+    <a class="button" href="https://wa.me/542612748038">Enviar por WhatsApp</a>
+  </div>
+</form>
+
+<script>
+(function () {
+  const to = "directoracomercial@cuyohacks.site"; // <-- tu casilla Zoho
+  const form = document.getElementById("contact-form");
+  document.getElementById("mailto-send").addEventListener("click", () => {
+    const fd = new FormData(form);
+    const nombre  = (fd.get("name")    || "").trim();
+    const email   = (fd.get("email")   || "").trim();
+    const empresa = (fd.get("company") || "").trim();
+    const tel     = (fd.get("phone")   || "").trim();
+    const msg     = (fd.get("message") || "").trim();
+
+    if (!nombre || !email || !msg) {
+      alert("Completá nombre, email y mensaje.");
+      return;
+    }
+
+    const subject = `Nuevo contacto web: ${nombre}${empresa ? " - " + empresa : ""}`;
+
+    let body = `Nombre: ${nombre}
+Email: ${email}
+Empresa: ${empresa}
+Teléfono: ${tel}
+
+Mensaje:
+${msg}
+
+-- 
+Enviado desde el formulario del sitio`;
+    // Evitar URLs larguísimas (algunos clientes limitan ~2000 chars)
+    if (body.length > 1500) body = body.slice(0, 1500) + "\n...[truncado]";
+
+    const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Abrir mail app del usuario
+    window.location.href = href;
+  });
+})();
+</script>
+
 
     <!-- FOOTER -->
     <section class="wrapper">

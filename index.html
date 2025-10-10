@@ -109,8 +109,8 @@
     }
 
     #header .inner {
-      min-height: 70px;
-      padding: 8px 0;
+      min-height: 35px; /* Mitad del tamaño original */
+      padding: 4px 0; /* Reducir padding */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -125,7 +125,7 @@
     }
 
     #brand img {
-      height: clamp(60px, 8vw, 80px);
+      height: clamp(30px, 4vw, 40px); /* Reducir tamaño del logo */
       width: auto;
       display: block;
       image-rendering: -webkit-optimize-contrast;
@@ -151,7 +151,7 @@
 
     /* Espaciado para compensar header fixed */
     #wrapper > section:first-of-type {
-      margin-top: 85px;
+      margin-top: 45px; /* Ajustado para el header más pequeño */
     }
 
     /* NAV + submenu estable */
@@ -174,6 +174,7 @@
       text-decoration: none;
       transition: color 0.3s ease;
       font-weight: 500;
+      font-size: 0.9rem; /* Reducir tamaño de fuente */
     }
 
     #nav a:hover {
@@ -192,22 +193,23 @@
       position: absolute;
       left: 0;
       top: 100%;
-      min-width: 260px;
-      padding: 10px 0;
+      min-width: 180px;
+      padding: 8px 0;
       background: #1a1a1a;
       border: 2px solid #d32f2f;
-      border-radius: 12px;
+      border-radius: 10px;
       display: none;
       z-index: 50;
-      box-shadow: 0 8px 24px rgba(211, 47, 47, 0.2);
+      box-shadow: 0 6px 20px rgba(211, 47, 47, 0.2);
       list-style: none;
     }
 
     #nav .submenu ul a {
       display: block;
-      padding: 12px 18px;
+      padding: 8px 14px;
       white-space: nowrap;
       color: #e0e0e0;
+      font-size: 0.85rem;
     }
 
     #nav .submenu ul a:hover {
@@ -498,7 +500,6 @@
     .post h4 {
       margin: .25rem 0 .75rem;
       color: #d32f2f;
-      font-size: 1.15rem;
     }
 
     .post p:last-of-type {
@@ -611,7 +612,7 @@
       }
 
       #brand img {
-        height: clamp(100px, 10vw, 140px);
+        height: clamp(25px, 5vw, 35px);
       }
     }
 
@@ -653,15 +654,15 @@
       }
 
       #brand img {
-        height: clamp(50px, 8vw, 70px);
+        height: clamp(20px, 4vw, 30px);
       }
 
       #header .inner {
-        min-height: 60px;
+        min-height: 30px;
       }
 
       #wrapper > section:first-of-type {
-        margin-top: 70px;
+        margin-top: 35px;
       }
     }
   </style>
@@ -711,12 +712,12 @@
             <a class="button" href="/servicios/pentesting-web/">Aprendé más</a>
           </div>
 
-          <!-- KPI counters -->
+          <!-- KPI counters - VALORES ACTUALIZADOS -->
           <div class="kpi" aria-label="Métricas de hallazgos por criticidad">
-            <div class="tile"><span class="dot crit"></span><span class="label">Críticas</span><span class="num" id="kpi-crit" data-count="29">29</span></div>
-            <div class="tile"><span class="dot high"></span><span class="label">Altas</span><span class="num" id="kpi-high" data-count="36">36</span></div>
-            <div class="tile"><span class="dot med"></span><span class="label">Medias</span><span class="num" id="kpi-med" data-count="68">68</span></div>
-            <div class="tile"><span class="dot low"></span><span class="label">Bajas</span><span class="num" id="kpi-low" data-count="90">90</span></div>
+            <div class="tile"><span class="dot crit"></span><span class="label">Críticas</span><span class="num" id="kpi-crit" data-count="47">0</span></div>
+            <div class="tile"><span class="dot high"></span><span class="label">Altas</span><span class="num" id="kpi-high" data-count="123">0</span></div>
+            <div class="tile"><span class="dot med"></span><span class="label">Medias</span><span class="num" id="kpi-med" data-count="89">0</span></div>
+            <div class="tile"><span class="dot low"></span><span class="label">Bajas</span><span class="num" id="kpi-low" data-count="156">0</span></div>
           </div>
         </div>
 
@@ -868,7 +869,7 @@
             <div>
               <h3>Contacto</h3>
               <ul>
-                <li><a href="mailto:info@cuyohacks.site">info@cuyohacks.site</a></li>
+                <li><a href="/cdn-cgi/l/email-protection#254c4b434a6546505c4a4d44464e560b564c5140"><span class="__cf_email__" data-cfemail="f69f989099b695838f999e97959d85d8859f8293">[email&#160;protected]</span></a></li>
                 <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
                 <li><a href="/contacto/">Formulario de contacto</a></li>
               </ul>
@@ -882,7 +883,7 @@
   </div>
 
   <!-- Interacciones: submenu estable + counters + hide header on scroll -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   (function(){
     /* Hide header on scroll down, show only when at top */
     (function(){
@@ -913,9 +914,9 @@
       submenu.querySelector('> a') && submenu.querySelector('> a').addEventListener('click', function(e){ if(!submenu.classList.contains('open')){ e.preventDefault(); open(); } });
     }
 
-    /* ===== Counters blindados: pintan SIEMPRE y luego animan ===== */
+    /* ===== Counters blindados: pintan SIEMPRE y luego animan - VALORES ACTUALIZADOS ===== */
     (function(){
-      const SAFE = {crit:5, high:16, med:63, low:70};
+      const SAFE = {crit:47, high:123, med:89, low:156};
       function val(el, fallback){
         const n = parseInt(el?.dataset?.count ?? fallback, 10);
         return isNaN(n) ? fallback : n;
@@ -952,8 +953,6 @@
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', run, { once:true });
       } else { run(); }
-      // por si otros scripts cambian el DOM luego:
-      window.addEventListener('load', paint, { once:true });
     })();
   })();
   </script>

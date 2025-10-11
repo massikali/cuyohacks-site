@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog | Cuyo Hacks</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #e5e5e5;
+            background-color: #0a0a0a;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: rgba(10,10,10,.95);
+            backdrop-filter: blur(8px);
+            padding: 4px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #d32f2f;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        nav .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 35px;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        nav .logo img {
+            height: clamp(100px, 4vw, 100px);
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 0 8px rgba(211, 47, 47, 0.4));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        nav .logo:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 12px rgba(211, 47, 47, 0.6));
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: #f5f5f5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #d32f2f;
+        }
+
+        /* Submenu */
+        nav .submenu {
+            position: relative;
+        }
+
+        nav .submenu > a {
+            position: relative;
+        }
+
+        nav .submenu ul {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            min-width: 220px;
+            padding: 8px 0;
+            background: #1a1a1a;
+            border: 2px solid #d32f2f;
+            border-radius: 10px;
+            display: none;
+            z-index: 50;
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.2);
+            list-style: none;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        nav .submenu ul a {
+            display: block;
+            padding: 8px 14px;
+            white-space: nowrap;
+            color: #e0e0e0;
+            font-size: 0.85rem;
+        }
+
+        nav .submenu ul a:hover,
+        nav .submenu ul a.active {
+            background: rgba(211, 47, 47, 0.15);
+            color: #fff;
+        }
+
+        nav .submenu.open ul,
+        nav .submenu:hover ul {
+            display: flex;
+        }
+
+        nav .submenu::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            height: 12px;
+        }
+
+        /* Header Hero */
+        header {
+            background-color: #0a0a0a;
+            color: white;
+            padding: 10rem 0 6rem 0;
+            margin-top: 120px;
+            border-bottom: 2px solid #d32f2f;
+        }
+
+        header .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 700px;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Secciones */
+        section {
+            padding: 5rem 0;
+            background-color: #0a0a0a;
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Blog grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .post {
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 280px;
+        }
+
+        .post:hover {
+            border-color: #d32f2f;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(211, 47, 47, 0.2);
+        }
+
+        .post h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
+        .post p {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .post .read-more {
+            display: inline-block;
+            background-color: #2a2a2a;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #4a4a4a;
+            align-self: flex-start;
+        }
+
+        .post .read-more:hover {
+            background: #3a3a3a;
+            border-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            color: #9ca3af;
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        .blog-grid {
+            display: block; /* Change from grid to block for full articles */
+            gap: 0;
+        }
+
+        .full-blog-post {
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem; /* Space between full articles */
+            transition: all 0.3s ease;
+        }
+
+        .full-blog-post:hover {
+            border-color: #d32f2f;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(211, 47, 47, 0.2);
+        }
+
+        .full-blog-post h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
+        .full-blog-post h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .full-blog-post p,
+        .full-blog-post ul,
+        .full-blog-post ol {
+            font-size: 1.05rem;
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .full-blog-post ul,
+        .full-blog-post ol {
+            padding-left: 20px;
+        }
+
+        .full-blog-post li {
+            margin-bottom: 0.5rem;
+        }
+
+        .full-blog-post code {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .full-blog-post pre {
+            background-color: #121212;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .full-blog-post pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: #e0e0e0;
+        }
+
+        /* Remove existing .post styles if they conflict */
+        .post {
+            display: none; /* Hide old summary posts */
+        }
+        
+        .blog-grid {
+            display: block;
+            gap: 0;
+        }
+
+        .full-blog-post {
+            background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+            border: 2px solid #d32f2f;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.15);
+            position: relative;
+        }
+
+        .full-blog-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d32f2f 0%, #b71c1c 100%);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .full-blog-post:hover {
+            border-color: #ef4444;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(211, 47, 47, 0.3);
+        }
+
+        .full-blog-post h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 700;
+            text-align: left;
+            padding-bottom: 1rem;
+        }
+
+        .article-separator {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #d32f2f 0%, transparent 100%);
+            margin-bottom: 2rem;
+        }
+
+        .full-blog-post h3 {
+            font-size: 1.6rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #d32f2f;
+            font-weight: 600;
+            border-left: 4px solid #d32f2f;
+            padding-left: 1rem;
+        }
+
+        .full-blog-post p,
+        .full-blog-post ul,
+        .full-blog-post ol {
+            font-size: 1.05rem;
+            color: #c0c0c0;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .full-blog-post ul,
+        .full-blog-post ol {
+            padding-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .full-blog-post li {
+            margin-bottom: 0.8rem;
+            color: #b0b0b0;
+        }
+
+        .full-blog-post strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .full-blog-post code {
+            background-color: #2a2a2a;
+            color: #ef4444;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .full-blog-post pre {
+            background-color: #0a0a0a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid #2a2a2a;
+        }
+
+        .full-blog-post pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        /* Remove existing .post styles if they conflict */
+        .post {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .full-blog-post {
+                padding: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .full-blog-post h2 {
+                font-size: 2rem;
+            }
+
+            .full-blog-post h3 {
+                font-size: 1.4rem;
+            }
+        }
+        
+        .blog-grid {
+            display: block;
+            gap: 0;
+        }
+
+        .blog-toc-container {
+            background: #1a1a1a;
+            border: 2px solid #d32f2f;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.15);
+        }
+
+        .blog-toc-container h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .blog-toc {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .blog-toc li {
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-toc a {
+            color: #d32f2f;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .blog-toc a:hover {
+            color: #ef4444;
+            text-decoration: underline;
+        }
+
+        .toc-separator {
+            border: none;
+            border-top: 2px dashed #2a2a2a;
+            margin: 4rem 0;
+        }
+
+        .full-blog-post {
+            background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+            border: 2px solid #d32f2f;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.15);
+            position: relative;
+        }
+
+        .full-blog-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d32f2f 0%, #b71c1c 100%);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .full-blog-post:hover {
+            border-color: #ef4444;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(211, 47, 47, 0.3);
+        }
+
+        .full-blog-post h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 700;
+            text-align: left;
+            padding-bottom: 1rem;
+        }
+
+        .article-separator {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #d32f2f 0%, transparent 100%);
+            margin-bottom: 2rem;
+        }
+
+        .full-blog-post h3 {
+            font-size: 1.6rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #d32f2f;
+            font-weight: 600;
+            border-left: 4px solid #d32f2f;
+            padding-left: 1rem;
+        }
+
+        .full-blog-post p,
+        .full-blog-post ul,
+        .full-blog-post ol,
+        .full-blog-post table {
+            font-size: 1.05rem;
+            color: #c0c0c0;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .full-blog-post ul,
+        .full-blog-post ol {
+            padding-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .full-blog-post li {
+            margin-bottom: 0.8rem;
+            color: #b0b0b0;
+        }
+
+        .full-blog-post strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .full-blog-post code {
+            background-color: #2a2a2a;
+            color: #ef4444;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .full-blog-post pre {
+            background-color: #0a0a0a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid #2a2a2a;
+        }
+
+        .full-blog-post pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        .full-blog-post table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        .full-blog-post th,
+        .full-blog-post td {
+            border: 1px solid #2a2a2a;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .full-blog-post th {
+            background-color: #1a1a1a;
+            color: #d32f2f;
+            font-weight: 600;
+        }
+
+        .full-blog-post tr:nth-child(even) {
+            background-color: #121212;
+        }
+
+        .full-blog-post tr:hover {
+            background-color: #1a1a1a;
+        }
+
+        /* Remove existing .post styles if they conflict */
+        .post {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .full-blog-post {
+                padding: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .full-blog-post h2 {
+                font-size: 2rem;
+            }
+
+            .full-blog-post h3 {
+                font-size: 1.4rem;
+            }
+
+            .blog-toc-container {
+                padding: 1.5rem;
+            }
+
+            .blog-toc-container h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .blog-grid {
+            display: block;
+            gap: 0;
+        }
+
+        .blog-toc-container {
+            background: #1a1a1a;
+            border: 2px solid #d32f2f;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.15);
+        }
+
+        .blog-toc-container h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .blog-toc {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .blog-toc li {
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-toc a {
+            color: #d32f2f;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .blog-toc a:hover {
+            color: #ef4444;
+            text-decoration: underline;
+        }
+
+        .toc-separator {
+            border: none;
+            border-top: 3px solid #d32f2f;
+            margin: 4rem 0;
+            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
+        }
+
+        .article-divider {
+            border: none;
+            border-top: 3px solid #d32f2f;
+            margin: 4rem 0;
+            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
+            background: linear-gradient(90deg, transparent 0%, #d32f2f 50%, transparent 100%);
+            height: 3px;
+        }
+
+        .full-blog-post {
+            background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+            border: 2px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .full-blog-post:hover {
+            border-color: #d32f2f;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(211, 47, 47, 0.3);
+        }
+
+        .full-blog-post h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 700;
+            text-align: left;
+            padding-bottom: 1rem;
+        }
+
+        .article-separator {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #d32f2f 0%, transparent 100%);
+            margin-bottom: 2rem;
+        }
+
+        .full-blog-post h3 {
+            font-size: 1.6rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #d32f2f;
+            font-weight: 600;
+            border-left: 4px solid #d32f2f;
+            padding-left: 1rem;
+        }
+
+        .full-blog-post p,
+        .full-blog-post ul,
+        .full-blog-post ol,
+        .full-blog-post table {
+            font-size: 1.05rem;
+            color: #c0c0c0;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .full-blog-post ul,
+        .full-blog-post ol {
+            padding-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .full-blog-post li {
+            margin-bottom: 0.8rem;
+            color: #b0b0b0;
+        }
+
+        .full-blog-post strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .full-blog-post code {
+            background-color: #2a2a2a;
+            color: #ef4444;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .full-blog-post pre {
+            background-color: #0a0a0a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid #2a2a2a;
+        }
+
+        .full-blog-post pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        .full-blog-post table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        .full-blog-post th,
+        .full-blog-post td {
+            border: 1px solid #2a2a2a;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .full-blog-post th {
+            background-color: #1a1a1a;
+            color: #d32f2f;
+            font-weight: 600;
+        }
+
+        .full-blog-post tr:nth-child(even) {
+            background-color: #121212;
+        }
+
+        .full-blog-post tr:hover {
+            background-color: #1a1a1a;
+        }
+
+        .post {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .full-blog-post {
+                padding: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .full-blog-post h2 {
+                font-size: 2rem;
+            }
+
+            .full-blog-post h3 {
+                font-size: 1.4rem;
+            }
+
+            .blog-toc-container {
+                padding: 1.5rem;
+            }
+
+            .blog-toc-container h2 {
+                font-size: 1.5rem;
+            }
+        }
+        </style>
+</head>
+<body>
+<!-- Navegación -->
+<nav id="navbar">
+<div class="container">
+<a class="logo" href="/">
+<img alt="Cuyo Hacks" src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png"/>
+</a>
+<ul>
+<li><a href="/">Inicio</a></li>
+<li class="submenu">
+<a href="#servicios">Servicios</a>
+<ul>
+<li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+<li><a href="pentesting-infraestructura.html">Pentesting Infraestructura</a></li>
+<li><a href="pentesting-mobile.html">Pentesting Mobile</a></li>
+<li><a href="ingenieria-social.html">Ingeniería Social</a></li>
+</ul>
+</li>
+<li><a href="quienes-somos.html">Quiénes Somos</a></li>
+<li><a class="active" href="blog.html">Blog</a></li>
+<li><a href="/contacto/">Contacto</a></li>
+</ul>
+</div>
+</nav>
+<!-- Header -->
+<header>
+<div class="container">
+<h1>Últimos artículos</h1>
+<p>Conocimientos, mejores prácticas y tendencias en ciberseguridad</p>
+</div>
+</header>
+<!-- Artículos -->
+<section>
+<div class="container">
+<div class="blog-grid"><div class_="blog-toc-container"><h2>Índice de Artículos</h2><ul class_="blog-toc"><li><a href="#article-1">Cómo preparar tu app para un pentest</a></li><li><a href="#article-2">OWASP Top 10 en lenguaje simple</a></li><li><a href="#article-3">Guía rápida de cabeceras seguras</a></li></ul></div><hr class_="toc-separator"/><article class_="full-blog-post" id="article-1"><h2>Cómo preparar tu app para un pentest</h2><div class_="article-separator"></div><h1>Cómo preparar tu app para un pentest: Checklist básico para un proceso eficiente</h1><p>Preparar adecuadamente tu aplicación para un pentest (prueba de penetración) es crucial para asegurar que el proceso sea eficiente, efectivo y que genere los mejores resultados posibles. Una buena preparación no solo optimiza el tiempo de los ethical hackers, sino que también garantiza que se cubran las áreas más críticas de tu aplicación y que los hallazgos sean relevantes y accionables. A continuación, te presentamos un checklist básico para guiarte en este proceso.</p><h2>1. Definición del Alcance y Objetivos</h2><p>Antes de iniciar cualquier prueba, es fundamental tener una comprensión clara de qué se va a probar y por qué. Esto incluye:</p><ul>
+<li><strong>Identificación de Activos:</strong> Enumera todas las URLs, IPs, APIs, componentes de terceros, servicios en la nube y funcionalidades específicas que serán parte del pentest. Sé lo más detallado posible.</li>
+<li><strong>Tipo de Prueba:</strong> Define si será un pentest de caja negra (sin conocimiento interno), caja gris (conocimiento parcial, como credenciales de usuario) o caja blanca (acceso completo al código fuente y documentación).</li>
+<li><strong>Objetivos Específicos:</strong> ¿Qué esperas lograr con el pentest? ¿Validar el cumplimiento normativo, identificar vulnerabilidades críticas, evaluar la seguridad de una nueva funcionalidad? Establece metas claras.</li>
+<li><strong>Exclusiones:</strong> Clarifica cualquier componente o funcionalidad que no deba ser probado para evitar interrupciones o daños no deseados.</li>
+</ul><h2>2. Provisión de Acceso y Credenciales</h2><p>Para un pentest efectivo, especialmente en modalidades de caja gris o blanca, el equipo de seguridad necesitará acceso a la aplicación y a sus entornos. Asegúrate de proporcionar:</p><ul>
+<li><strong>Credenciales de Usuario:</strong> Cuentas de prueba con diferentes niveles de privilegio (administrador, usuario estándar, etc.) para simular distintos roles.</li>
+<li><strong>Acceso a Entornos:</strong> Si es necesario, proporciona acceso a entornos de staging o desarrollo que repliquen la producción, o a la propia producción si se ha acordado y se han tomado las precauciones necesarias.</li>
+<li><strong>Acceso a APIs:</strong> Documentación de APIs, claves de API y cualquier otro token necesario para probar las interfaces de programación.</li>
+<li><strong>VPN/Acceso Remoto:</strong> Si la aplicación no es accesible públicamente, configura accesos VPN o remotos seguros para el equipo de pentesting.</li>
+</ul><h2>3. Documentación Relevante</h2><p>La documentación es una herramienta invaluable para los ethical hackers, ya que les permite comprender rápidamente la lógica de negocio y la arquitectura de la aplicación. Incluye:</p><ul>
+<li><strong>Diagramas de Arquitectura:</strong> Diagramas de red, flujo de datos y componentes de la aplicación.</li>
+<li><strong>Documentación de APIs:</strong> Especificaciones OpenAPI/Swagger, descripciones de endpoints y ejemplos de uso.</li>
+<li><strong>Casos de Uso/Funcionalidades:</strong> Descripción de las principales funcionalidades de la aplicación y cómo se espera que los usuarios interactúen con ellas.</li>
+<li><strong>Guías de Instalación/Configuración:</strong> Si aplica, para entornos de desarrollo o prueba.</li>
+<li><strong>Informes de Seguridad Previos:</strong> Cualquier pentest anterior, auditorías o escaneos de vulnerabilidades que se hayan realizado.</li>
+</ul><h2>4. Comunicación y Puntos de Contacto</h2><p>Establecer canales de comunicación claros es vital para resolver dudas, reportar hallazgos críticos y coordinar actividades durante el pentest.</p><ul>
+<li><strong>Contacto Principal:</strong> Designa una persona de contacto técnica y una de negocio para el equipo de pentesting.</li>
+<li><strong>Canal de Comunicación:</strong> Define cómo se comunicarán los hallazgos (email, plataforma de gestión de vulnerabilidades, chat).</li>
+<li><strong>Horarios de Contacto:</strong> Establece los horarios en los que el equipo de pentesting puede contactar a tu personal.</li>
+</ul><h2>5. Respaldo y Monitoreo</h2><p>Aunque los pentests se realizan con el máximo cuidado, siempre existe un riesgo mínimo de interrupción. Es prudente tomar precauciones.</p><ul>
+<li><strong>Respaldos:</strong> Asegúrate de tener respaldos recientes de la aplicación y sus datos.</li>
+<li><strong>Monitoreo:</strong> Informa a tu equipo de monitoreo sobre el pentest para que no confundan las actividades de prueba con ataques reales. Proporciona las IPs de origen de los ethical hackers.</li>
+<li><strong>Plan de Contingencia:</strong> Ten un plan para restaurar la aplicación en caso de cualquier incidente inesperado.</li>
+</ul><h2>6. Consideraciones Adicionales para Aplicaciones Móviles</h2><p>Si tu aplicación es móvil, considera estos puntos adicionales:</p><ul>
+<li><strong>Binarios de la App:</strong> Proporciona los archivos <code>.apk</code> (Android) o <code>.ipa</code> (iOS) de la aplicación, preferiblemente versiones de depuración (debug) si es posible, ya que suelen tener menos ofuscación.</li>
+<li><strong>Entorno de Prueba:</strong> Si la aplicación se conecta a un backend, asegúrate de que el entorno de prueba del backend esté listo y sea accesible.</li>
+<li><strong>Instrucciones de Configuración:</strong> Cualquier paso especial para configurar la aplicación en un dispositivo de prueba.</li>
+</ul><p>Al seguir este checklist, tu organización estará mucho mejor preparada para un pentest, lo que resultará en una evaluación más profunda y en una mejora significativa de la postura de seguridad de tu aplicación.</p></article><hr class_="article-divider"/><article class_="full-blog-post" id="article-2"><h2>OWASP Top 10 en lenguaje simple</h2><div class_="article-separator"></div><h1>OWASP Top 10 en lenguaje simple: Qué miramos y cómo impacta en tu negocio</h1><p>El OWASP Top 10 es una lista estándar de los riesgos de seguridad más críticos para aplicaciones web, publicada por la Open Web Application Security Project (OWASP). No es una lista exhaustiva de todas las vulnerabilidades, sino un resumen de las más comunes y peligrosas que los desarrolladores y profesionales de seguridad deben conocer. Entender el OWASP Top 10 es fundamental para cualquier negocio que desarrolle o utilice aplicaciones web, ya que cada uno de estos riesgos puede tener un impacto significativo en la seguridad, la reputación y las finanzas de la empresa.</p><p>A continuación, desglosamos cada uno de los riesgos del OWASP Top 10 en un lenguaje sencillo, explicando qué son, qué buscamos durante un pentest y cómo pueden afectar a tu negocio.</p><h2>A01:2021 – Broken Access Control (Control de Acceso Defectuoso)</h2><p><strong>¿Qué es?</strong> Cuando un usuario puede acceder a funcionalidades o datos a los que no debería tener permiso. Por ejemplo, un usuario normal accede a la sección de administración o ve los datos de otro usuario.</p><p><strong>Qué miramos:</strong> Verificamos si los usuarios pueden eludir las comprobaciones de autorización, acceder a recursos no autorizados (archivos, funciones, datos) o escalar privilegios.</p><p><strong>Impacto en tu negocio:</strong> Pérdida de datos sensibles, manipulación de información, acceso no autorizado a sistemas críticos, daño a la reputación y multas por incumplimiento de normativas de privacidad.</p><h2>A02:2021 – Cryptographic Failures (Fallas Criptográficas)</h2><p><strong>¿Qué es?</strong> Errores en la forma en que se maneja la información sensible (contraseñas, datos financieros, información personal) que la dejan expuesta. Esto incluye el uso de cifrado débil, algoritmos obsoletos o la falta de cifrado en datos en tránsito o en reposo.</p><p><strong>Qué miramos:</strong> Buscamos datos sensibles sin cifrar, algoritmos de cifrado débiles o rotos, claves de cifrado mal gestionadas y la exposición de datos sensibles a través de canales no seguros.</p><p><strong>Impacto en tu negocio:</strong> Robo de datos sensibles, exposición de información confidencial de clientes o de la empresa, pérdida de confianza y posibles litigios.</p><h2>A03:2021 – Injection (Inyección)</h2><p><strong>¿Qué es?</strong> Cuando un atacante envía datos maliciosos a una aplicación que son interpretados como comandos o consultas por el sistema subyacente. El ejemplo más común es la inyección SQL, donde se manipula una base de datos.</p><p><strong>Qué miramos:</strong> Probamos si la aplicación valida y sanitiza correctamente las entradas de usuario para prevenir inyecciones de SQL, NoSQL, OS Command, LDAP, etc.</p><p><strong>Impacto en tu negocio:</strong> Acceso no autorizado a bases de datos, robo o modificación de datos, ejecución de comandos en el servidor, compromiso total del sistema.</p><h2>A04:2021 – Insecure Design (Diseño Inseguro)</h2><p><strong>¿Qué es?</strong> Fallas de seguridad que se originan en defectos de diseño o arquitectura, no en errores de implementación. Es una categoría nueva que enfatiza la necesidad de un diseño de seguridad robusto desde el inicio.</p><p><strong>Qué miramos:</strong> Evaluamos la arquitectura de seguridad, los modelos de amenaza, los principios de diseño seguro y la segregación de funciones para identificar deficiencias fundamentales.</p><p><strong>Impacto en tu negocio:</strong> Vulnerabilidades difíciles de corregir una vez que la aplicación está en producción, altos costos de remediación, exposición a riesgos sistémicos y dificultad para cumplir con los requisitos de seguridad.</p><h2>A05:2021 – Security Misconfiguration (Configuración de Seguridad Incorrecta)</h2><p><strong>¿Qué es?</strong> Configuración inadecuada de la seguridad en cualquier parte de la pila tecnológica: servidores web, bases de datos, frameworks, librerías, sistemas operativos, etc. Esto incluye configuraciones por defecto inseguras, permisos incorrectos o servicios innecesarios habilitados.</p><p><strong>Qué miramos:</strong> Revisamos configuraciones de servidores, permisos de archivos y directorios, cabeceras de seguridad, errores detallados que exponen información y la eliminación de funcionalidades o cuentas por defecto.</p><p><strong>Impacto en tu negocio:</strong> Exposición de información sensible, acceso no autorizado, ejecución remota de código, escalada de privilegios y compromiso del sistema.</p><h2>A06:2021 – Vulnerable and Outdated Components (Componentes Vulnerables y Obsoletos)</h2><p><strong>¿Qué es?</strong> El uso de librerías, frameworks u otros componentes de software con vulnerabilidades conocidas y sin parches. Esto es muy común, ya que las aplicaciones modernas dependen de muchos componentes de terceros.</p><p><strong>Qué miramos:</strong> Identificamos versiones de componentes de terceros y verificamos si tienen vulnerabilidades conocidas (CVEs) o si están desactualizados.</p><p><strong>Impacto en tu negocio:</strong> Explotación de vulnerabilidades conocidas, compromiso del sistema, pérdida de datos y dificultad para mantener la seguridad de la aplicación.</p><h2>A07:2021 – Identification and Authentication Failures (Fallas de Identificación y Autenticación)</h2><p><strong>¿Qué es?</strong> Problemas relacionados con la gestión de identidades, autenticación y gestión de sesiones. Esto incluye contraseñas débiles, falta de MFA, exposición de credenciales o sesiones no invalidadas correctamente.</p><p><strong>Qué miramos:</strong> Probamos la robustez de las contraseñas, la implementación de MFA, la gestión de sesiones (cookies, tokens), la protección contra ataques de fuerza bruta y la seguridad de los procesos de recuperación de contraseñas.</p><p><strong>Impacto en tu negocio:</strong> Robo de cuentas de usuario, acceso no autorizado, suplantación de identidad y compromiso de datos.</p><h2>A08:2021 – Software and Data Integrity Failures (Fallas de Integridad de Software y Datos)</h2><p><strong>¿Qué es?</strong> Fallas relacionadas con la integridad del software o los datos, especialmente cuando se confía en fuentes no verificadas o en la falta de validación de la integridad de las actualizaciones, datos críticos o pipelines de CI/CD.</p><p><strong>Qué miramos:</strong> Verificamos la integridad de las actualizaciones de software, la validación de datos críticos, la seguridad de los pipelines de CI/CD y la protección contra la deserialización insegura.</p><p><strong>Impacto en tu negocio:</strong> Manipulación de datos, ejecución de código malicioso, compromiso de la cadena de suministro de software y pérdida de confianza en la integridad de la aplicación.</p><h2>A09:2021 – Security Logging and Monitoring Failures (Fallas de Registro y Monitoreo de Seguridad)</h2><p><strong>¿Qué es?</strong> La falta de registro (logging) y monitoreo adecuados de eventos de seguridad. Si no se registran los eventos importantes o no se monitorean de forma efectiva, es imposible detectar y responder a un ataque a tiempo.</p><p><strong>Qué miramos:</strong> Evaluamos si la aplicación registra eventos de seguridad críticos, si los logs están protegidos contra manipulación, y si existe un monitoreo y alertas adecuados para detectar actividades sospechosas.</p><p><strong>Impacto en tu negocio:</strong> Detección tardía de ataques, mayor tiempo de respuesta, dificultad para realizar análisis forenses, mayor daño por brechas de seguridad y multas por incumplimiento normativo.</p><h2>A10:2021 – Server-Side Request Forgery (SSRF)</h2><p><strong>¿Qué es?</strong> Cuando una aplicación web obtiene un recurso remoto sin validar la URL proporcionada por el usuario. Esto permite a un atacante forzar a la aplicación a enviar solicitudes a un destino arbitrario, incluso a recursos internos de la red.</p><p><strong>Qué miramos:</strong> Probamos si la aplicación valida las URLs de recursos externos solicitados por el usuario para prevenir el acceso a recursos internos o la ejecución de acciones no autorizadas.</p><p><strong>Impacto en tu negocio:</strong> Acceso a sistemas internos, exposición de datos sensibles, escaneo de puertos internos, ejecución de comandos en la red interna y compromiso de la infraestructura.</p><p>Entender y abordar estos 10 riesgos es un paso fundamental para construir aplicaciones web más seguras y proteger tu negocio de las amenazas cibernéticas más prevalentes. Un pentest profesional se enfoca en identificar y explotar estas y otras vulnerabilidades para brindarte una visión clara de tu postura de seguridad.</p></article><hr class_="article-divider"/><article class_="full-blog-post" id="article-3"><h2>Guía rápida de cabeceras seguras</h2><div class_="article-separator"></div><h1>Guía rápida de cabeceras seguras: Políticas que reducen la superficie de ataque en minutos</h1><p>Las cabeceras de seguridad HTTP son una forma sencilla y efectiva de proteger tus aplicaciones web contra una variedad de ataques comunes. Implementarlas correctamente puede reducir significativamente la superficie de ataque de tu sitio web y mejorar la postura de seguridad general. A menudo, estas cabeceras se pueden configurar en el servidor web (Apache, Nginx, IIS) o directamente en el código de la aplicación. Aquí te presentamos una guía rápida de las cabeceras de seguridad más importantes y cómo pueden beneficiar a tu negocio.</p><h2>1. Strict-Transport-Security (HSTS)</h2><p><strong>Propósito:</strong> Forzar a los navegadores a interactuar con tu sitio web solo a través de HTTPS, incluso si el usuario intenta acceder vía HTTP.</p><p><strong>Beneficio:</strong> Previene ataques de downgrade de protocolo y cookies robadas por atacantes en redes no seguras (Wi-Fi públicas).</p><p><strong>Ejemplo de configuración (Nginx):</strong>
+<code>nginx
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload";</code></p><p><strong>Explicación:</strong>
+*   <code>max-age</code>: Tiempo en segundos que el navegador debe recordar que el sitio solo es accesible vía HTTPS (un año en este caso).
+*   <code>includeSubDomains</code>: Aplica la política a todos los subdominios.
+*   <code>preload</code>: Permite que el sitio sea incluido en la lista de precarga de HSTS de los navegadores, forzando HTTPS desde la primera visita.</p><h2>2. Content-Security-Policy (CSP)</h2><p><strong>Propósito:</strong> Mitigar ataques de Cross-Site Scripting (XSS) y otras inyecciones de código al permitirte especificar qué recursos (scripts, estilos, imágenes, etc.) pueden ser cargados por el navegador y desde dónde.</p><p><strong>Beneficio:</strong> Reduce drásticamente el riesgo de XSS, clickjacking y otras vulnerabilidades de inyección de contenido.</p><p><strong>Ejemplo de configuración (Nginx):</strong>
+<code>nginx
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' https://trusted.cdn.com; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';";</code></p><p><strong>Explicación:</strong>
+*   <code>default-src 'self'</code>: Solo permite cargar recursos desde el mismo origen.
+*   <code>script-src 'self' https://trusted.cdn.com</code>: Permite scripts desde el propio dominio y un CDN de confianza.
+*   <code>img-src 'self' data:</code>: Permite imágenes desde el propio dominio y datos incrustados (base64).
+*   <code>style-src 'self' 'unsafe-inline'</code>: Permite estilos desde el propio dominio y estilos en línea (se recomienda evitar 'unsafe-inline' si es posible).
+*   <code>object-src 'none'</code>: Deshabilita la carga de plugins como Flash.
+*   <code>form-action 'self'</code>: Solo permite enviar formularios a URLs del mismo origen.
+*   <code>frame-ancestors 'self'</code>: Previene que tu sitio sea incrustado en iframes de otros dominios (protección contra clickjacking).</p><h2>3. X-Frame-Options</h2><p><strong>Propósito:</strong> Prevenir ataques de Clickjacking, donde un atacante intenta engañar a los usuarios para que hagan clic en elementos ocultos en un iframe malicioso.</p><p><strong>Beneficio:</strong> Protege a los usuarios de ser engañados para realizar acciones no deseadas en tu sitio.</p><p><strong>Ejemplo de configuración (Nginx):</strong>
+<code>nginx
+add_header X-Frame-Options "DENY";</code></p><p><strong>Explicación:</strong>
+*   <code>DENY</code>: La página no puede ser mostrada en un frame, iframe o object, incluso en el mismo dominio.
+*   <code>SAMEORIGIN</code>: La página solo puede ser mostrada en un frame, iframe o object si el origen del frame es el mismo que el de la página.</p><h2>4. X-Content-Type-Options</h2><p><strong>Propósito:</strong> Prevenir ataques de "MIME-sniffing", donde el navegador intenta adivinar el tipo de contenido de un archivo, lo que podría llevar a la ejecución de contenido malicioso si un atacante logra subir un archivo con un tipo MIME incorrecto.</p><p><strong>Beneficio:</strong> Asegura que el navegador respete el tipo de contenido declarado por el servidor, previniendo la ejecución inesperada de scripts.</p><p><strong>Ejemplo de configuración (Nginx):</strong>
+<code>nginx
+add_header X-Content-Type-Options "nosniff";</code></p><p><strong>Explicación:</strong>
+*   <code>nosniff</code>: Indica al navegador que no debe "olfatear" el tipo MIME y debe usar el tipo de contenido declarado por el servidor.</p><h2>5. Referrer-Policy</h2><p><strong>Propósito:</strong> Controlar cuánta información del "referrer" (la URL de la página de origen) se envía con las solicitudes HTTP.</p><p><strong>Beneficio:</strong> Protege la privacidad de los usuarios al evitar la fuga de información sensible a sitios de terceros.</p><p><strong>Ejemplo de configuración (Nginx):</strong>
+<code>nginx
+add_header Referrer-Policy "no-referrer-when-downgrade";</code></p><p><strong>Explicación:</strong>
+*   <code>no-referrer-when-downgrade</code>: Envía la URL completa como referrer cuando se navega de HTTPS a HTTPS, pero no envía referrer cuando se navega de HTTPS a HTTP (protegiendo la información sensible).
+*   Otras opciones incluyen <code>no-referrer</code>, <code>same-origin</code>, <code>strict-origin</code>, etc.</p><h2>6. Permissions-Policy (anteriormente Feature-Policy)</h2><p><strong>Propósito:</strong> Permitir o denegar el uso de ciertas características del navegador (como la cámara, el micrófono, la geolocalización) en tu propio sitio y en iframes incrustados.</p><p><strong>Beneficio:</strong> Mejora la privacidad y seguridad de los usuarios al darte control granular sobre las funcionalidades del navegador que pueden ser utilizadas.</p><p><strong>Ejemplo de configuración (Nginx):</strong>
+<code>nginx
+add_header Permissions-Policy "geolocation=(self), microphone=()";</code></p><p><strong>Explicación:</strong>
+*   <code>geolocation=(self)</code>: Permite el uso de geolocalización solo para el propio origen.
+*   <code>microphone=()</code>: Deniega el uso del micrófono en todos los orígenes.</p><p>Implementar estas cabeceras de seguridad es un paso fundamental y relativamente sencillo para fortalecer la defensa de tu aplicación web. Al hacerlo, no solo proteges a tus usuarios y tus datos, sino que también demuestras un compromiso proactivo con la ciberseguridad, lo que puede mejorar la confianza de tus clientes y cumplir con requisitos normativos.</p></article></div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="container">
+<p>© 2024 Cuyo Hacks. Todos los derechos reservados. | Servicios Profesionales de Ciberseguridad</p>
+</div>
+</footer>
+<script>
+        // Ocultar navbar al hacer scroll hacia abajo
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

@@ -711,13 +711,20 @@
     display: none;
   }
 
+ /* Arreglo del botón hamburguesa en móviles */
   #nav-toggle {
     display: block;
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    z-index: 1000;
     background: none;
     border: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #fff;
     cursor: pointer;
+    padding: 6px 10px;
+    line-height: 1;
   }
 
   #nav.open > ul {

@@ -788,6 +788,15 @@
     line-height: 1;
   }
 
+    /* Evita que flex rompa el layout al abrir menú */
+  #nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+  }
+
+
   /* Oculta menú por defecto */
   #nav > ul {
     display: none;

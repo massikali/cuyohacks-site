@@ -850,23 +850,33 @@
       </div>
     </section>
 
-   <!-- Tu formulario igual, solo cambia el botón -->
-<form id="contact-form" action="#" onsubmit="return false" novalidate>
-  <div class="row">
-    <div><label>Nombre<br><input type="text" name="name" placeholder="Tu nombre" required></label></div>
-    <div><label>Email<br><input type="email" name="email" placeholder="tu@empresa.com" required></label></div>
-  </div>
-  <div class="row">
-    <div><label>Empresa<br><input type="text" name="company" placeholder="Empresa / Proyecto"></label></div>
-    <div><label>Teléfono<br><input type="tel" name="phone" placeholder="+54 ..."></label></div>
-  </div>
-  <label>Mensaje<br><textarea name="message" placeholder="Contanos brevemente el alcance (web, infra, mobile, APIs)" required></textarea></label>
+<!-- CONTACTO -->
+<section class="wrapper" id="contacto">
+  <div class="inner">
+    <h2>Contacto</h2>
+    <form id="contact-form" action="#" onsubmit="return false" novalidate>
+      <div class="row">
+        <div><label>Nombre<br><input type="text" name="name" placeholder="Tu nombre" required></label></div>
+        <div><label>Email<br><input type="email" name="email" placeholder="tu@empresa.com" required></label></div>
+      </div>
 
-  <div class="actions" style="margin-top:16px;">
-    <button class="button primary" id="mailto-send" type="button">Enviar</button>
-    <a class="button" href="https://wa.me/542612748038">Enviar por WhatsApp</a>
+      <div class="row">
+        <div><label>Empresa<br><input type="text" name="company" placeholder="Empresa / Proyecto"></label></div>
+        <div><label>Teléfono<br><input type="tel" name="phone" placeholder="+54 ..."></label></div>
+      </div>
+
+      <label>Mensaje<br>
+        <textarea name="message" placeholder="Contanos brevemente el alcance (web, infra, mobile, APIs)" required></textarea>
+      </label>
+
+      <div class="actions" style="margin-top:16px;">
+        <button class="button primary" id="mailto-send" type="button">Enviar</button>
+        <a class="button" href="https://wa.me/542612748038">Enviar por WhatsApp</a>
+      </div>
+    </form>
   </div>
-</form>
+</section>
+
 
 <script>
 (function () {

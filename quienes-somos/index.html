@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Quiénes Somos | Cuyo Hacks</title>
+  <meta name="description" content="Conocé al equipo de Cuyo Hacks - Startup de ciberseguridad ofensiva en Mendoza, Argentina. Descubrí nuestra historia, equipo y valores."/>
+  <link rel="canonical" href="https://www.cuyohacks.site/quienes-somos/"/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/images/favicon.ico"/>
+
+  <!-- Fonts preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Styles (Shared) -->
+  <link rel="stylesheet" href="../styles.css"/>
+  <style>
+    /* Estilos específicos de Quienes Somos para encajar con el Design System */
+    .team-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--gradient-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.5rem;
+      color: var(--text-white);
+      font-weight: 800;
+      font-family: var(--font-heading);
+      box-shadow: var(--shadow-accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+        <span class="sr-only">Cuyo Hacks</span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/" class="active" aria-current="page">Quiénes Somos</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <!-- ═══════ HERO (INTERNO) ═══════ -->
+  <section class="hero" style="min-height: 50vh; align-items: center; text-align: center;">
+    <div class="hero-grid-bg"></div>
+    <div class="container" style="display: block;">
+      <h1 class="reveal">Quiénes <span class="accent-text">Somos</span></h1>
+      <p class="hero-lead reveal reveal-delay-1" style="margin: 0 auto;">Startup mendocina de ciberseguridad ofensiva comprometida con la protección de tu negocio.</p>
+    </div>
+  </section>
+
+  <!-- ═══════ NUESTRA HISTORIA ═══════ -->
+  <section class="process-section" id="historia">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">Orígenes</span>
+        <h2>Nuestra Historia</h2>
+      </div>
+      
+      <div class="card-glass reveal reveal-delay-1" style="max-width: 900px; margin: 0 auto;">
+        <p>
+          Cuyo Hacks nació a principios de 2024 con una visión clara: democratizar el acceso a servicios de ciberseguridad ofensiva de clase mundial en Argentina y Latinoamérica. Como startup mendocina, nos enorgullece representar el talento y la innovación de nuestra región en el ámbito de la seguridad informática.
+        </p>
+        <p>
+          Fundada por un equipo de ethical hackers apasionados, Cuyo Hacks surge de la necesidad de brindar a las empresas locales y regionales el mismo nivel de protección que disfrutan las grandes corporaciones internacionales. Creemos que toda organización, sin importar su tamaño, merece contar con defensas robustas contra las amenazas cibernéticas cada vez más sofisticadas.
+        </p>
+        <p style="margin-bottom: 0;">
+          Desde nuestros inicios, nos hemos especializado en pentesting web, mobile, infraestructura e ingeniería social, ofreciendo evaluaciones exhaustivas que identifican vulnerabilidades antes de que puedan ser explotadas por actores maliciosos. Nuestro enfoque combina metodologías reconocidas internacionalmente con un profundo conocimiento del contexto local.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ NUESTRO EQUIPO ═══════ -->
+  <section id="equipo">
+    <div class="container">
+      <div class="section-title reveal" style="text-align: center;">
+        <span class="section-label">Talento</span>
+        <h2>Nuestro Equipo</h2>
+        <p style="margin: 0 auto;">Contamos con un equipo multidisciplinario de ethical hackers, especialistas en seguridad y profesionales comerciales comprometidos con la excelencia.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card-glass service-card reveal reveal-delay-1" style="text-align: center;">
+          <div class="team-avatar">MA</div>
+          <h3>Maximiliano Araujo</h3>
+          <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Líder de Seguridad</p>
+          <p>Experto en pentesting con años de experiencia en seguridad ofensiva. Lidera nuestro equipo técnico y define las metodologías de evaluación que garantizan resultados de máxima calidad.</p>
+        </article>
+
+        <article class="card-glass service-card reveal reveal-delay-2" style="text-align: center;">
+          <div class="team-avatar">AG</div>
+          <h3>Ángeles González Ballarini</h3>
+          <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Directora Comercial</p>
+          <p>Responsable de las relaciones con clientes y la estrategia comercial. Asegura que cada proyecto se alinee con las necesidades específicas de negocio de nuestros clientes.</p>
+        </article>
+
+        <article class="card-glass service-card reveal reveal-delay-3" style="text-align: center;">
+          <div class="team-avatar">EH</div>
+          <h3>Ethical Hackers</h3>
+          <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Especialistas en Seguridad Ofensiva</p>
+          <p>Nuestro equipo de ethical hackers certificados trabaja en la identificación y documentación de vulnerabilidades utilizando las técnicas más avanzadas del sector.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ NUESTROS VALORES ═══════ -->
+  <section class="process-section" id="valores">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">Pilares</span>
+        <h2>Nuestros Valores</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="card-glass reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Ética Profesional</h3>
+          <p>Operamos bajo estrictos códigos éticos, garantizando confidencialidad absoluta y respeto por la información de nuestros clientes.</p>
+        </div>
+
+        <div class="card-glass reveal reveal-delay-2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Excelencia Técnica</h3>
+          <p>Nos mantenemos actualizados con las últimas técnicas y herramientas para ofrecer evaluaciones de seguridad de clase mundial.</p>
+        </div>
+
+        <div class="card-glass reveal reveal-delay-3">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Transparencia</h3>
+          <p>Comunicación clara y honesta en cada etapa del proyecto, con informes detallados y recomendaciones accionables.</p>
+        </div>
+
+        <div class="card-glass reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Compromiso</h3>
+          <p>Cada proyecto es único. Adaptamos nuestros servicios a las necesidades específicas de cada organización y contexto.</p>
+        </div>
+
+        <div class="card-glass reveal reveal-delay-2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Mejora Continua</h3>
+          <p>Aprendemos de cada proyecto para mejorar nuestros procesos y ofrecer un servicio cada vez más efectivo y eficiente.</p>
+        </div>
+
+        <div class="card-glass reveal reveal-delay-3">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Talento Local</h3>
+          <p>Orgullosamente mendocinos, demostramos que el talento argentino puede competir a nivel internacional en ciberseguridad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA ═══════ -->
+  <section class="stats-section" style="text-align: center; border-bottom: none;">
+    <div class="container reveal">
+      <h2 style="margin-bottom: 1rem;">¿Querés conocer más sobre nosotros?</h2>
+      <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Contactanos y descubrí cómo podemos ayudarte a proteger tu negocio de manera proactiva.</p>
+      <a href="mailto:directoracomercial@cuyohacks.site" class="btn btn-primary">
+        Escribinos
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:directoracomercial@cuyohacks.site">directoracomercial@cuyohacks.site</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ WHATSAPP FLOAT ═══════ -->
+  <a class="whatsapp-float" href="https://wa.me/542612748038" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="../app.js" defer></script>
+</body>
+</html>

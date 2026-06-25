@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Cuyo Hacks | Seguridad Ofensiva y Pentesting en Mendoza y Argentina</title>
+  <meta name="description" content="Auditorías de seguridad (pentesting) web, mobile e infraestructura. Simulamos ataques reales con metodología OWASP y entregamos reportes técnicos y ejecutivos con retest incluido."/>
+  <meta name="keywords" content="pentesting, seguridad ofensiva, ciberseguridad, OWASP, ethical hacking, Mendoza, Argentina, auditoría de seguridad"/>
+  <link rel="canonical" href="https://www.cuyohacks.site/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cuyo Hacks | Seguridad Ofensiva y Pentesting"/>
+  <meta property="og:description" content="Simulamos ataques reales para encontrar y priorizar vulnerabilidades. Reportes técnicos y ejecutivos con retest incluido."/>
+  <meta property="og:url" content="https://www.cuyohacks.site/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Cuyo Hacks"/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/images/favicon.ico"/>
+
+  <!-- Fonts preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cuyo Hacks",
+    "url": "https://www.cuyohacks.site",
+    "description": "Empresa de ciberseguridad ofensiva y pentesting en Mendoza, Argentina.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mendoza",
+      "addressCountry": "AR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+54-261-274-8038",
+      "contactType": "sales",
+      "email": "directoracomercial@cuyohacks.site"
+    },
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+        <span class="sr-only">Cuyo Hacks</span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/" class="active" aria-current="page">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <!-- ═══════ HERO (CONVERSION SECTION) ═══════ -->
+  <section class="hero conversion-section" id="hero">
+    <div class="container">
+      <div class="conversion-grid">
+        
+        <!-- Lado Izquierdo: Copy y Métricas -->
+        <div class="hero-content">
+          <div class="conversion-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            +10 empresas protegidas en Argentina
+          </div>
+
+          <h1 class="conversion-title">
+            Seguridad real<br/>
+            <span style="color: var(--accent);">para tu negocio</span>
+          </h1>
+
+          <p class="conversion-subtitle">Simulamos ataques con metodologías <strong>OWASP</strong> y entregamos evidencia clara para corregir rápido y priorizar lo que más impacta.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto" style="background:var(--accent); border-color:var(--accent); color:#fff;">
+              Contactanos
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="/servicios/pentesting-web/">Aprendé más</a>
+          </div>
+
+          <div class="stats-panel">
+            <div class="stat-item">
+              <span class="label"><span class="indicator crit"></span> Críticas</span>
+              <span class="value" data-count="49">49</span>
+            </div>
+            <div class="stat-item">
+              <span class="label"><span class="indicator high"></span> Altas</span>
+              <span class="value" data-count="71">71</span>
+            </div>
+            <div class="stat-item">
+              <span class="label"><span class="indicator med"></span> Medias</span>
+              <span class="value" data-count="129">129</span>
+            </div>
+            <div class="stat-item">
+              <span class="label"><span class="indicator crit" style="background:#ff3b3b"></span> Bajas</span>
+              <span class="value" data-count="160">160</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado Derecho: Qué entregamos -->
+        <div class="hero-aside reveal reveal-delay-1">
+          <div class="deliverables-card">
+            <h3>QUÉ ENTREGAMOS</h3>
+            <ul class="deliverable-list">
+              <li><strong>Informe técnico con evidencia</strong> — PoC, capturas y payloads reproducibles.</li>
+              <li><strong>Informe ejecutivo</strong> — impacto en negocio y riesgos reales, en lenguaje simple.</li>
+              <li><strong>Prioridad CVSS + plan de mitigación</strong> — tareas ordenadas con esfuerzo estimado.</li>
+              <li><strong>Retest incluido</strong> — validamos que las correcciones funcionen de verdad.</li>
+              <li><strong>Walkthrough y Q&amp;A</strong> — con tu equipo para que sepan qué hacer y por qué.</li>
+            </ul>
+            <a href="/servicios/pentesting-web/" class="btn-detail">Ver detalle del servicio</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SERVICIOS ═══════ -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">Servicios</span>
+        <h2>Protección integral para tu empresa</h2>
+        <p>Cada servicio incluye reportes técnicos y ejecutivos, plan de mitigación priorizado y retest sin costo adicional.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card-glass service-card reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Pentesting Web</h3>
+          <p>Detección y explotación controlada de vulnerabilidades con metodología OWASP. Evidencia reproducible y roadmap de mitigación.</p>
+          <div class="card-cta">
+            <a class="btn btn-secondary" href="/servicios/pentesting-web/">
+              Ver más
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="card-glass service-card reveal reveal-delay-2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg>
+          </div>
+          <h3>Infraestructura</h3>
+          <p>Evaluación interna/externa de redes y servicios. Hardening, simulación de atacantes y detección de configuraciones inseguras.</p>
+          <div class="card-cta">
+            <a class="btn btn-secondary" href="/servicios/pentesting-infraestructura/">
+              Ver más
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="card-glass service-card reveal reveal-delay-3">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h3>Mobile</h3>
+          <p>Pruebas en iOS/Android: permisos, almacenamiento local, APIs, seguridad de transporte y reverse engineering.</p>
+          <div class="card-cta">
+            <a class="btn btn-secondary" href="/servicios/pentesting-mobile/">
+              Ver más
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROCESO ═══════ -->
+  <section class="process-section" id="proceso">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">Metodología</span>
+        <h2>Nuestro proceso</h2>
+        <p>Un enfoque estructurado y transparente, basado en estándares internacionales.</p>
+      </div>
+
+      <div class="process-track reveal">
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <span class="process-label">Reconocimiento</span>
+          <span class="process-desc">Mapeo de superficie de ataque y recolección de información</span>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <span class="process-label">Análisis</span>
+          <span class="process-desc">Identificación de vulnerabilidades y vectores de ataque</span>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span class="process-label">Explotación</span>
+          <span class="process-desc">Simulación controlada de ataques con evidencia reproducible</span>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <span class="process-label">Reporte</span>
+          <span class="process-desc">Informe técnico + ejecutivo con prioridades CVSS</span>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span class="process-label">Retest</span>
+          <span class="process-desc">Validación de correcciones sin costo adicional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ POR QUÉ ELEGIRNOS (NEO-BRUTALISM) ═══════ -->
+  <section id="por-que" class="section-light">
+    <div class="container">
+      <div class="section-title reveal" style="text-align: center;">
+        <span class="section-label" style="background:#000; color:#fff; border-color:#000;">Diferencial</span>
+        <h2 style="color:#000;">¿Por qué elegirnos?</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="card-brutal reveal reveal-delay-1">
+          <div class="card-brutal-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="card-brutal-content">
+            <h3>Detección real</h3>
+            <p>Combinamos herramientas automatizadas y pruebas manuales para evitar falsos negativos y encontrar fallas que los scanners ignoran.</p>
+          </div>
+        </div>
+
+        <div class="card-brutal reveal reveal-delay-2">
+          <div class="card-brutal-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <div class="card-brutal-content">
+            <h3>Prioridad CVSS</h3>
+            <p>Clasificamos el impacto y proponemos mitigaciones prácticas que tu equipo puede ejecutar, con esfuerzo estimado.</p>
+          </div>
+        </div>
+
+        <div class="card-brutal reveal reveal-delay-3">
+          <div class="card-brutal-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="card-brutal-content">
+            <h3>Entrega clara</h3>
+            <p>Reportes en lenguaje simple, walkthrough con tu equipo y un retest incluido para validar que todo quedó protegido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ STATS ═══════ -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number" data-count="10" data-prefix="+">+10</div>
+          <div class="stat-label">Empresas protegidas</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-number" data-count="400" data-prefix="+">+400</div>
+          <div class="stat-label">Vulnerabilidades encontradas</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-number" data-count="100" data-suffix="%">100%</div>
+          <div class="stat-label">Retests incluidos</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-number" data-count="24" data-prefix="<" data-suffix="h">&lt;24h</div>
+          <div class="stat-label">Tiempo de respuesta</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CLIENTES / LOGOS ═══════ -->
+  <section id="clientes" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="section-title reveal" style="text-align:center; margin-bottom: 2rem;">
+        <span class="section-label" style="border: 1px solid var(--accent); color: var(--accent); background: rgba(211, 47, 47, 0.1);"><span style="display:inline-block; width:6px; height:6px; background:var(--accent); border-radius:50%; margin-right:6px;"></span>CLIENTES</span>
+        <h2 style="font-size: 2.5rem;">Confían en nosotros</h2>
+      </div>
+    </div>
+
+    <div class="marquee-container reveal">
+      <div class="marquee-content">
+        <!-- Set 1 -->
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/5b8e0d701c8f5e3eb24f6993d1c8af919822a3ba/images/Spegasoft_logo_transparente.png" alt="Spegasoft"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/LogiTrack.png" alt="LogiTrack"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/SpicyModa.png" alt="Spicy Moda"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/Medinex.png" alt="Medinex"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/credara.png" alt="CREDARA"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/tripora.png" alt="Tripora"/>
+        <!-- Set 2 (para bucle infinito suave) -->
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/5b8e0d701c8f5e3eb24f6993d1c8af919822a3ba/images/Spegasoft_logo_transparente.png" alt="Spegasoft"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/LogiTrack.png" alt="LogiTrack"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/SpicyModa.png" alt="Spicy Moda"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/Medinex.png" alt="Medinex"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/credara.png" alt="CREDARA"/>
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/refs/heads/main/images/tripora.png" alt="Tripora"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TESTIMONIOS ═══════ -->
+  <section id="testimonios">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">Testimonios</span>
+        <h2>Lo que dicen nuestros clientes</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"El nivel de detalle del servicio fue excelente. Nos gustó mucho que se basen en estándares reconocidos y que expliquen cada paso con claridad. La comunicación fue constante y transparente, se ocupan incluso de los mínimos detalles."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SP</div>
+            <div>
+              <div class="testimonial-name">Spegasoft</div>
+              <div class="testimonial-company">Desarrollo de Software</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Detectaron problemas críticos en nuestra API que otros no vieron. La entrega fue impecable y el walkthrough con nuestro equipo técnico nos ayudó a entender exactamente qué corregir."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">LT</div>
+            <div>
+              <div class="testimonial-name">LogiTrack</div>
+              <div class="testimonial-company">Logística y Transporte</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Nos encantó trabajar con Cuyo Hacks. Identificaron riesgos en nuestro carrito de compras y cuentas de usuario que nunca habíamos notado. Las recomendaciones fueron fáciles de aplicar sin frenar las ventas."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SM</div>
+            <div>
+              <div class="testimonial-name">Spicy Modas</div>
+              <div class="testimonial-company">E-Commerce</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ BLOG / ÚLTIMOS ARTÍCULOS ═══════ -->
+  <section id="articulos">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">Blog</span>
+        <h2>Últimos artículos</h2>
+      </div>
+
+      <div class="grid-3">
+        <article class="card-glass reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3 style="text-transform:none;letter-spacing:0;">Cómo preparar tu app para un pentest</h3>
+          <p>Checklist básico para que el proceso sea eficiente y con mejores resultados desde el día uno.</p>
+          <div class="card-cta">
+            <a class="btn btn-secondary" href="/blog/">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="card-glass reveal reveal-delay-2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 style="text-transform:none;letter-spacing:0;">OWASP Top 10 en lenguaje simple</h3>
+          <p>Qué miramos cuando hacemos un pentest y cómo cada categoría impacta en tu negocio.</p>
+          <div class="card-cta">
+            <a class="btn btn-secondary" href="/blog/">Leer artículo</a>
+          </div>
+        </article>
+
+        <article class="card-glass reveal reveal-delay-3">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 style="text-transform:none;letter-spacing:0;">Guía rápida de cabeceras seguras</h3>
+          <p>Políticas HTTP que reducen superficie de ataque en minutos. HSTS, CSP, X-Frame y más.</p>
+          <div class="card-cta">
+            <a class="btn btn-secondary" href="/blog/">Leer artículo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">FAQ</span>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+
+      <div style="max-width:740px;">
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Qué incluye el servicio de pentesting?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Cada auditoría incluye: informe técnico con evidencia reproducible (PoC, capturas, payloads), informe ejecutivo en lenguaje simple, priorización CVSS con plan de mitigación, walkthrough con tu equipo y retest sin costo adicional para validar correcciones.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Cuánto tarda un pentesting?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Depende del alcance, pero un pentesting web estándar lleva entre 1 y 2 semanas. Los reportes se entregan dentro de los 5 días hábiles posteriores a la finalización de las pruebas. Proyectos más amplios (infra + web + mobile) pueden llevar 3-4 semanas.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Necesito preparar algo de mi lado?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Idealmente necesitamos: acceso a un ambiente de staging o testing, credenciales de prueba (si aplica), documentación de APIs, y un contacto técnico para coordinar. Te enviamos un checklist detallado antes de empezar.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Pueden romper algo en producción?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Nuestras pruebas son controladas y no destructivas. Siempre coordinamos horarios, trabajamos preferentemente sobre ambientes de staging, y notificamos antes de ejecutar cualquier prueba que pueda generar impacto. Nunca ejecutamos ataques de denegación de servicio sin autorización explícita.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            ¿Qué metodologías usan?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Seguimos frameworks reconocidos internacionalmente: OWASP Testing Guide para web, OWASP MASTG para mobile, PTES para infraestructura, y marcos propios basados en nuestra experiencia. Todas las vulnerabilidades se clasifican con CVSS v3.1.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTACTO ═══════ -->
+  <section class="contact-section" id="contacto">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-label">Contacto</span>
+        <h2>Hablemos de tu seguridad</h2>
+        <p>Contanos tu proyecto y te respondemos en menos de 24 horas.</p>
+      </div>
+
+      <div class="contact-grid">
+        <form id="contact-form" action="#" onsubmit="return false" novalidate class="reveal">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Nombre *</label>
+              <input class="form-input" type="text" id="contact-name" name="name" placeholder="Tu nombre" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email *</label>
+              <input class="form-input" type="email" id="contact-email" name="email" placeholder="tu@empresa.com" required/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contact-company">Empresa</label>
+              <input class="form-input" type="text" id="contact-company" name="company" placeholder="Empresa / Proyecto"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-phone">Teléfono</label>
+              <input class="form-input" type="tel" id="contact-phone" name="phone" placeholder="+54 ..."/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Mensaje *</label>
+            <textarea class="form-input" id="contact-message" name="message" placeholder="Contanos brevemente el alcance (web, infra, mobile, APIs)" required></textarea>
+          </div>
+
+          <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;">
+            <button class="btn btn-primary" id="mailto-send" type="button">
+              Enviar mensaje
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+            <a class="btn btn-secondary" href="https://wa.me/542612748038" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </form>
+
+        <div class="reveal reveal-delay-1" style="display:flex;flex-direction:column;gap:1.5rem;padding-top:0.5rem;">
+          <div class="card-glass">
+            <div class="card-icon" style="background:var(--accent-glow);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3 style="text-transform:none;letter-spacing:0;">Email</h3>
+            <p><a href="mailto:directoracomercial@cuyohacks.site" style="color:var(--accent);">directoracomercial@cuyohacks.site</a></p>
+          </div>
+
+          <div class="card-glass">
+            <div class="card-icon" style="background:var(--accent-glow);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 style="text-transform:none;letter-spacing:0;">Teléfono / WhatsApp</h3>
+            <p><a href="https://wa.me/542612748038" style="color:var(--accent);">+54 261 274 8038</a></p>
+          </div>
+
+          <div class="card-glass">
+            <div class="card-icon" style="background:var(--accent-glow);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 style="text-transform:none;letter-spacing:0;">Ubicación</h3>
+            <p style="color:var(--text-secondary);">Mendoza, Argentina</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:directoracomercial@cuyohacks.site">directoracomercial@cuyohacks.site</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ WHATSAPP FLOAT ═══════ -->
+  <a class="whatsapp-float" href="https://wa.me/542612748038" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="app.js" defer></script>
+</body>
+</html>

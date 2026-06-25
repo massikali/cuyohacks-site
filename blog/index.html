@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Blog de Ciberseguridad | Cuyo Hacks</title>
+  <meta name="description" content="Artículos, guías y consejos sobre ciberseguridad ofensiva, pentesting y protección de datos. Mantenete actualizado con Cuyo Hacks."/>
+  <link rel="canonical" href="https://www.cuyohacks.site/blog/"/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/images/favicon.ico"/>
+
+  <!-- Fonts preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Styles (Shared) -->
+  <link rel="stylesheet" href="../styles.css"/>
+  <style>
+    /* Estilos específicos del Blog */
+    .blog-article {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin-bottom: 3rem;
+    }
+    .blog-article h2 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .blog-article h3 {
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-white);
+    }
+    .blog-article p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .blog-article ul, .blog-article ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .blog-article li {
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .blog-toc-card {
+      position: sticky;
+      top: 100px;
+    }
+    .blog-toc-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .blog-toc-card li {
+      margin-bottom: 0.75rem;
+    }
+    .blog-toc-card a {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .blog-toc-card a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+          <li><a href="/blog/" class="active" aria-current="page">Blog</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <!-- ═══════ HERO (INTERNO) ═══════ -->
+  <section class="hero" style="min-height: 40vh; align-items: center; text-align: center;">
+    <div class="hero-grid-bg"></div>
+    <div class="container" style="display: block;">
+      <h1 class="reveal">Nuestro <span class="accent-text">Blog</span></h1>
+      <p class="hero-lead reveal reveal-delay-1" style="margin: 0 auto;">Artículos, guías y consejos sobre ciberseguridad ofensiva.</p>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTENIDO DEL BLOG ═══════ -->
+  <section style="padding-top: 2rem;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 3rem;">
+        
+        <!-- Sidebar (TOC) -->
+        <aside class="reveal">
+          <div class="card-glass blog-toc-card">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1rem; color: var(--text-white);">Índice de Artículos</h3>
+            <ul>
+              <li><a href="#art-1">1. Cómo preparar tu app para un pentest</a></li>
+              <li><a href="#art-2">2. OWASP Top 10 en lenguaje simple</a></li>
+              <li><a href="#art-3">3. Guía rápida de cabeceras seguras</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Artículos -->
+        <div class="reveal reveal-delay-1">
+          
+          <!-- Artículo 1 -->
+          <article class="blog-article" id="art-1">
+            <h2>Cómo preparar tu app para un pentest</h2>
+            <p>Un pentest es una inversión importante de tiempo y recursos. Para sacarle el máximo provecho, es fundamental que la aplicación y el entorno estén preparados. Aquí te dejamos un checklist básico.</p>
+            
+            <h3>1. Ambiente Estable</h3>
+            <p>Las pruebas deben realizarse en un ambiente que no cambie constantemente (preferiblemente Staging o QA). Si se despliegan nuevas versiones durante el pentest, los resultados pueden ser inconsistentes o se pueden perder vulnerabilidades.</p>
+            
+            <h3>2. Datos de Prueba</h3>
+            <p>Proporcioná cuentas de usuario con diferentes roles (ej. Administrador, Usuario Regular, Invitado) pre-configuradas con datos ficticios. Nunca uses datos reales de clientes (PII) en un ambiente de pruebas si es posible evitarlo.</p>
+            
+            <h3>3. Documentación y APIs</h3>
+            <p>Si la aplicación expone APIs (REST, GraphQL), entregar una colección de Postman, un archivo Swagger (OpenAPI), o documentación clara ahorra horas de reconocimiento y permite a los pentesters enfocarse directamente en encontrar fallas de lógica.</p>
+            
+            <h3>4. Exclusión de WAF</h3>
+            <p>Si el objetivo es evaluar la seguridad del código (y no la eficacia del firewall), es recomendable poner en lista blanca (whitelist) la IP de los pentesters en el WAF (Web Application Firewall) o IPS. Esto evita bloqueos innecesarios que retrasan las pruebas.</p>
+          </article>
+
+          <!-- Artículo 2 -->
+          <article class="blog-article" id="art-2">
+            <h2>OWASP Top 10 en lenguaje simple</h2>
+            <p>El OWASP Top 10 es el estándar global para los riesgos de seguridad en aplicaciones web. Explicamos los más críticos de forma sencilla:</p>
+            
+            <h3>1. Control de Acceso Roto (Broken Access Control)</h3>
+            <p><strong>Qué es:</strong> Cuando un usuario puede hacer cosas que no debería (ej. ver los datos de otro usuario cambiando un ID en la URL).<br>
+            <strong>Impacto:</strong> Robo masivo de datos, toma de control de cuentas.</p>
+            
+            <h3>2. Fallas Criptográficas</h3>
+            <p><strong>Qué es:</strong> Datos sensibles (contraseñas, tarjetas) que viajan sin encriptar (HTTP en vez de HTTPS) o se guardan en texto plano en la base de datos.<br>
+            <strong>Impacto:</strong> Exposición de datos confidenciales ante una brecha.</p>
+            
+            <h3>3. Inyección (SQLi, XSS)</h3>
+            <p><strong>Qué es:</strong> Cuando la aplicación acepta datos del usuario (ej. un formulario) y los ejecuta como código sin validarlos.<br>
+            <strong>Impacto:</strong> Un atacante puede leer o borrar toda la base de datos.</p>
+            
+            <h3>4. Diseño Inseguro</h3>
+            <p><strong>Qué es:</strong> Flujos de negocio que son inseguros por diseño (ej. recuperación de contraseña que permite adivinar códigos fácilmente).<br>
+            <strong>Impacto:</strong> Compromiso de la lógica del negocio.</p>
+          </article>
+
+          <!-- Artículo 3 -->
+          <article class="blog-article" id="art-3">
+            <h2>Guía rápida de cabeceras seguras</h2>
+            <p>Las cabeceras HTTP de seguridad son una de las formas más rápidas y baratas de añadir una capa extra de protección a tu aplicación web. Aquí están las indispensables:</p>
+            
+            <h3>Strict-Transport-Security (HSTS)</h3>
+            <p>Fuerza a los navegadores a usar solo conexiones HTTPS, previniendo ataques de tipo Man-in-the-Middle (MitM).<br>
+            <code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code></p>
+            
+            <h3>Content-Security-Policy (CSP)</h3>
+            <p>Es la mejor defensa contra Cross-Site Scripting (XSS). Le dice al navegador desde qué dominios es seguro cargar scripts, imágenes y estilos.<br>
+            <code>Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.com</code></p>
+            
+            <h3>X-Frame-Options</h3>
+            <p>Previene ataques de Clickjacking prohibiendo que tu sitio sea cargado dentro de un <code>&lt;iframe&gt;</code> en sitios maliciosos.<br>
+            <code>X-Frame-Options: DENY</code> (o SAMEORIGIN)</p>
+            
+            <h3>X-Content-Type-Options</h3>
+            <p>Evita que el navegador intente "adivinar" el tipo de contenido (MIME sniffing), forzándolo a respetar lo que dice el servidor.<br>
+            <code>X-Content-Type-Options: nosniff</code></p>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:directoracomercial@cuyohacks.site">directoracomercial@cuyohacks.site</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../app.js" defer></script>
+</body>
+</html>

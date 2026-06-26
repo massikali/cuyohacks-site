@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Guía rápida de cabeceras seguras | Blog | Cuyo Hacks</title>
+  <meta name="description" content="Las cabeceras HTTP de seguridad son esenciales para tu aplicación web. Conocé las más importantes como HSTS, CSP y X-Frame-Options."/>
+  <meta name="keywords" content="cabeceras HTTP, seguridad web, HSTS, CSP, XSS, Clickjacking"/>
+  <link rel="canonical" href="https://www.cuyohacks.com.ar/blog/guia-rapida-de-cabeceras-seguras/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Guía rápida de cabeceras seguras | Cuyo Hacks"/>
+  <meta property="og:description" content="Las cabeceras HTTP de seguridad son esenciales para tu aplicación web. Conocé las más importantes como HSTS, CSP y X-Frame-Options."/>
+  <meta property="og:url" content="https://www.cuyohacks.com.ar/blog/guia-rapida-de-cabeceras-seguras/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Cuyo Hacks"/>
+  <meta property="og:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Guía rápida de cabeceras seguras | Cuyo Hacks"/>
+  <meta name="twitter:description" content="Las cabeceras HTTP de seguridad son esenciales para tu aplicación web. Conocé las más importantes como HSTS, CSP y X-Frame-Options."/>
+  <meta name="twitter:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+  <meta name="twitter:site" content="@cuyohacks"/>
+
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="/images/favicon.ico"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .blog-article {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin-bottom: 3rem;
+    }
+    .blog-article h2 { color: var(--accent); margin-bottom: 1.5rem; }
+    .blog-article h3 { margin-top: 2.5rem; margin-bottom: 1rem; color: var(--text-white); }
+    .blog-article p { margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8; }
+    .blog-article ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .blog-article li { margin-bottom: 0.5rem; color: var(--text-secondary); line-height: 1.6; }
+  </style>
+
+  <!-- Schema.org BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.cuyohacks.com.ar/blog/guia-rapida-de-cabeceras-seguras/"
+    },
+    "headline": "Guía rápida de cabeceras seguras",
+    "description": "Las cabeceras HTTP de seguridad son esenciales para tu aplicación web. Conocé las más importantes como HSTS, CSP y X-Frame-Options.",
+    "image": "https://www.cuyohacks.com.ar/images/og-image.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.cuyohacks.com.ar/images/logo.png"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+          <li><a href="/blog/" class="active" aria-current="page">Blog</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <section class="hero" style="min-height: 30vh; align-items: center; text-align: center; padding-top: 8rem;">
+    <div class="hero-grid-bg"></div>
+    <div class="container" style="display: block;">
+      <h1 class="reveal">Guía rápida de <span class="accent-text">cabeceras seguras</span></h1>
+    </div>
+  </section>
+
+  <section style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="container">
+      <article class="blog-article reveal">
+        <p>Las cabeceras HTTP de seguridad son una de las formas más rápidas y baratas de añadir una capa extra de protección a tu aplicación web. Aquí están las indispensables:</p>
+        
+        <h3>Strict-Transport-Security (HSTS)</h3>
+        <p>Fuerza a los navegadores a usar solo conexiones HTTPS, previniendo ataques de tipo Man-in-the-Middle (MitM).<br>
+        <code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code></p>
+        
+        <h3>Content-Security-Policy (CSP)</h3>
+        <p>Es la mejor defensa contra Cross-Site Scripting (XSS). Le dice al navegador desde qué dominios es seguro cargar scripts, imágenes y estilos.<br>
+        <code>Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.com</code></p>
+        
+        <h3>X-Frame-Options</h3>
+        <p>Previene ataques de Clickjacking prohibiendo que tu sitio sea cargado dentro de un <code>&lt;iframe&gt;</code> en sitios maliciosos.<br>
+        <code>X-Frame-Options: DENY</code> (o SAMEORIGIN)</p>
+        
+        <h3>X-Content-Type-Options</h3>
+        <p>Evita que el navegador intente "adivinar" el tipo de contenido (MIME sniffing), forzándolo a respetar lo que dice el servidor.<br>
+        <code>X-Content-Type-Options: nosniff</code></p>
+
+        <div style="margin-top: 2rem;">
+            <a href="/blog/" class="btn btn-outline">&larr; Volver al Blog</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40" loading="lazy"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            <li><a href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:comercial@cuyohacks.com.ar">comercial@cuyohacks.com.ar</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../../app.js" defer></script>
+</body>
+</html>

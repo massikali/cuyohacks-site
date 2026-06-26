@@ -10,33 +10,47 @@
 
   <!-- Servicios -->
   <url>
-    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-web</loc>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-web/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-infraestructura</loc>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-infraestructura/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-mobile</loc>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-mobile/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.cuyohacks.com.ar/servicios/ingenieria-social</loc>
+    <loc>https://www.cuyohacks.com.ar/servicios/ingenieria-social/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-llm</loc>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-llm/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Empresa -->
+  <url>
+    <loc>https://www.cuyohacks.com.ar/quienes-somos/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cuyohacks.com.ar/blog/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

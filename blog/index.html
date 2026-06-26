@@ -5,7 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Blog de Ciberseguridad | Cuyo Hacks</title>
   <meta name="description" content="Artículos, guías y consejos sobre ciberseguridad ofensiva, pentesting y protección de datos. Mantenete actualizado con Cuyo Hacks."/>
-  <link rel="canonical" href="https://www.cuyohacks.site/blog/"/>
+  <meta name="keywords" content="blog, ciberseguridad, pentesting, OWASP, hacking ético, Mendoza"/>
+  <link rel="canonical" href="https://www.cuyohacks.com.ar/blog/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog de Ciberseguridad | Cuyo Hacks"/>
+  <meta property="og:description" content="Artículos, guías y consejos sobre ciberseguridad ofensiva, pentesting y protección de datos. Mantenete actualizado con Cuyo Hacks."/>
+  <meta property="og:url" content="https://www.cuyohacks.com.ar/blog/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Cuyo Hacks"/>
+  <meta property="og:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Blog de Ciberseguridad | Cuyo Hacks"/>
+  <meta name="twitter:description" content="Artículos, guías y consejos sobre ciberseguridad ofensiva, pentesting y protección de datos. Mantenete actualizado con Cuyo Hacks."/>
+  <meta name="twitter:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+  <meta name="twitter:site" content="@cuyohacks"/>
 
   <!-- Favicon -->
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
@@ -17,6 +34,21 @@
 
   <!-- Styles (Shared) -->
   <link rel="stylesheet" href="../styles.css"/>
+
+  <!-- Schema.org Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog de Ciberseguridad | Cuyo Hacks",
+    "description": "Artículos, guías y consejos sobre ciberseguridad ofensiva, pentesting y protección de datos.",
+    "url": "https://www.cuyohacks.com.ar/blog/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks"
+    }
+  }
+  </script>
   <style>
     /* Estilos específicos del Blog */
     .blog-article {
@@ -88,6 +120,7 @@
               <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
               <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
               <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
             </ul>
           </li>
           <li><a href="/quienes-somos/">Quiénes Somos</a></li>
@@ -122,11 +155,11 @@
         <!-- Sidebar (TOC) -->
         <aside class="reveal">
           <div class="card-glass blog-toc-card">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1rem; color: var(--text-white);">Índice de Artículos</h3>
+            <h3 style="margin-bottom: 1.5rem; font-size: 1rem; color: var(--text-white);">Últimos Artículos</h3>
             <ul>
-              <li><a href="#art-1">1. Cómo preparar tu app para un pentest</a></li>
-              <li><a href="#art-2">2. OWASP Top 10 en lenguaje simple</a></li>
-              <li><a href="#art-3">3. Guía rápida de cabeceras seguras</a></li>
+              <li><a href="/blog/como-preparar-tu-app-para-un-pentest/">1. Cómo preparar tu app para un pentest</a></li>
+              <li><a href="/blog/owasp-top-10-en-lenguaje-simple/">2. OWASP Top 10 en lenguaje simple</a></li>
+              <li><a href="/blog/guia-rapida-de-cabeceras-seguras/">3. Guía rápida de cabeceras seguras</a></li>
             </ul>
           </div>
         </aside>
@@ -135,65 +168,24 @@
         <div class="reveal reveal-delay-1">
           
           <!-- Artículo 1 -->
-          <article class="blog-article" id="art-1">
+          <article class="blog-article">
             <h2>Cómo preparar tu app para un pentest</h2>
-            <p>Un pentest es una inversión importante de tiempo y recursos. Para sacarle el máximo provecho, es fundamental que la aplicación y el entorno estén preparados. Aquí te dejamos un checklist básico.</p>
-            
-            <h3>1. Ambiente Estable</h3>
-            <p>Las pruebas deben realizarse en un ambiente que no cambie constantemente (preferiblemente Staging o QA). Si se despliegan nuevas versiones durante el pentest, los resultados pueden ser inconsistentes o se pueden perder vulnerabilidades.</p>
-            
-            <h3>2. Datos de Prueba</h3>
-            <p>Proporcioná cuentas de usuario con diferentes roles (ej. Administrador, Usuario Regular, Invitado) pre-configuradas con datos ficticios. Nunca uses datos reales de clientes (PII) en un ambiente de pruebas si es posible evitarlo.</p>
-            
-            <h3>3. Documentación y APIs</h3>
-            <p>Si la aplicación expone APIs (REST, GraphQL), entregar una colección de Postman, un archivo Swagger (OpenAPI), o documentación clara ahorra horas de reconocimiento y permite a los pentesters enfocarse directamente en encontrar fallas de lógica.</p>
-            
-            <h3>4. Exclusión de WAF</h3>
-            <p>Si el objetivo es evaluar la seguridad del código (y no la eficacia del firewall), es recomendable poner en lista blanca (whitelist) la IP de los pentesters en el WAF (Web Application Firewall) o IPS. Esto evita bloqueos innecesarios que retrasan las pruebas.</p>
+            <p>Un pentest es una inversión importante de tiempo y recursos. Para sacarle el máximo provecho, es fundamental que la aplicación y el entorno estén preparados. Aquí te dejamos un checklist básico para empezar.</p>
+            <a href="/blog/como-preparar-tu-app-para-un-pentest/" class="btn btn-outline">Leer artículo completo</a>
           </article>
 
           <!-- Artículo 2 -->
-          <article class="blog-article" id="art-2">
+          <article class="blog-article">
             <h2>OWASP Top 10 en lenguaje simple</h2>
-            <p>El OWASP Top 10 es el estándar global para los riesgos de seguridad en aplicaciones web. Explicamos los más críticos de forma sencilla:</p>
-            
-            <h3>1. Control de Acceso Roto (Broken Access Control)</h3>
-            <p><strong>Qué es:</strong> Cuando un usuario puede hacer cosas que no debería (ej. ver los datos de otro usuario cambiando un ID en la URL).<br>
-            <strong>Impacto:</strong> Robo masivo de datos, toma de control de cuentas.</p>
-            
-            <h3>2. Fallas Criptográficas</h3>
-            <p><strong>Qué es:</strong> Datos sensibles (contraseñas, tarjetas) que viajan sin encriptar (HTTP en vez de HTTPS) o se guardan en texto plano en la base de datos.<br>
-            <strong>Impacto:</strong> Exposición de datos confidenciales ante una brecha.</p>
-            
-            <h3>3. Inyección (SQLi, XSS)</h3>
-            <p><strong>Qué es:</strong> Cuando la aplicación acepta datos del usuario (ej. un formulario) y los ejecuta como código sin validarlos.<br>
-            <strong>Impacto:</strong> Un atacante puede leer o borrar toda la base de datos.</p>
-            
-            <h3>4. Diseño Inseguro</h3>
-            <p><strong>Qué es:</strong> Flujos de negocio que son inseguros por diseño (ej. recuperación de contraseña que permite adivinar códigos fácilmente).<br>
-            <strong>Impacto:</strong> Compromiso de la lógica del negocio.</p>
+            <p>El OWASP Top 10 es el estándar global para los riesgos de seguridad en aplicaciones web. Explicamos los más críticos de forma sencilla para que todo tu equipo pueda entender de qué trata cada riesgo y su impacto.</p>
+            <a href="/blog/owasp-top-10-en-lenguaje-simple/" class="btn btn-outline">Leer artículo completo</a>
           </article>
 
           <!-- Artículo 3 -->
-          <article class="blog-article" id="art-3">
+          <article class="blog-article">
             <h2>Guía rápida de cabeceras seguras</h2>
-            <p>Las cabeceras HTTP de seguridad son una de las formas más rápidas y baratas de añadir una capa extra de protección a tu aplicación web. Aquí están las indispensables:</p>
-            
-            <h3>Strict-Transport-Security (HSTS)</h3>
-            <p>Fuerza a los navegadores a usar solo conexiones HTTPS, previniendo ataques de tipo Man-in-the-Middle (MitM).<br>
-            <code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code></p>
-            
-            <h3>Content-Security-Policy (CSP)</h3>
-            <p>Es la mejor defensa contra Cross-Site Scripting (XSS). Le dice al navegador desde qué dominios es seguro cargar scripts, imágenes y estilos.<br>
-            <code>Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.com</code></p>
-            
-            <h3>X-Frame-Options</h3>
-            <p>Previene ataques de Clickjacking prohibiendo que tu sitio sea cargado dentro de un <code>&lt;iframe&gt;</code> en sitios maliciosos.<br>
-            <code>X-Frame-Options: DENY</code> (o SAMEORIGIN)</p>
-            
-            <h3>X-Content-Type-Options</h3>
-            <p>Evita que el navegador intente "adivinar" el tipo de contenido (MIME sniffing), forzándolo a respetar lo que dice el servidor.<br>
-            <code>X-Content-Type-Options: nosniff</code></p>
+            <p>Las cabeceras HTTP de seguridad son una de las formas más rápidas y baratas de añadir una capa extra de protección a tu aplicación web. Aquí están las indispensables que deberías empezar a configurar.</p>
+            <a href="/blog/guia-rapida-de-cabeceras-seguras/" class="btn btn-outline">Leer artículo completo</a>
           </article>
 
         </div>
@@ -207,7 +199,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="logo" href="/" aria-label="Cuyo Hacks">
-            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40"/>
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40" loading="lazy"/>
           </a>
           <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
         </div>
@@ -219,6 +211,7 @@
             <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
             <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
             <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            <li><a href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
           </ul>
         </div>
 

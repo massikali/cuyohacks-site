@@ -2,34 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home -->
   <url>
-    <loc>https://www.cuyohacks.site/</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.cuyohacks.com.ar/</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Servicios -->
   <url>
-    <loc>https://www.cuyohacks.site/servicios/pentesting-web</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-web</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.cuyohacks.site/servicios/pentesting-infraestructura</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-infraestructura</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.cuyohacks.site/servicios/pentesting-mobile</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-mobile</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.cuyohacks.site/servicios/ingenieria-social</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.cuyohacks.com.ar/servicios/ingenieria-social</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.cuyohacks.com.ar/servicios/pentesting-llm</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

@@ -319,43 +319,66 @@
 
       <div class="process-track reveal">
         <div class="process-step">
-          <div class="process-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <div class="process-card">
+            <span class="process-number">01</span>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </div>
+            <span class="process-label">Reconocimiento</span>
+            <span class="process-desc">Mapeo de superficie de ataque y recolección de información</span>
           </div>
-          <span class="process-label">Reconocimiento</span>
-          <span class="process-desc">Mapeo de superficie de ataque y recolección de información</span>
         </div>
 
-        <div class="process-step">
-          <div class="process-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-          </div>
-          <span class="process-label">Análisis</span>
-          <span class="process-desc">Identificación de vulnerabilidades y vectores de ataque</span>
-        </div>
+        <div class="process-connector"></div>
 
         <div class="process-step">
-          <div class="process-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <div class="process-card">
+            <span class="process-number">02</span>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <span class="process-label">Análisis</span>
+            <span class="process-desc">Identificación de vulnerabilidades y vectores de ataque</span>
           </div>
-          <span class="process-label">Explotación</span>
-          <span class="process-desc">Simulación controlada de ataques con evidencia reproducible</span>
         </div>
 
-        <div class="process-step">
-          <div class="process-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <span class="process-label">Reporte</span>
-          <span class="process-desc">Informe técnico + ejecutivo con prioridades CVSS</span>
-        </div>
+        <div class="process-connector"></div>
 
         <div class="process-step">
-          <div class="process-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="process-card">
+            <span class="process-number">03</span>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <span class="process-label">Explotación</span>
+            <span class="process-desc">Simulación controlada de ataques con evidencia reproducible</span>
           </div>
-          <span class="process-label">Retest</span>
-          <span class="process-desc">Validación de correcciones sin costo adicional</span>
+        </div>
+
+        <div class="process-connector"></div>
+
+        <div class="process-step">
+          <div class="process-card">
+            <span class="process-number">04</span>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <span class="process-label">Reporte</span>
+            <span class="process-desc">Informe técnico + ejecutivo con prioridades CVSS</span>
+          </div>
+        </div>
+
+        <div class="process-connector"></div>
+
+        <div class="process-step">
+          <div class="process-card">
+            <span class="process-number">05</span>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span class="process-label">Retest</span>
+            <span class="process-desc">Validación de correcciones sin costo adicional</span>
+          </div>
         </div>
       </div>
     </div>
@@ -406,22 +429,43 @@
   <!-- ═══════ STATS ═══════ -->
   <section class="stats-section">
     <div class="container">
+      <div class="section-title reveal" style="text-align: center;">
+        <span class="section-label">Impacto</span>
+        <h2>Números que hablan</h2>
+      </div>
+
       <div class="stats-grid">
-        <div class="stat-item reveal">
-          <div class="stat-number" data-count="10" data-prefix="+">+10</div>
+        <div class="stat-item counter-card reveal">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-number" data-count="10" data-prefix="+"><span class="counter-value">+10</span></div>
           <div class="stat-label">Empresas protegidas</div>
+          <div class="accent-bar"></div>
         </div>
-        <div class="stat-item reveal reveal-delay-1">
-          <div class="stat-number" data-count="400" data-prefix="+">+400</div>
+        <div class="stat-item counter-card reveal reveal-delay-1">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="stat-number" data-count="400" data-prefix="+"><span class="counter-value">+400</span></div>
           <div class="stat-label">Vulnerabilidades encontradas</div>
+          <div class="accent-bar"></div>
         </div>
-        <div class="stat-item reveal reveal-delay-2">
-          <div class="stat-number" data-count="100" data-suffix="%">100%</div>
+        <div class="stat-item counter-card reveal reveal-delay-2">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="stat-number" data-count="100" data-suffix="%"><span class="counter-value">100%</span></div>
           <div class="stat-label">Retests incluidos</div>
+          <div class="accent-bar"></div>
         </div>
-        <div class="stat-item reveal reveal-delay-3">
-          <div class="stat-number" data-count="24" data-prefix="<" data-suffix="h">&lt;24h</div>
+        <div class="stat-item counter-card reveal reveal-delay-3">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="stat-number" data-count="24" data-prefix="<" data-suffix="h"><span class="counter-value">&lt;24h</span></div>
           <div class="stat-label">Tiempo de respuesta</div>
+          <div class="accent-bar"></div>
         </div>
       </div>
     </div>

@@ -147,7 +147,7 @@
           const index = Array.from(processSteps).indexOf(step);
           setTimeout(() => {
             step.classList.add('revealed');
-          }, index * 200);
+          }, index * 350);
           stepObserver.unobserve(step);
         }
       });

@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /*.scss$
-Disallow: /*.js$
 Disallow: /.git/
 Sitemap: https://www.cuyohacks.com.ar/sitemap.xml

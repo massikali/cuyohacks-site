@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Escáner de Seguridad Gratuito para Empresas | Cuyo Hacks</title>
+  <meta name="description" content="Analizá la seguridad de tu empresa gratis en 60 segundos. Detectamos headers mal configurados, subdominios expuestos, DMARC y más vulnerabilidades públicas en tu dominio."/>
+  <meta name="keywords" content="escáner seguridad web gratis, analizar vulnerabilidades empresa, verificar seguridad dominio, pentest online gratuito Argentina, security check"/>
+  <link rel="canonical" href="https://www.cuyohacks.com.ar/herramientas/security-check/"/>
+
+  <meta property="og:title" content="¿Qué tan segura es tu empresa? Descubrilo gratis en 60 segundos — Cuyo Hacks"/>
+  <meta property="og:description" content="Herramienta gratuita: escaneamos la superficie pública de tu dominio y te mostramos vulnerabilidades críticas detectables desde internet."/>
+  <meta property="og:url" content="https://www.cuyohacks.com.ar/herramientas/security-check/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Cuyo Hacks"/>
+  <meta property="og:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="¿Qué tan segura es tu empresa? Escáner gratuito — Cuyo Hacks"/>
+  <meta name="twitter:description" content="Analizá la seguridad de tu dominio gratis en 60 segundos."/>
+  <meta name="twitter:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+  <meta name="twitter:site" content="@cuyohacks"/>
+
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="../../styles.css"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Escáner de Seguridad Gratuito — Cuyo Hacks",
+    "description": "Herramienta gratuita de análisis de seguridad web para empresas. Detecta headers mal configurados, subdominios expuestos y más.",
+    "url": "https://www.cuyohacks.com.ar/herramientas/security-check/",
+    "applicationCategory": "SecurityApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": { "@type": "Organization", "name": "Cuyo Hacks", "url": "https://www.cuyohacks.com.ar/" }
+  }
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════
+       SCANNER TOOL — Specific Styles
+    ══════════════════════════════════════ */
+
+    .scanner-hero {
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 1.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scanner-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(211,47,47,0.14) 0%, transparent 72%);
+    }
+
+    .scanner-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(211,47,47,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(211,47,47,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .scanner-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .scanner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border: 1px solid rgba(211,47,47,0.5);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      background: rgba(211,47,47,0.06);
+    }
+
+    .scanner-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 1.4s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .scanner-title {
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 1rem;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+    }
+
+    .scanner-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 2.75rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Input */
+    .scanner-form-wrap {
+      display: flex;
+      max-width: 560px;
+      margin: 0 auto 1rem;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 0 0 0 rgba(211,47,47,0);
+      transition: box-shadow 0.3s;
+    }
+
+    .scanner-form-wrap:focus-within {
+      box-shadow: 0 0 40px rgba(211,47,47,0.25);
+    }
+
+    .scanner-input {
+      flex: 1;
+      min-width: 0;
+      padding: 17px 20px;
+      background: rgba(255,255,255,0.03);
+      border: none;
+      color: var(--text-white);
+      font-family: 'Courier New', monospace;
+      font-size: 1.05rem;
+      outline: none;
+    }
+
+    .scanner-input::placeholder { color: rgba(255,255,255,0.28); }
+
+    .scanner-btn {
+      padding: 17px 28px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .scanner-btn:hover { background: #c62828; }
+    .scanner-btn:active { transform: scale(0.98); }
+    .scanner-btn:disabled { background: #444; cursor: not-allowed; }
+
+    .scanner-disclaimer {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.3);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Terminal */
+    .scanning-section {
+      padding: 10rem 1.5rem 6rem;
+    }
+
+    .terminal-window {
+      background: #080808;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 740px;
+      margin: 0 auto 2rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    .terminal-topbar {
+      background: #161616;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .tdot { width: 12px; height: 12px; border-radius: 50%; }
+    .tdot-r { background: #ff5f57; }
+    .tdot-y { background: #febc2e; }
+    .tdot-g { background: #28c840; }
+
+    .terminal-label {
+      flex: 1;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #444;
+      font-family: 'Courier New', monospace;
+    }
+
+    .terminal-body {
+      padding: 22px 24px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.84rem;
+      line-height: 1.9;
+      min-height: 300px;
+      max-height: 440px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #333 #0a0a0a;
+    }
+
+    .t-line {
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(5px);
+      animation: lineAppear 0.25s ease forwards;
+    }
+
+    @keyframes lineAppear {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .t-ok    { color: #00e676; }
+    .t-err   { color: #ff5252; }
+    .t-warn  { color: #ffca28; }
+    .t-info  { color: #64b5f6; }
+    .t-dim   { color: #3a3a3a; }
+    .t-white { color: #ddd; }
+
+    .spin { display:inline-block; animation: spinAnim 0.7s linear infinite; }
+    @keyframes spinAnim { to { transform: rotate(360deg); } }
+
+    /* Results */
+    .results-section { padding: 8rem 1.5rem 6rem; }
+
+    .results-wrap { max-width: 740px; margin: 0 auto; }
+
+    .score-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0.2) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(211,47,47,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .score-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .score-num {
+      font-size: 6rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .score-num.crit   { color: #ff1744; }
+    .score-num.danger { color: #ff6d00; }
+    .score-num.warn   { color: #ffd600; }
+    .score-num.safe   { color: #00e676; }
+
+    .score-denom { font-size: 1.8rem; color: rgba(255,255,255,0.25); font-weight: 300; }
+
+    .score-grade-badge {
+      display: inline-block;
+      padding: 5px 22px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .gb-f { background: rgba(255,23,68,0.12); color: #ff1744; border: 1px solid rgba(255,23,68,0.4); }
+    .gb-d { background: rgba(255,109,0,0.12); color: #ff6d00; border: 1px solid rgba(255,109,0,0.4); }
+    .gb-c { background: rgba(255,214,0,0.12); color: #ffd600; border: 1px solid rgba(255,214,0,0.4); }
+    .gb-b { background: rgba(0,200,83,0.12); color: #00c853; border: 1px solid rgba(0,200,83,0.4); }
+    .gb-a { background: rgba(0,230,118,0.12); color: #00e676; border: 1px solid rgba(0,230,118,0.4); }
+
+    .score-status-text { color: var(--text-secondary); font-size: 0.95rem; }
+
+    /* Findings */
+    .findings-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin: 2rem 0 1rem;
+    }
+
+    .finding-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .finding-card:hover {
+      border-color: rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .fbadge {
+      padding: 3px 11px;
+      border-radius: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .fb-critico { background: rgba(255,23,68,0.12); color: #ff1744; border: 1px solid rgba(255,23,68,0.35); }
+    .fb-alto    { background: rgba(255,109,0,0.12); color: #ff6d00; border: 1px solid rgba(255,109,0,0.35); }
+    .fb-medio   { background: rgba(255,214,0,0.12); color: #ffd600; border: 1px solid rgba(255,214,0,0.35); }
+    .fb-bajo    { background: rgba(100,181,246,0.12); color: #64b5f6; border: 1px solid rgba(100,181,246,0.35); }
+    .fb-ok      { background: rgba(0,230,118,0.12); color: #00e676; border: 1px solid rgba(0,230,118,0.35); }
+
+    .finding-text h4 { font-size: 0.92rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.2rem; }
+    .finding-text p  { font-size: 0.82rem; color: var(--text-secondary); margin: 0; line-height: 1.55; }
+
+    /* Subdomains */
+    .sub-terminal {
+      background: #080808;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .sub-item { color: #00e676; padding: 3px 0; border-bottom: 1px solid #111; }
+    .sub-item:last-child { border-bottom: none; }
+
+    /* CTA */
+    .result-cta {
+      background: linear-gradient(135deg, rgba(211,47,47,0.08) 0%, rgba(0,0,0,0) 100%);
+      border: 1px solid rgba(211,47,47,0.25);
+      border-radius: 14px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .result-cta h3 { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .result-cta p  { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.75rem; line-height: 1.7; }
+
+    .result-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-reset {
+      display: block;
+      margin: 1.75rem auto 0;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.4);
+      padding: 9px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      transition: all 0.2s;
+    }
+
+    .btn-reset:hover { border-color: rgba(255,255,255,0.3); color: var(--text-white); }
+
+    /* Stats bar under input */
+    .trust-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-stat { text-align: center; }
+    .trust-stat .num { font-size: 1.4rem; font-weight: 800; color: var(--text-white); }
+    .trust-stat .lbl { font-size: 0.72rem; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* Error state */
+    .error-msg {
+      background: rgba(255,23,68,0.08);
+      border: 1px solid rgba(255,23,68,0.25);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      color: #ff6b6b;
+      font-size: 0.88rem;
+      max-width: 560px;
+      margin: 0.75rem auto 0;
+      display: none;
+    }
+
+    @media (max-width: 580px) {
+      .scanner-form-wrap { flex-direction: column; border: none; box-shadow: none !important; gap: 10px; }
+      .scanner-input { border: 2px solid var(--accent); border-radius: 6px; }
+      .scanner-btn { border-radius: 6px; }
+      .trust-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════ HEADER ══════ -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <!-- ══════ STATE 1: INPUT ══════ -->
+  <div id="st-input">
+    <section class="scanner-hero">
+      <div class="scanner-grid-bg"></div>
+      <div class="scanner-hero-inner">
+
+        <div class="scanner-badge">Herramienta gratuita</div>
+
+        <h1 class="scanner-title">
+          ¿Qué tan segura es<br/>
+          <span style="color:var(--accent);">tu empresa</span>?
+        </h1>
+
+        <p class="scanner-subtitle">
+          Ingresá tu dominio y en menos de 60 segundos analizamos
+          tu superficie de ataque pública: headers HTTP, subdominios
+          expuestos, configuración de email y más.
+        </p>
+
+        <div class="scanner-form-wrap" id="form-wrap">
+          <input
+            type="text"
+            id="domain-input"
+            class="scanner-input"
+            placeholder="tuempresa.com"
+            autocomplete="off"
+            spellcheck="false"
+            inputmode="url"
+            aria-label="Dominio a analizar"
+          />
+          <button class="scanner-btn" id="scan-btn" onclick="startScan()">
+            Analizar gratis
+          </button>
+        </div>
+
+        <div class="error-msg" id="error-msg"></div>
+
+        <p class="scanner-disclaimer" style="margin-top:1rem;">
+          🔒 Solo usamos información pública y APIs abiertas. No atacamos, no modificamos, no almacenamos datos.
+        </p>
+
+        <div class="trust-stats">
+          <div class="trust-stat"><div class="num">+400</div><div class="lbl">Vulns encontradas</div></div>
+          <div class="trust-stat"><div class="num">+10</div><div class="lbl">Empresas auditadas</div></div>
+          <div class="trust-stat"><div class="num">100%</div><div class="lbl">Retest incluido</div></div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════ STATE 2: SCANNING ══════ -->
+  <div id="st-scanning" style="display:none;">
+    <section class="scanning-section">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:2rem;">
+          <h2 style="font-size:1.4rem;color:var(--text-white);">Analizando <span id="scanning-domain" style="color:var(--accent);"></span></h2>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">No cerrés esta ventana...</p>
+        </div>
+        <div class="terminal-window">
+          <div class="terminal-topbar">
+            <div class="tdot tdot-r"></div>
+            <div class="tdot tdot-y"></div>
+            <div class="tdot tdot-g"></div>
+            <div class="terminal-label">cuyo-hacks-scanner — zsh</div>
+          </div>
+          <div class="terminal-body" id="term-body"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════ STATE 3: RESULTS ══════ -->
+  <div id="st-results" style="display:none;">
+    <section class="results-section">
+      <div class="container">
+        <div class="results-wrap">
+
+          <div class="score-card">
+            <div class="score-eyebrow">Puntaje de Seguridad — <span id="res-domain"></span></div>
+            <div>
+              <span class="score-num" id="score-num">—</span>
+              <span class="score-denom">/100</span>
+            </div>
+            <div><span class="score-grade-badge" id="grade-badge"></span></div>
+            <div class="score-status-text" id="status-text"></div>
+          </div>
+
+          <div class="findings-section-title">Hallazgos detectados</div>
+          <div id="findings-wrap"></div>
+
+          <div id="sub-section" style="display:none;">
+            <div class="findings-section-title" style="margin-top:2rem;">Subdominios expuestos detectados</div>
+            <div class="sub-terminal" id="sub-list"></div>
+          </div>
+
+          <div class="result-cta">
+            <h3>Esto es solo la <span style="color:var(--accent);">superficie</span></h3>
+            <p>
+              Una auditoría profesional analiza autenticación, autorización, inyecciones SQL/NoSQL, lógica de negocio,
+              APIs internas y decenas de vectores que ningún escáner automático detecta.<br/><br/>
+              En promedio encontramos <strong style="color:var(--accent);">49 vulnerabilidades críticas adicionales</strong>
+              que no aparecen en este análisis.
+            </p>
+            <div class="result-cta-btns">
+              <a class="btn btn-primary" id="cta-contacto" href="/#contacto" style="background:var(--accent);border-color:var(--accent);color:#fff;">
+                Solicitar auditoría completa
+              </a>
+              <a class="btn btn-secondary" id="cta-whatsapp" href="https://wa.me/542612748038" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <button class="btn-reset" onclick="resetScanner()">← Analizar otro dominio</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40" loading="lazy"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            <li><a href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="/herramientas/security-check/">Escáner de Seguridad</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:comercial@cuyohacks.com.ar">comercial@cuyohacks.com.ar</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../app.js" defer></script>
+
+  <script>
+    // ══════════════════════════════════════════════
+    //  CUYO HACKS — Security Scanner v1.0
+    // ══════════════════════════════════════════════
+
+    const HT = 'https://api.hackertarget.com';
+
+    function cleanDomain(raw) {
+      return raw.trim().toLowerCase()
+        .replace(/^https?:\/\//, '')
+        .replace(/^www\./, '')
+        .replace(/\/.*$/, '')
+        .replace(/:[0-9]+$/, '');
+    }
+
+    function showErr(msg) {
+      const el = document.getElementById('error-msg');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    function hideErr() {
+      document.getElementById('error-msg').style.display = 'none';
+    }
+
+    let termDelay = 0;
+
+    function addLine(html, extra = 0) {
+      return new Promise(res => {
+        termDelay += extra;
+        const d = termDelay;
+        setTimeout(() => {
+          const body = document.getElementById('term-body');
+          const div = document.createElement('div');
+          div.className = 't-line';
+          div.innerHTML = html;
+          body.appendChild(div);
+          body.scrollTop = body.scrollHeight;
+          setTimeout(res, 40);
+        }, d);
+      });
+    }
+
+    async function startScan() {
+      hideErr();
+      const rawInput = document.getElementById('domain-input').value;
+      if (!rawInput.trim()) {
+        showErr('Ingresá un dominio válido, por ejemplo: tuempresa.com');
+        document.getElementById('domain-input').focus();
+        return;
+      }
+
+      const domain = cleanDomain(rawInput);
+      if (!/^[a-z0-9][a-z0-9\-\.]+\.[a-z]{2,}$/.test(domain)) {
+        showErr('El dominio ingresado no parece válido. Ejemplo: tuempresa.com');
+        return;
+      }
+
+      // Switch state
+      document.getElementById('st-input').style.display = 'none';
+      document.getElementById('st-scanning').style.display = 'block';
+      document.getElementById('scanning-domain').textContent = domain;
+      document.getElementById('term-body').innerHTML = '';
+      termDelay = 0;
+
+      let score = 100;
+      const findings = [];
+      const subdomains = [];
+      let headersRaw = '';
+
+      // ── Intro ──
+      await addLine(`<span class="t-dim">$</span> <span class="t-white">cuyo-hacks-scanner --target <strong style="color:#fff;">${domain}</strong></span>`);
+      await addLine(`<span class="t-info">⟳ Iniciando análisis de superficie pública...</span>`, 500);
+      await addLine(`<span class="t-dim">────────────────────────────────────────────────</span>`, 300);
+
+      // ── [1/4] HTTP Headers ──
+      await addLine(`<span class="t-dim">[1/4]</span> <span class="spin">⟳</span> <span class="t-white">Analizando cabeceras HTTP de seguridad...</span>`, 400);
+
+      try {
+        const ctrl = new AbortController();
+        const tid = setTimeout(() => ctrl.abort(), 9000);
+        const r = await fetch(`${HT}/httpheaders/?q=https://${domain}`, { signal: ctrl.signal });
+        clearTimeout(tid);
+        headersRaw = (await r.text()).toLowerCase();
+
+        if (headersRaw.length < 30 || headersRaw.includes('error')) throw new Error('bad response');
+
+        await addLine(`<span class="t-ok">✓</span> <span class="t-white">Cabeceras HTTP obtenidas</span>`, 200);
+
+        const headers = [
+          { key: 'strict-transport-security', label: 'HSTS (Strict-Transport-Security)',  sev: 'CRÍTICO', pts: 22, desc: 'Sin HSTS, los navegadores pueden conectarse vía HTTP permitiendo ataques Man-in-the-Middle.' },
+          { key: 'content-security-policy',   label: 'Content-Security-Policy (CSP)',     sev: 'ALTO',    pts: 18, desc: 'Sin CSP tu sitio es vulnerable a ataques Cross-Site Scripting (XSS).' },
+          { key: 'x-frame-options',           label: 'X-Frame-Options',                   sev: 'ALTO',    pts: 12, desc: 'Sin esta cabecera tu sitio puede embeberse en iframes para ataques de Clickjacking.' },
+          { key: 'x-content-type-options',    label: 'X-Content-Type-Options',            sev: 'MEDIO',   pts: 8,  desc: 'Vulnerable a ataques de MIME sniffing donde el browser ejecuta contenido malicioso.' },
+          { key: 'referrer-policy',           label: 'Referrer-Policy',                   sev: 'BAJO',    pts: 5,  desc: 'URLs internas sensibles pueden filtrarse a sitios externos como Analytics o CDNs.' },
+          { key: 'permissions-policy',        label: 'Permissions-Policy',                sev: 'BAJO',    pts: 5,  desc: 'Permisos de cámara, micrófono y geolocalización no están explícitamente restringidos.' },
+        ];
+
+        for (const h of headers) {
+          const found = headersRaw.includes(h.key);
+          if (found) {
+            await addLine(`  <span class="t-ok">✓</span> <span style="color:#aaa;">${h.label}</span>`, 180);
+            findings.push({ sev: 'OK', label: `${h.label} — OK`, desc: 'Cabecera correctamente implementada.', badge: 'fb-ok' });
+          } else {
+            score -= h.pts;
+            await addLine(`  <span class="t-err">✗</span> <span class="t-err">${h.label} AUSENTE</span> <span class="t-dim">[${h.sev}]</span>`, 180);
+            findings.push({ sev: h.sev, label: `${h.label} ausente`, desc: h.desc, badge: sevBadge(h.sev) });
+          }
+        }
+
+      } catch (_) {
+        score -= 25;
+        await addLine(`<span class="t-warn">⚠</span> <span style="color:#aaa;">No se obtuvo respuesta HTTPS (timeout o dominio sin SSL)</span>`, 200);
+        findings.push({ sev: 'CRÍTICO', label: 'Cabeceras HTTP no analizables / sin HTTPS', desc: 'El dominio no respondió o no tiene HTTPS configurado. Esto es una vulnerabilidad crítica.', badge: 'fb-critico' });
+      }
+
+      // ── [2/4] Subdomains ──
+      await addLine(`<span class="t-dim">[2/4]</span> <span class="spin">⟳</span> <span class="t-white">Enumerando subdominios expuestos públicamente...</span>`, 600);
+
+      try {
+        const ctrl = new AbortController();
+        setTimeout(() => ctrl.abort(), 8000);
+        const r = await fetch(`${HT}/hostsearch/?q=${domain}`, { signal: ctrl.signal });
+        const txt = await r.text();
+
+        if (!txt.includes('error') && !txt.includes('API count exceeded') && txt.trim().length > 5) {
+          const lines = txt.split('\n').filter(l => l.trim() && l.includes(','));
+          subdomains.push(...lines.slice(0, 25));
+
+          if (lines.length > 0) {
+            const penalty = Math.min(lines.length * 3, 14);
+            score -= penalty;
+            const sevSub = lines.length > 6 ? 'MEDIO' : 'BAJO';
+            await addLine(`<span class="t-warn">⚠</span> <span class="t-warn">${lines.length} subdominios detectados</span>`, 350);
+            findings.push({ sev: sevSub, label: `${lines.length} subdominios expuestos públicamente`, desc: 'Subdominios como staging, dev, admin o api pueden exponer sistemas sin protección o con datos sensibles.', badge: sevBadge(sevSub) });
+          } else {
+            await addLine(`<span class="t-ok">✓</span> <span style="color:#aaa;">Sin subdominios expuestos detectados</span>`, 350);
+          }
+        } else {
+          await addLine(`<span class="t-dim">—</span> <span class="t-dim">Enumeración no disponible en este momento</span>`, 350);
+        }
+      } catch (_) {
+        await addLine(`<span class="t-dim">—</span> <span class="t-dim">Tiempo de espera agotado en enumeración</span>`, 350);
+      }
+
+      // ── [3/4] DMARC / DNS ──
+      await addLine(`<span class="t-dim">[3/4]</span> <span class="spin">⟳</span> <span class="t-white">Verificando configuración DNS y protección anti-phishing...</span>`, 500);
+
+      try {
+        // Check DMARC
+        const dr = await fetch(`https://dns.google/resolve?name=_dmarc.${domain}&type=TXT`);
+        const dd = await dr.json();
+        const hasDMARC = dd.Answer && dd.Answer.some(a => a.data && a.data.toLowerCase().includes('v=dmarc'));
+
+        if (hasDMARC) {
+          await addLine(`  <span class="t-ok">✓</span> <span style="color:#aaa;">DMARC configurado (emails de @${domain} no pueden falsificarse)</span>`, 300);
+          findings.push({ sev: 'OK', label: 'DMARC configurado — OK', desc: 'Protección anti-spoofing activa. Dificulta el phishing con tu dominio.', badge: 'fb-ok' });
+        } else {
+          score -= 12;
+          await addLine(`  <span class="t-err">✗</span> <span class="t-err">DMARC AUSENTE</span> <span class="t-dim">— emails @${domain} pueden falsificarse para phishing [ALTO]</span>`, 300);
+          findings.push({ sev: 'ALTO', label: `DMARC ausente en @${domain}`, desc: `Sin DMARC, cualquier atacante puede enviar emails falsificados como @${domain} para atacar a tus clientes o empleados.`, badge: 'fb-alto' });
+        }
+
+        // Check SPF
+        const sr = await fetch(`https://dns.google/resolve?name=${domain}&type=TXT`);
+        const sd = await sr.json();
+        const hasSPF = sd.Answer && sd.Answer.some(a => a.data && a.data.toLowerCase().includes('v=spf'));
+
+        if (hasSPF) {
+          await addLine(`  <span class="t-ok">✓</span> <span style="color:#aaa;">SPF configurado</span>`, 200);
+        } else {
+          score -= 8;
+          await addLine(`  <span class="t-err">✗</span> <span class="t-err">SPF AUSENTE</span> <span class="t-dim">— servidores de correo no están validados [MEDIO]</span>`, 200);
+          findings.push({ sev: 'MEDIO', label: 'SPF (Sender Policy Framework) ausente', desc: 'Sin SPF, servidores externos no autorizados pueden enviar email en nombre de tu dominio.', badge: 'fb-medio' });
+        }
+
+      } catch (_) {
+        await addLine(`<span class="t-dim">—</span> <span class="t-dim">Error al consultar DNS</span>`, 300);
+      }
+
+      // ── [4/4] SSL / HTTPS ──
+      await addLine(`<span class="t-dim">[4/4]</span> <span class="spin">⟳</span> <span class="t-white">Verificando configuración SSL/TLS...</span>`, 400);
+
+      if (headersRaw.includes('strict-transport-security')) {
+        await addLine(`<span class="t-ok">✓</span> <span style="color:#aaa;">HTTPS forzado via HSTS — OK</span>`, 500);
+      } else if (headersRaw.length > 30) {
+        score -= 5;
+        await addLine(`<span class="t-warn">⚠</span> <span class="t-warn">HTTPS presente pero sin HSTS — los navegadores podrían conectarse por HTTP</span>`, 500);
+      } else {
+        await addLine(`<span class="t-dim">—</span> <span class="t-dim">No se pudo verificar SSL (ver hallazgo anterior)</span>`, 500);
+      }
+
+      // ── Finish ──
+      score = Math.max(0, Math.min(100, score));
+
+      await addLine(`<span class="t-dim">────────────────────────────────────────────────</span>`, 700);
+      await addLine(`<span class="t-ok">✓</span> <span class="t-white">Análisis completado — Puntaje: <strong style="color:${numColor(score)};">${score}/100</strong></span>`, 200);
+      await addLine(`<span class="t-dim">Generando informe...</span>`, 300);
+
+      setTimeout(() => renderResults(score, findings, subdomains, domain), 1600);
+    }
+
+    // ── Helpers ──
+
+    function sevBadge(s) {
+      return { 'CRÍTICO': 'fb-critico', 'ALTO': 'fb-alto', 'MEDIO': 'fb-medio', 'BAJO': 'fb-bajo', 'OK': 'fb-ok' }[s] || 'fb-bajo';
+    }
+
+    function numColor(s) {
+      if (s < 40) return '#ff1744';
+      if (s < 60) return '#ff6d00';
+      if (s < 75) return '#ffd600';
+      return '#00e676';
+    }
+
+    function numClass(s) {
+      if (s < 40) return 'crit';
+      if (s < 60) return 'danger';
+      if (s < 75) return 'warn';
+      return 'safe';
+    }
+
+    function gradeInfo(s) {
+      if (s < 30) return { g: 'F', cls: 'gb-f', txt: '🔴 CRÍTICO — Vulnerabilidades severas. Acción inmediata requerida.' };
+      if (s < 50) return { g: 'D', cls: 'gb-d', txt: '🔴 MUY VULNERABLE — Múltiples vectores de ataque expuestos.' };
+      if (s < 65) return { g: 'C', cls: 'gb-c', txt: '🟡 VULNERABLE — Requiere correcciones urgentes.' };
+      if (s < 80) return { g: 'B', cls: 'gb-b', txt: '🟡 MEJORABLE — Faltan configuraciones importantes.' };
+      if (s < 95) return { g: 'A', cls: 'gb-a', txt: '🟢 BUENO — Bien configurado. Recomendamos auditoría interna.' };
+      return { g: 'A+', cls: 'gb-a', txt: '🟢 MUY BUENO — Excelente configuración de superficie pública.' };
+    }
+
+    function renderResults(score, findings, subdomains, domain) {
+      document.getElementById('st-scanning').style.display = 'none';
+      document.getElementById('st-results').style.display = 'block';
+
+      // Update CTA links with domain context
+      const wa = `https://wa.me/542612748038?text=Hola%2C+acabo+de+usar+el+esc%C3%A1ner+gratuito+de+Cuyo+Hacks+con+el+dominio+${encodeURIComponent(domain)}+y+quiero+saber+m%C3%A1s+sobre+una+auditor%C3%ADa+completa.`;
+      document.getElementById('cta-whatsapp').href = wa;
+
+      document.getElementById('res-domain').textContent = domain;
+
+      // Score animation
+      const numEl = document.getElementById('score-num');
+      numEl.className = 'score-num ' + numClass(score);
+      animCounter(numEl, score);
+
+      const { g, cls, txt } = gradeInfo(score);
+      const badge = document.getElementById('grade-badge');
+      badge.textContent = g;
+      badge.className = 'score-grade-badge ' + cls;
+      document.getElementById('status-text').textContent = txt;
+
+      // Sort findings: worst first
+      const order = { 'CRÍTICO': 0, 'ALTO': 1, 'MEDIO': 2, 'BAJO': 3, 'OK': 4 };
+      findings.sort((a, b) => (order[a.sev] ?? 5) - (order[b.sev] ?? 5));
+
+      const wrap = document.getElementById('findings-wrap');
+      wrap.innerHTML = '';
+      if (!findings.length) {
+        wrap.innerHTML = '<div class="finding-card"><span class="fbadge fb-ok">OK</span><div class="finding-text"><h4>No se detectaron problemas en superficie pública</h4><p>Recomendamos una auditoría profunda de todas modos — la mayoría de las vulnerabilidades no son visibles desde afuera.</p></div></div>';
+      } else {
+        findings.forEach(f => {
+          const d = document.createElement('div');
+          d.className = 'finding-card';
+          d.innerHTML = `<span class="fbadge ${f.badge}">${f.sev}</span><div class="finding-text"><h4>${f.label}</h4><p>${f.desc}</p></div>`;
+          wrap.appendChild(d);
+        });
+      }
+
+      // Subdomains
+      if (subdomains.length > 0) {
+        document.getElementById('sub-section').style.display = 'block';
+        const list = document.getElementById('sub-list');
+        const shown = subdomains.slice(0, 15);
+        list.innerHTML = shown.map(s => `<div class="sub-item">${s.split(',')[0] || s}</div>`).join('');
+        if (subdomains.length > 15) {
+          list.innerHTML += `<div class="sub-item" style="color:#333;">... y ${subdomains.length - 15} más disponibles en el informe completo</div>`;
+        }
+      }
+    }
+
+    function animCounter(el, target) {
+      let curr = 0;
+      const step = target / 60;
+      const t = setInterval(() => {
+        curr = Math.min(curr + step, target);
+        el.textContent = Math.round(curr);
+        if (curr >= target) clearInterval(t);
+      }, 18);
+    }
+
+    function resetScanner() {
+      document.getElementById('st-results').style.display = 'none';
+      document.getElementById('st-input').style.display = 'block';
+      document.getElementById('domain-input').value = '';
+      hideErr();
+      document.getElementById('domain-input').focus();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const inp = document.getElementById('domain-input');
+      inp && inp.addEventListener('keydown', e => { if (e.key === 'Enter') startScan(); });
+    });
+  </script>
+</body>
+</html>

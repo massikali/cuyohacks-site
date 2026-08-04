@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mi empresa fue hackeada: qué hacer en las primeras 24 horas | Blog | Cuyo Hacks</title>
+  <meta name="description" content="Guía paso a paso de incident response para empresas. Contención, identificación, erradicación y recuperación ante un hackeo."/>
+  <meta name="keywords" content="empresa hackeada qué hacer, incident response Argentina, respuesta a incidentes ciberseguridad"/>
+  <link rel="canonical" href="https://www.cuyohacks.com.ar/blog/que-hacer-si-tu-empresa-fue-hackeada/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mi empresa fue hackeada: qué hacer en las primeras 24 horas"/>
+  <meta property="og:description" content="Guía paso a paso de incident response para empresas. Contención, erradicación y recuperación."/>
+  <meta property="og:url" content="https://www.cuyohacks.com.ar/blog/que-hacer-si-tu-empresa-fue-hackeada/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Cuyo Hacks"/>
+  <meta property="og:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Mi empresa fue hackeada: qué hacer en las primeras 24 horas"/>
+  <meta name="twitter:description" content="Guía paso a paso de incident response para empresas."/>
+  <meta name="twitter:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+  <meta name="twitter:site" content="@cuyohacks"/>
+
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="../../styles.css"/>
+
+  <style>
+    .blog-article {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin-bottom: 3rem;
+    }
+    .blog-article h2 { color: var(--accent); margin-bottom: 1.5rem; margin-top: 3rem; }
+    .blog-article h3 { margin-top: 2.5rem; margin-bottom: 1rem; color: var(--text-white); }
+    .blog-article p { margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); }
+    .blog-article ul, .blog-article ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .blog-article li { margin-bottom: 0.5rem; color: var(--text-secondary); line-height: 1.6; }
+    .blog-article strong { color: var(--text-white); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.cuyohacks.com.ar/blog/que-hacer-si-tu-empresa-fue-hackeada/"
+    },
+    "headline": "Mi empresa fue hackeada: qué hacer en las primeras 24 horas",
+    "description": "Guía paso a paso de incident response para empresas. Contención, identificación, erradicación y recuperación ante un hackeo.",
+    "image": "https://www.cuyohacks.com.ar/images/og-image.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.cuyohacks.com.ar/images/logo.png"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+          <li><a href="/blog/" class="active" aria-current="page">Blog</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <section class="hero" style="min-height: 30vh; align-items: center; text-align: center; padding-top: 8rem;">
+    <div class="hero-grid-bg"></div>
+    <div class="container" style="display: block;">
+      <h1 class="reveal">Mi empresa fue <span class="accent-text">hackeada</span>: ¿Qué hacer?</h1>
+    </div>
+  </section>
+
+  <section style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="container">
+      <article class="blog-article reveal">
+        <p>Acabás de confirmar el peor escenario: tus sistemas están comprometidos, los datos están cifrados, o un empleado reportó que se filtró la base de datos de clientes. El reloj corre y cada decisión que tomes en las próximas 24 horas definirá el impacto final del incidente.</p>
+        
+        <h2>El Proceso de Respuesta a Incidentes (IR)</h2>
+        <p>El estándar de la industria dicta 4 fases críticas para manejar un hackeo. No te saltees ninguna.</p>
+        
+        <h3>1. Contención (Frenar el sangrado)</h3>
+        <p>Tu primer instinto será apagar el servidor o reiniciar todo. <strong>No lo hagas.</strong> Al apagar un equipo, borrás la memoria RAM, destruyendo conexiones activas y claves de descifrado que los analistas forenses necesitan desesperadamente.</p>
+        <ul>
+          <li><strong>Aislá, no apagues:</strong> Desconectá el cable de red o apagá la interfaz Wi-Fi de los equipos afectados para evitar que el atacante siga moviéndose por la red (movimiento lateral).</li>
+          <li><strong>Bloqueá accesos externos:</strong> Cerrá conexiones VPN sospechosas y reseteá credenciales críticas (Admin, AWS, Root) desde un dispositivo seguro <em>fuera</em> de la red comprometida.</li>
+        </ul>
+        
+        <h3>2. Identificación (Entender el alcance)</h3>
+        <p>Antes de intentar recuperar nada, debés saber <em>cómo</em> entraron y <em>qué</em> tocaron. Si restaurás un backup sin saber cómo te hackearon, te volverán a hackear mañana usando el mismo método (Backdoors).</p>
+        <ul>
+          <li>Revisá los logs de firewalls, Active Directory y servidores web.</li>
+          <li>Identificá el "Paciente Cero": ¿fue un mail con phishing?, ¿una vulnerabilidad en la VPN?, ¿una contraseña filtrada?</li>
+        </ul>
+        
+        <h3>3. Erradicación (Eliminar al atacante)</h3>
+        <p>Una vez contenido e identificado el vector, procedé a limpiar.</p>
+        <ul>
+          <li>Eliminá el malware, scripts maliciosos y cuentas creadas por los atacantes.</li>
+          <li>Aplicá los parches de seguridad que faltaban (por ejemplo, si entraron por un software desactualizado).</li>
+          <li>Asegurate de que no queden "puertas traseras" (Webshells, servicios ocultos) escondidas en el sistema.</li>
+        </ul>
+        
+        <h3>4. Recuperación (Volver a la normalidad)</h3>
+        <p>Es momento de restaurar los servicios al negocio.</p>
+        <ul>
+          <li>Restaurá los sistemas a partir de backups limpios y verificados (comprobá que el backup no contenga también el malware).</li>
+          <li>Monitorizá la red intensivamente durante las próximas semanas. Los atacantes suelen intentar volver a entrar tras ser expulsados.</li>
+        </ul>
+        
+        <h2>El factor legal y comunicacional</h2>
+        <p>En Argentina, la <strong>Ley de Protección de Datos Personales (25.326)</strong> y las normativas de la AAIP requieren un manejo estricto si se filtraron datos de clientes. Espiar a tus clientes o esconder el incidente bajo la alfombra suele resultar en multas graves y un daño reputacional irreversible. Comunicá a las partes afectadas de manera transparente una vez que el incidente esté contenido.</p>
+        
+        <div style="margin-top: 3rem; background: rgba(211, 47, 47, 0.05); border: 1px solid rgba(211, 47, 47, 0.2); padding: 2rem; border-radius: 8px;">
+            <h3 style="margin-top: 0; color: var(--accent);">¿Necesitás ayuda urgente?</h3>
+            <p>Si estás atravesando un incidente ahora mismo, no actúes a ciegas. Nuestro equipo de contención te asiste para mitigar el daño y expulsar al atacante rápidamente.</p>
+            <a href="/#contacto" class="btn btn-primary" style="background:var(--accent); border-color:var(--accent); color:#fff;">Contactar Equipo de Respuesta</a>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+            <a href="/blog/" class="btn btn-outline">&larr; Volver al Blog</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40" loading="lazy"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            <li><a href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="/herramientas/security-check/">🔍 Escáner de Seguridad Gratis</a></li>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:comercial@cuyohacks.com.ar">comercial@cuyohacks.com.ar</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../../app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>¿Cómo saber si mi empresa fue hackeada? — Señales y pasos (2026) | Blog | Cuyo Hacks</title>
+  <meta name="description" content="Conocé las señales de que tu empresa fue hackeada y qué hacer en las primeras horas. Guía práctica de Cuyo Hacks para empresas argentinas."/>
+  <meta name="keywords" content="cómo saber si me hackearon, empresa hackeada señales, indicadores de compromiso"/>
+  <link rel="canonical" href="https://www.cuyohacks.com.ar/blog/como-saber-si-mi-empresa-fue-hackeada/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="¿Cómo saber si mi empresa fue hackeada? — Señales y pasos a seguir"/>
+  <meta property="og:description" content="Conocé las señales de que tu empresa fue hackeada y qué hacer en las primeras horas. Guía práctica."/>
+  <meta property="og:url" content="https://www.cuyohacks.com.ar/blog/como-saber-si-mi-empresa-fue-hackeada/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Cuyo Hacks"/>
+  <meta property="og:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="¿Cómo saber si mi empresa fue hackeada?"/>
+  <meta name="twitter:description" content="Conocé las señales de que tu empresa fue hackeada y qué hacer en las primeras horas. Guía práctica."/>
+  <meta name="twitter:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+  <meta name="twitter:site" content="@cuyohacks"/>
+
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="../../styles.css"/>
+
+  <style>
+    .blog-article {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin-bottom: 3rem;
+    }
+    .blog-article h2 { color: var(--accent); margin-bottom: 1.5rem; margin-top: 3rem; }
+    .blog-article h3 { margin-top: 2.5rem; margin-bottom: 1rem; color: var(--text-white); }
+    .blog-article p { margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); }
+    .blog-article ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .blog-article li { margin-bottom: 0.5rem; color: var(--text-secondary); line-height: 1.6; }
+    .blog-article strong { color: var(--text-white); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.cuyohacks.com.ar/blog/como-saber-si-mi-empresa-fue-hackeada/"
+    },
+    "headline": "¿Cómo saber si mi empresa fue hackeada? — Señales y pasos a seguir (2026)",
+    "description": "Conocé las señales de que tu empresa fue hackeada y qué hacer en las primeras horas. Guía práctica de Cuyo Hacks.",
+    "image": "https://www.cuyohacks.com.ar/images/og-image.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.cuyohacks.com.ar/images/logo.png"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+          <li><a href="/blog/" class="active" aria-current="page">Blog</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <section class="hero" style="min-height: 30vh; align-items: center; text-align: center; padding-top: 8rem;">
+    <div class="hero-grid-bg"></div>
+    <div class="container" style="display: block;">
+      <h1 class="reveal">¿Cómo saber si mi empresa fue <span class="accent-text">hackeada</span>?</h1>
+    </div>
+  </section>
+
+  <section style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="container">
+      <article class="blog-article reveal">
+        <p>A menudo, las empresas no se dan cuenta de que han sido vulneradas hasta meses después de que los atacantes ya ingresaron a sus sistemas. Reconocer los Indicadores de Compromiso (IoCs) a tiempo puede marcar la diferencia entre un incidente menor y un desastre público (y costoso).</p>
+        
+        <h2>Señales Técnicas de un Hackeo</h2>
+        
+        <h3>1. Actividad de Red Inusual</h3>
+        <p>Uno de los primeros indicios es el tráfico anómalo en horas no laborables. Si tus servidores están enviando gigabytes de datos hacia IPs en el extranjero a las 3 de la mañana un domingo, es altamente probable que estés sufriendo una exfiltración de datos.</p>
+        
+        <h3>2. Creación de Cuentas Desconocidas</h3>
+        <p>Los atacantes suelen crear usuarios con privilegios de administrador para mantener el acceso incluso si su vector inicial es parchado. Revisá periódicamente tu Active Directory o panel de AWS en busca de cuentas como <strong>sys_admin_backup</strong> o similares creadas sin autorización.</p>
+        
+        <h3>3. Alertas de Antivirus o EDR Silenciadas</h3>
+        <p>Si notas que tu software de seguridad fue desactivado, puesto en pausa, o se han añadido exclusiones extrañas (ejemplo: ignorar la carpeta `C:\Temp\`), alguien con acceso elevado está allanando el camino para ejecutar malware, usualmente Ransomware.</p>
+        
+        <h2>Señales No Técnicas (Operativas)</h2>
+        
+        <h3>1. Quejas de Clientes sobre Spam o Estafas</h3>
+        <p>Si tus clientes empiezan a reportar que reciben correos electrónicos extraños provenientes de tu dominio real solicitando transferencias o pagos de facturas a cuentas nuevas, tu servicio de correo (como Office 365 o Google Workspace) probablemente esté comprometido. Esto se conoce como Business Email Compromise (BEC).</p>
+        
+        <h3>2. Lentitud Extrema Inexplicable</h3>
+        <p>Sistemas que de repente se vuelven inutilizables pueden estar siendo utilizados para minar criptomonedas (Cryptojacking) o siendo encriptados lentamente en un ataque de Ransomware en progreso.</p>
+        
+        <h3>3. Empleados Reportando Problemas de Acceso</h3>
+        <p>Si varios empleados de repente no pueden acceder a sus cuentas porque "la contraseña parece haber cambiado sola", un atacante podría haber comprometido sus credenciales y cambiado las claves para bloquearlos fuera del sistema.</p>
+        
+        <h2>Qué hacer en las primeras horas</h2>
+        <p>El pánico es tu peor enemigo. Si confirmás que tu empresa ha sido hackeada, seguí estos pasos:</p>
+        <ul>
+          <li><strong>No apagues todo impulsivamente:</strong> Al apagar servidores, destruís evidencia valiosa en la memoria RAM que los forenses necesitan para saber cómo entraron.</li>
+          <li><strong>Aislá los equipos:</strong> Desconectá los cables de red física o deshabilitá las interfaces de red (Wi-Fi) de los equipos sospechosos, pero dejalos encendidos.</li>
+          <li><strong>Cambiá contraseñas clave:</strong> Especialmente las de administradores de red y de correo, pero hacelo desde un equipo seguro y no comprometido.</li>
+          <li><strong>Llamá a expertos:</strong> Un equipo de respuesta a incidentes (Incident Response) te ayudará a contener la amenaza sin destruir la evidencia legal.</li>
+        </ul>
+
+        <h2>Cómo prevenirlo a futuro</h2>
+        <p>La mejor estrategia no es reaccionar, sino anticiparse. Realizar pruebas de penetración (Pentesting) periódicas permite descubrir los mismos agujeros de seguridad que los atacantes usarían, antes de que ellos lo hagan. Además, capacitar a los empleados contra el Phishing y forzar la autenticación de dos factores (2FA) en todos los sistemas expuestos reducirá el riesgo en un 90%.</p>
+        
+        <div style="margin-top: 3rem; background: rgba(211, 47, 47, 0.05); border: 1px solid rgba(211, 47, 47, 0.2); padding: 2rem; border-radius: 8px;">
+            <h3 style="margin-top: 0; color: var(--accent);">¿Sospechás que tu empresa fue comprometida?</h3>
+            <p>En Cuyo Hacks ofrecemos servicios de respuesta rápida y pentesting para identificar y cerrar vulnerabilidades. No esperes a que el ataque se haga público.</p>
+            <a href="/#contacto" class="btn btn-primary" style="background:var(--accent); border-color:var(--accent); color:#fff;">Contactar Expertos Ahora</a>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+            <a href="/blog/" class="btn btn-outline">&larr; Volver al Blog</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40" loading="lazy"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            <li><a href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="/herramientas/security-check/">🔍 Escáner de Seguridad Gratis</a></li>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:comercial@cuyohacks.com.ar">comercial@cuyohacks.com.ar</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../../app.js" defer></script>
+</body>
+</html>

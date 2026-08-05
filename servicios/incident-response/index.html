@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Incident Response en Argentina — Respuesta a Incidentes | Cuyo Hacks</title>
+  <meta name="description" content="¿Tu empresa fue hackeada? Nuestro equipo de Incident Response contiene el ataque, preserva la evidencia y restaura tus operaciones en el menor tiempo posible."/>
+  <meta name="keywords" content="incident response Argentina, respuesta a incidentes, empresa hackeada, contención hackeo, forense digital"/>
+  <link rel="canonical" href="https://www.cuyohacks.com.ar/servicios/incident-response/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Incident Response en Argentina | Cuyo Hacks"/>
+  <meta property="og:description" content="¿Tu empresa fue hackeada? Nuestro equipo contiene el ataque, preserva evidencia y restaura operaciones rápidamente."/>
+  <meta property="og:url" content="https://www.cuyohacks.com.ar/servicios/incident-response/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Cuyo Hacks"/>
+  <meta property="og:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Incident Response en Argentina | Cuyo Hacks"/>
+  <meta name="twitter:description" content="¿Tu empresa fue hackeada? Nuestro equipo contiene el ataque y restaura operaciones rápidamente."/>
+  <meta name="twitter:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
+  <meta name="twitter:site" content="@cuyohacks"/>
+
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="../../styles.css"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Incident Response",
+    "description": "Servicio de respuesta a incidentes de ciberseguridad. Contención, análisis forense, erradicación y recuperación ante hackeos y ransomware.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Cuyo Hacks"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Argentina"
+    },
+    "url": "https://www.cuyohacks.com.ar/servicios/incident-response/"
+  }
+  </script>
+
+  <style>
+    /* Urgency banner */
+    .ir-alert {
+      background: rgba(211,47,47,0.08);
+      border: 1px solid rgba(211,47,47,0.35);
+      border-radius: 10px;
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 640px;
+      margin: 2rem auto 0;
+      text-align: left;
+    }
+    .ir-alert-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .ir-alert-text { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
+    .ir-alert-text strong { color: #ff5252; }
+
+    /* Phase timeline */
+    .ir-phases {
+      counter-reset: phase;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .ir-phases::before {
+      content: '';
+      position: absolute;
+      left: 31px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .ir-phase {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      position: relative;
+    }
+    .ir-phase-num {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      border-radius: 50%;
+      background: rgba(211,47,47,0.1);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--accent);
+      position: relative;
+      z-index: 1;
+    }
+    .ir-phase-body h3 { color: var(--text-white); margin-bottom: 0.4rem; font-size: 1.1rem; }
+    .ir-phase-body p  { color: var(--text-secondary); font-size: 0.93rem; line-height: 1.7; margin: 0; }
+
+    /* Stats */
+    .ir-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 3rem auto 0;
+    }
+    .ir-stat {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+    }
+    .ir-stat-num { font-size: 2.4rem; font-weight: 900; color: var(--accent); line-height: 1; }
+    .ir-stat-lbl { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    @media (max-width: 580px) {
+      .ir-stats { grid-template-columns: 1fr; }
+      .ir-phases::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════ HEADER ══════ -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
+        <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Inicio</a></li>
+          <li class="nav-submenu" id="nav-services">
+            <a href="/servicios/pentesting-web/" class="active" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <ul class="nav-dropdown" role="menu" aria-label="Servicios">
+              <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+              <li><a role="menuitem" href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+              <li><a role="menuitem" href="/servicios/incident-response/" aria-current="page">Incident Response</a></li>
+            </ul>
+          </li>
+          <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+          <li><a href="/herramientas/security-check/">🔍 Herramientas</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <!-- ══════ HERO ══════ -->
+  <section class="hero" style="min-height: 55vh; align-items: center; text-align: center;">
+    <div class="hero-grid-bg"></div>
+    <div class="container" style="display: block;">
+      <div class="section-label reveal">Servicios</div>
+      <h1 class="reveal reveal-delay-1">
+        Incident <span class="accent-text">Response</span>
+      </h1>
+      <p class="hero-lead reveal reveal-delay-2" style="margin: 0 auto;">
+        Tu empresa fue hackeada. Cada minuto cuenta. Nuestro equipo contiene el ataque,
+        preserva la evidencia y restaura tus operaciones — antes de que el daño sea irreversible.
+      </p>
+
+      <div class="ir-alert reveal reveal-delay-3">
+        <div class="ir-alert-icon">🚨</div>
+        <div class="ir-alert-text">
+          <strong>¿Estás bajo ataque AHORA MISMO?</strong><br/>
+          No apagues los servidores. Escribinos por WhatsApp de inmediato.
+          <br/><a href="https://wa.me/542612748038?text=URGENTE%3A+Creo+que+mi+empresa+fue+hackeada+y+necesito+ayuda+inmediata." style="color:var(--accent); font-weight:700;">→ +54 261 274 8038</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ STATS ══════ -->
+  <section class="stats-section" style="padding: 4rem 0;">
+    <div class="container">
+      <div class="ir-stats">
+        <div class="ir-stat reveal">
+          <div class="ir-stat-num">&lt;2h</div>
+          <div class="ir-stat-lbl">Primer respuesta</div>
+        </div>
+        <div class="ir-stat reveal reveal-delay-1">
+          <div class="ir-stat-num">24/7</div>
+          <div class="ir-stat-lbl">Disponibilidad</div>
+        </div>
+        <div class="ir-stat reveal reveal-delay-2">
+          <div class="ir-stat-num">100%</div>
+          <div class="ir-stat-lbl">Evidencia preservada</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CUÁNDO LLAMARNOS ══════ -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-title reveal" style="text-align:center;">
+        <span class="section-label">¿Cuándo activar IR?</span>
+        <h2>Señales de que necesitás ayuda ahora</h2>
+      </div>
+      <div class="grid-4" style="margin-top:3rem;">
+        <div class="card-glass reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Ransomware</h3>
+          <p>Archivos cifrados, pantallas de rescate o sistemas que dejaron de funcionar sin explicación.</p>
+        </div>
+        <div class="card-glass reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>Email Comprometido</h3>
+          <p>Correos enviados sin tu autorización, clientes reportando emails extraños desde tu dominio.</p>
+        </div>
+        <div class="card-glass reveal reveal-delay-2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3>Datos Filtrados</h3>
+          <p>Encontraste información de tu empresa en foros de la Dark Web o te lo reportó un tercero.</p>
+        </div>
+        <div class="card-glass reveal reveal-delay-3">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Actividad Anómala</h3>
+          <p>Tráfico saliente masivo, cuentas nuevas en tu directorio, antivirus desactivado sin razón.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ FASES DEL PROCESO ══════ -->
+  <section>
+    <div class="container">
+      <div class="section-title reveal" style="text-align:center;">
+        <span class="section-label">Metodología NIST SP 800-61</span>
+        <h2>Cómo respondemos al incidente</h2>
+        <p style="margin:0 auto;">Seguimos el estándar internacional de respuesta a incidentes para garantizar la preservación de evidencia y la máxima eficacia en la contención.</p>
+      </div>
+      <div class="ir-phases">
+        <div class="ir-phase reveal">
+          <div class="ir-phase-num">1</div>
+          <div class="ir-phase-body">
+            <h3>Triage y Contención Inicial (&lt; 2 horas)</h3>
+            <p>Evaluamos la situación de forma remota, aislamos los equipos afectados de la red sin apagar los sistemas (para preservar evidencia en RAM) y bloqueamos el movimiento lateral del atacante.</p>
+          </div>
+        </div>
+        <div class="ir-phase reveal">
+          <div class="ir-phase-num">2</div>
+          <div class="ir-phase-body">
+            <h3>Identificación y Análisis Forense</h3>
+            <p>Analizamos logs de sistemas, firewalls y Active Directory para identificar el vector de entrada, el tiempo de permanencia del atacante y el alcance real del compromiso. Documentamos toda la cadena de evidencia.</p>
+          </div>
+        </div>
+        <div class="ir-phase reveal">
+          <div class="ir-phase-num">3</div>
+          <div class="ir-phase-body">
+            <h3>Erradicación</h3>
+            <p>Eliminamos el malware, los backdoors instalados, las cuentas creadas por el atacante y cualquier artefacto malicioso. Aplicamos los parches necesarios para cerrar el vector de entrada.</p>
+          </div>
+        </div>
+        <div class="ir-phase reveal">
+          <div class="ir-phase-num">4</div>
+          <div class="ir-phase-body">
+            <h3>Recuperación</h3>
+            <p>Restauramos los sistemas desde backups limpios y verificados, monitoreamos activamente la red durante el período post-incidente para detectar reinfección y validamos que las operaciones estén normalizadas.</p>
+          </div>
+        </div>
+        <div class="ir-phase reveal">
+          <div class="ir-phase-num">5</div>
+          <div class="ir-phase-body">
+            <h3>Reporte Post-Incidente y Lecciones Aprendidas</h3>
+            <p>Entregamos un informe forense completo con línea de tiempo del ataque, impacto documentado, acciones realizadas y recomendaciones para evitar que vuelva a suceder. Incluye asesoramiento sobre obligaciones legales (Ley 25.326).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ QUÉ INCLUYE ══════ -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-title reveal" style="text-align:center;">
+        <span class="section-label">Entregables</span>
+        <h2>¿Qué recibe tu empresa?</h2>
+      </div>
+      <div class="grid-2" style="margin-top:3rem;">
+        <div class="card-glass reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Informe Forense Completo</h3>
+          <p>Línea de tiempo del ataque, vector de entrada, artefactos maliciosos encontrados y cadena de custodia de evidencia válida para procesos legales.</p>
+        </div>
+        <div class="card-glass reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Informe Ejecutivo</h3>
+          <p>Resumen en lenguaje de negocios del impacto real: qué datos estuvieron expuestos, qué sistemas fueron comprometidos y cuál fue el tiempo de exposición.</p>
+        </div>
+        <div class="card-glass reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Monitoreo Post-Incidente</h3>
+          <p>Seguimiento durante 30 días después de la restauración para detectar cualquier señal de persistencia o reinfección.</p>
+        </div>
+        <div class="card-glass reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Plan de Hardening</h3>
+          <p>Hoja de ruta priorizada de mejoras de seguridad para que el mismo ataque no se repita. Con estimaciones de esfuerzo para cada corrección.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CTA ══════ -->
+  <section class="stats-section" style="text-align:center; border-bottom:none;">
+    <div class="container reveal">
+      <h2 style="margin-bottom:1rem;">¿Tu empresa está bajo ataque?</h2>
+      <p style="margin-bottom:2rem; max-width:520px; margin-left:auto; margin-right:auto;">
+        No tomés decisiones que destruyan la evidencia. Contactanos ahora mismo — respondemos en menos de 2 horas.
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://wa.me/542612748038?text=URGENTE%3A+Creo+que+mi+empresa+fue+hackeada+y+necesito+ayuda+inmediata." class="btn btn-primary" style="background:var(--accent);border-color:var(--accent);" target="_blank" rel="noopener">
+          🚨 WhatsApp Urgente
+        </a>
+        <a href="/#contacto" class="btn btn-secondary">Formulario de Contacto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="/" aria-label="Cuyo Hacks">
+            <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40" loading="lazy"/>
+          </a>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodología OWASP, reportes claros y retest incluido.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
+            <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
+            <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
+            <li><a href="/servicios/ingenieria-social/">Ingeniería Social</a></li>
+            <li><a href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
+            <li><a href="/servicios/incident-response/">Incident Response</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="/herramientas/security-check/">🔍 Escáner de Seguridad Gratis</a></li>
+            <li><a href="/quienes-somos/">Quiénes Somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:comercial@cuyohacks.com.ar">comercial@cuyohacks.com.ar</a></li>
+            <li><a href="https://wa.me/542612748038">+54 261 274 8038</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
+        <p class="footer-copyright">Mendoza, Argentina 🇦🇷</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../app.js" defer></script>
+</body>
+</html>

@@ -1,16 +1,16 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-AR">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Mi empresa fue hackeada: qu√© hacer en las primeras 24 horas | Blog | Cuyo Hacks</title>
-  <meta name="description" content="Gu√≠a paso a paso de incident response para empresas. Contenci√≥n, identificaci√≥n, erradicaci√≥n y recuperaci√≥n ante un hackeo."/>
-  <meta name="keywords" content="empresa hackeada qu√© hacer, incident response Argentina, respuesta a incidentes ciberseguridad"/>
+  <title>Mi empresa fue hackeada: quÈ hacer en las primeras 24 horas | Blog | Cuyo Hacks</title>
+  <meta name="description" content="GuÌa paso a paso de incident response para empresas. ContenciÛn, identificaciÛn, erradicaciÛn y recuperaciÛn ante un hackeo."/>
+  <meta name="keywords" content="empresa hackeada quÈ hacer, incident response Argentina, respuesta a incidentes ciberseguridad"/>
   <link rel="canonical" href="https://www.cuyohacks.com.ar/blog/que-hacer-si-tu-empresa-fue-hackeada/"/>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Mi empresa fue hackeada: qu√© hacer en las primeras 24 horas"/>
-  <meta property="og:description" content="Gu√≠a paso a paso de incident response para empresas. Contenci√≥n, erradicaci√≥n y recuperaci√≥n."/>
+  <meta property="og:title" content="Mi empresa fue hackeada: quÈ hacer en las primeras 24 horas"/>
+  <meta property="og:description" content="GuÌa paso a paso de incident response para empresas. ContenciÛn, erradicaciÛn y recuperaciÛn."/>
   <meta property="og:url" content="https://www.cuyohacks.com.ar/blog/que-hacer-si-tu-empresa-fue-hackeada/"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="es_AR"/>
@@ -19,8 +19,8 @@
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Mi empresa fue hackeada: qu√© hacer en las primeras 24 horas"/>
-  <meta name="twitter:description" content="Gu√≠a paso a paso de incident response para empresas."/>
+  <meta name="twitter:title" content="Mi empresa fue hackeada: quÈ hacer en las primeras 24 horas"/>
+  <meta name="twitter:description" content="GuÌa paso a paso de incident response para empresas."/>
   <meta name="twitter:image" content="https://www.cuyohacks.com.ar/images/og-image.png"/>
   <meta name="twitter:site" content="@cuyohacks"/>
 
@@ -53,8 +53,8 @@
       "@type": "WebPage",
       "@id": "https://www.cuyohacks.com.ar/blog/que-hacer-si-tu-empresa-fue-hackeada/"
     },
-    "headline": "Mi empresa fue hackeada: qu√© hacer en las primeras 24 horas",
-    "description": "Gu√≠a paso a paso de incident response para empresas. Contenci√≥n, identificaci√≥n, erradicaci√≥n y recuperaci√≥n ante un hackeo.",
+    "headline": "Mi empresa fue hackeada: quÈ hacer en las primeras 24 horas",
+    "description": "GuÌa paso a paso de incident response para empresas. ContenciÛn, identificaciÛn, erradicaciÛn y recuperaciÛn ante un hackeo.",
     "image": "https://www.cuyohacks.com.ar/images/og-image.png",
     "author": {
       "@type": "Organization",
@@ -70,6 +70,9 @@
     }
   }
   </script>
+
+  <!-- Umami Analytics (free, no cookies, privacy-friendly) -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="REEMPLAZAR_CON_TU_ID"></script>
 </head>
 <body>
   <header class="site-header" id="site-header">
@@ -77,7 +80,7 @@
       <a class="logo" href="/" aria-label="Cuyo Hacks - Inicio">
         <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="48" height="48"/>
       </a>
-      <nav aria-label="Navegaci√≥n principal">
+      <nav aria-label="NavegaciÛn principal">
         <ul class="nav-menu" id="nav-menu">
           <li><a href="/">Inicio</a></li>
           <li class="nav-submenu" id="nav-services">
@@ -86,17 +89,17 @@
               <li><a role="menuitem" href="/servicios/pentesting-web/">Pentesting Web</a></li>
               <li><a role="menuitem" href="/servicios/pentesting-infraestructura/">Pentesting Infraestructura</a></li>
               <li><a role="menuitem" href="/servicios/pentesting-mobile/">Pentesting Mobile</a></li>
-              <li><a role="menuitem" href="/servicios/ingenieria-social/">Ingenier√≠a Social</a></li>
+              <li><a role="menuitem" href="/servicios/ingenieria-social/">IngenierÌa Social</a></li>
               <li><a role="menuitem" href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
               <li><a role="menuitem" href="/servicios/incident-response/">Incident Response</a></li>
             </ul>
           </li>
-          <li><a href="/quienes-somos/">Qui√©nes Somos</a></li>
+          <li><a href="/quienes-somos/">QuiÈnes Somos</a></li>
           <li><a href="/blog/" class="active" aria-current="page">Blog</a></li>
           <li><a href="/#contacto">Contacto</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir men√∫">
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir men˙">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -106,53 +109,53 @@
   <section class="hero" style="min-height: 30vh; align-items: center; text-align: center; padding-top: 8rem;">
     <div class="hero-grid-bg"></div>
     <div class="container" style="display: block;">
-      <h1 class="reveal">Mi empresa fue <span class="accent-text">hackeada</span>: ¬øQu√© hacer?</h1>
+      <h1 class="reveal">Mi empresa fue <span class="accent-text">hackeada</span>: øQuÈ hacer?</h1>
     </div>
   </section>
 
   <section style="padding-top: 2rem; padding-bottom: 4rem;">
     <div class="container">
       <article class="blog-article reveal">
-        <p>Acab√°s de confirmar el peor escenario: tus sistemas est√°n comprometidos, los datos est√°n cifrados, o un empleado report√≥ que se filtr√≥ la base de datos de clientes. El reloj corre y cada decisi√≥n que tomes en las pr√≥ximas 24 horas definir√° el impacto final del incidente.</p>
+        <p>Acab·s de confirmar el peor escenario: tus sistemas est·n comprometidos, los datos est·n cifrados, o un empleado reportÛ que se filtrÛ la base de datos de clientes. El reloj corre y cada decisiÛn que tomes en las prÛximas 24 horas definir· el impacto final del incidente.</p>
         
         <h2>El Proceso de Respuesta a Incidentes (IR)</h2>
-        <p>El est√°ndar de la industria dicta 4 fases cr√≠ticas para manejar un hackeo. No te saltees ninguna.</p>
+        <p>El est·ndar de la industria dicta 4 fases crÌticas para manejar un hackeo. No te saltees ninguna.</p>
         
-        <h3>1. Contenci√≥n (Frenar el sangrado)</h3>
-        <p>Tu primer instinto ser√° apagar el servidor o reiniciar todo. <strong>No lo hagas.</strong> Al apagar un equipo, borr√°s la memoria RAM, destruyendo conexiones activas y claves de descifrado que los analistas forenses necesitan desesperadamente.</p>
+        <h3>1. ContenciÛn (Frenar el sangrado)</h3>
+        <p>Tu primer instinto ser· apagar el servidor o reiniciar todo. <strong>No lo hagas.</strong> Al apagar un equipo, borr·s la memoria RAM, destruyendo conexiones activas y claves de descifrado que los analistas forenses necesitan desesperadamente.</p>
         <ul>
-          <li><strong>Aisl√°, no apagues:</strong> Desconect√° el cable de red o apag√° la interfaz Wi-Fi de los equipos afectados para evitar que el atacante siga movi√©ndose por la red (movimiento lateral).</li>
-          <li><strong>Bloque√° accesos externos:</strong> Cerr√° conexiones VPN sospechosas y resete√° credenciales cr√≠ticas (Admin, AWS, Root) desde un dispositivo seguro <em>fuera</em> de la red comprometida.</li>
+          <li><strong>Aisl·, no apagues:</strong> Desconect· el cable de red o apag· la interfaz Wi-Fi de los equipos afectados para evitar que el atacante siga moviÈndose por la red (movimiento lateral).</li>
+          <li><strong>Bloque· accesos externos:</strong> Cerr· conexiones VPN sospechosas y resete· credenciales crÌticas (Admin, AWS, Root) desde un dispositivo seguro <em>fuera</em> de la red comprometida.</li>
         </ul>
         
-        <h3>2. Identificaci√≥n (Entender el alcance)</h3>
-        <p>Antes de intentar recuperar nada, deb√©s saber <em>c√≥mo</em> entraron y <em>qu√©</em> tocaron. Si restaur√°s un backup sin saber c√≥mo te hackearon, te volver√°n a hackear ma√±ana usando el mismo m√©todo (Backdoors).</p>
+        <h3>2. IdentificaciÛn (Entender el alcance)</h3>
+        <p>Antes de intentar recuperar nada, debÈs saber <em>cÛmo</em> entraron y <em>quÈ</em> tocaron. Si restaur·s un backup sin saber cÛmo te hackearon, te volver·n a hackear maÒana usando el mismo mÈtodo (Backdoors).</p>
         <ul>
-          <li>Revis√° los logs de firewalls, Active Directory y servidores web.</li>
-          <li>Identific√° el "Paciente Cero": ¬øfue un mail con phishing?, ¬øuna vulnerabilidad en la VPN?, ¬øuna contrase√±a filtrada?</li>
+          <li>Revis· los logs de firewalls, Active Directory y servidores web.</li>
+          <li>Identific· el "Paciente Cero": øfue un mail con phishing?, øuna vulnerabilidad en la VPN?, øuna contraseÒa filtrada?</li>
         </ul>
         
-        <h3>3. Erradicaci√≥n (Eliminar al atacante)</h3>
-        <p>Una vez contenido e identificado el vector, proced√© a limpiar.</p>
+        <h3>3. ErradicaciÛn (Eliminar al atacante)</h3>
+        <p>Una vez contenido e identificado el vector, procedÈ a limpiar.</p>
         <ul>
-          <li>Elimin√° el malware, scripts maliciosos y cuentas creadas por los atacantes.</li>
-          <li>Aplic√° los parches de seguridad que faltaban (por ejemplo, si entraron por un software desactualizado).</li>
+          <li>Elimin· el malware, scripts maliciosos y cuentas creadas por los atacantes.</li>
+          <li>Aplic· los parches de seguridad que faltaban (por ejemplo, si entraron por un software desactualizado).</li>
           <li>Asegurate de que no queden "puertas traseras" (Webshells, servicios ocultos) escondidas en el sistema.</li>
         </ul>
         
-        <h3>4. Recuperaci√≥n (Volver a la normalidad)</h3>
+        <h3>4. RecuperaciÛn (Volver a la normalidad)</h3>
         <p>Es momento de restaurar los servicios al negocio.</p>
         <ul>
-          <li>Restaur√° los sistemas a partir de backups limpios y verificados (comprob√° que el backup no contenga tambi√©n el malware).</li>
-          <li>Monitoriz√° la red intensivamente durante las pr√≥ximas semanas. Los atacantes suelen intentar volver a entrar tras ser expulsados.</li>
+          <li>Restaur· los sistemas a partir de backups limpios y verificados (comprob· que el backup no contenga tambiÈn el malware).</li>
+          <li>Monitoriz· la red intensivamente durante las prÛximas semanas. Los atacantes suelen intentar volver a entrar tras ser expulsados.</li>
         </ul>
         
         <h2>El factor legal y comunicacional</h2>
-        <p>En Argentina, la <strong>Ley de Protecci√≥n de Datos Personales (25.326)</strong> y las normativas de la AAIP requieren un manejo estricto si se filtraron datos de clientes. Espiar a tus clientes o esconder el incidente bajo la alfombra suele resultar en multas graves y un da√±o reputacional irreversible. Comunic√° a las partes afectadas de manera transparente una vez que el incidente est√© contenido.</p>
+        <p>En Argentina, la <strong>Ley de ProtecciÛn de Datos Personales (25.326)</strong> y las normativas de la AAIP requieren un manejo estricto si se filtraron datos de clientes. Espiar a tus clientes o esconder el incidente bajo la alfombra suele resultar en multas graves y un daÒo reputacional irreversible. Comunic· a las partes afectadas de manera transparente una vez que el incidente estÈ contenido.</p>
         
         <div style="margin-top: 3rem; background: rgba(211, 47, 47, 0.05); border: 1px solid rgba(211, 47, 47, 0.2); padding: 2rem; border-radius: 8px;">
-            <h3 style="margin-top: 0; color: var(--accent);">¬øNecesit√°s ayuda urgente?</h3>
-            <p>Si est√°s atravesando un incidente ahora mismo, no act√∫es a ciegas. Nuestro equipo de contenci√≥n te asiste para mitigar el da√±o y expulsar al atacante r√°pidamente.</p>
+            <h3 style="margin-top: 0; color: var(--accent);">øNecesit·s ayuda urgente?</h3>
+            <p>Si est·s atravesando un incidente ahora mismo, no act˙es a ciegas. Nuestro equipo de contenciÛn te asiste para mitigar el daÒo y expulsar al atacante r·pidamente.</p>
             <a href="/#contacto" class="btn btn-primary" style="background:var(--accent); border-color:var(--accent); color:#fff;">Contactar Equipo de Respuesta</a>
         </div>
         
@@ -170,7 +173,7 @@
           <a class="logo" href="/" aria-label="Cuyo Hacks">
             <img src="https://raw.githubusercontent.com/massikali/cuyohacks-site/main/images/logo.png" alt="Cuyo Hacks" width="40" height="40" loading="lazy"/>
           </a>
-          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. Metodolog√≠a OWASP, reportes claros y retest incluido.</p>
+          <p>Pentesting y seguridad ofensiva en Mendoza y Argentina. MetodologÌa OWASP, reportes claros y retest incluido.</p>
         </div>
         <div class="footer-col">
           <h4>Servicios</h4>
@@ -178,15 +181,15 @@
             <li><a href="/servicios/pentesting-web/">Pentesting Web</a></li>
             <li><a href="/servicios/pentesting-infraestructura/">Infraestructura</a></li>
             <li><a href="/servicios/pentesting-mobile/">Mobile</a></li>
-            <li><a href="/servicios/ingenieria-social/">Ingenier√≠a Social</a></li>
+            <li><a href="/servicios/ingenieria-social/">IngenierÌa Social</a></li>
             <li><a href="/servicios/pentesting-llm/">Ethical Hacking a LLMs</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Herramientas</h4>
           <ul>
-            <li><a href="/herramientas/security-check/">üîç Esc√°ner de Seguridad Gratis</a></li>
-            <li><a href="/quienes-somos/">Qui√©nes Somos</a></li>
+            <li><a href="/herramientas/security-check/">?? Esc·ner de Seguridad Gratis</a></li>
+            <li><a href="/quienes-somos/">QuiÈnes Somos</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/#contacto">Contacto</a></li>
           </ul>
@@ -201,7 +204,7 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copyright">&copy; <span id="current-year"></span> Cuyo Hacks. Todos los derechos reservados.</p>
-        <p class="footer-copyright">Mendoza, Argentina üá¶üá∑</p>
+        <p class="footer-copyright">Mendoza, Argentina ????</p>
       </div>
     </div>
   </footer>
